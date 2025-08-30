@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
 use App\Http\Controllers\Dashboard\ManagementController;
 use App\Http\Controllers\Dashboard\FacultyMembersController;
+use App\Http\Controllers\Dashboard\AcademicYearController;
 
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -25,3 +26,6 @@ Route::get('/resume/{id}', [ManagementController::class, 'showResume'])->name('r
 Route::resource('facultyMembers', FacultyMembersController::class)->names('facultyMembers')->except(['show']);
 Route::get('/resume/{id}', [FacultyMembersController::class, 'showResume'])->name('resume.show');
 Route::get('/researches/{id}', [FacultyMembersController::class, 'showResume'])->name('researches.show');
+
+//=====================Route Academic Year==============================
+Route::resource('academic_years', AcademicYearController::class)->names('academic_years')->except(['show']);
