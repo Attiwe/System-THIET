@@ -91,9 +91,9 @@
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li>
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                      <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal"
                         data-bs-target="#editModal{{ $item->id }}">
-                        تعديل البيانات
+                       <i class="bi bi-pencil"></i>  تعديل  
                       </button>
                     </li>
                     <li>

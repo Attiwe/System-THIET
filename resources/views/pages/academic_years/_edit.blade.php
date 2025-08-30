@@ -1,7 +1,5 @@
-<br>
-@include('include.validation')
-<br>
-<div class="modal fade" id="editModal{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+ @include('include.validation')
+ <div class="modal fade" id="editModal{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content shadow-lg border-0 rounded-3">
@@ -23,7 +21,7 @@
             <label for="year" class="form-label fw-bold">
               <i class="bi bi-calendar-date text-primary"></i> السنة الدراسية
             </label>
-            <input type="date" class="form-control form-control-lg" id="year" name="year" value="{{ $item->year }} "
+            <input type="text" class="form-control form-control-lg text-danger" id="year" name="year" value="{{ $item->year }} "
               required>
 
           </div>
