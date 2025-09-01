@@ -27,7 +27,7 @@
              'phone1' => 'required|numeric',
              'phone2' => 'required|numeric',
              'address' => 'required|string',
-             'logo' => 'required|image|max:2048|mimes:jpeg,png,jpg,gif,svg,jfif,webp,avif,heic,heif',
+             'logo' => 'sometimes|required|image|max:2048|mimes:jpeg,png,jpg,gif,svg,jfif,webp,avif,heic,heif',
          ];
      }
 

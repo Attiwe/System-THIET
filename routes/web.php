@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\FacultyMembersController;
 use App\Http\Controllers\Dashboard\AcademicYearController;
 use App\Http\Controllers\Dashboard\CategoryManagementController;
 use App\Http\Controllers\Dashboard\SettingController;
+use App\Http\Controllers\Dashboard\OfficeStudentController;
 
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -38,4 +39,6 @@ Route::resource('category_management', CategoryManagementController::class)->nam
 //=====================Route Setting========================================
 Route::resource('setting', SettingController::class)->names('setting')->except(['show']);
 
+//=====================Route Office Student================================
+Route::resource('office_students', OfficeStudentController::class)->names('office_students')->except(['show']);
 

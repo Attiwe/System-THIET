@@ -1,6 +1,5 @@
 @extends('layouts.master')
-@section('title', '  الاعدادت العامة ')
-
+@section('title', '📚 بيانات الطلاب')
 @section('css')
   <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
   <link href="{{URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -11,14 +10,14 @@
 
 @endsection
 
-@section('page-header')
 
+@section('page-header')
   <!-- breadcrumb -->
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> الإعدادات الادريه </h2>
-        <p class="mg-b-0"> يعرض اعدادات الموقع </p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1 font-weight-bold"> طلاب المكتبه 📚 </h2>
+        <p class="mg-b-0"> طلاب المكتبه </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
@@ -32,52 +31,48 @@
         <label class="tx-13 font-weight-bold"> الصفحه الرئيسيه </label>
         <h5> <a class="text-danger" href="{{ route('dashboard') }}"> <i class="bi bi-house-fill"></i> الرئيسيه</a></h5>
       </div>
-
     </div>
   </div>
   <br>
   @include('include.success')
+
   <div class="card card-body">
     <div class="table-responsive mt-3">
-      <h2 class="text-primary mb-3">📋 جدول الإعدادات العامه </h2>
+      <h2 class="text-primary mb-3">📋 <i class="bi bi-person-fill"></i> جدول الطلاب المكتبه</h2>
 
-      <div class="d-flex justify-content-end ">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-setting">
-          <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة إعدادات </strong>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createStudent">
+          <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold text-2xl"> إضافة طالب </strong>
         </button>
       </div>
-
-      <!-- Model   -->
-      @include('pages.setting._create')
-
       <br>
       <br>
+
+      @include('pages.office_students._create')
       <table id="example1"
         class="table table-hover table-striped align-middle text-center shadow-sm rounded-3 table-bordered " dir="rtl">
-        <thead class="  text-white">
+        <thead class="text-white">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-person"></i> الاسم</th>
-            <th scope="col" class="h5"><i class="bi bi-envelope"></i> البريد الإلكتروني</th>
-            <th scope="col" class="h5"><i class="bi bi-telephone"></i> رقم الهاتف (1)</th>
-            <th scope="col" class="h5"><i class="bi bi-telephone"></i> رقم الهاتف (2)</th>
-            <th scope="col" class="h5"><i class="bi bi-house-door"></i> العنوان</th>
-            <th scope="col" class="h5"><i class="bi bi-image"></i> شعار الموقع</th>
+            <th>#</th>
+            <th><i class="bi bi-building h5"></i> القسم</th>
+            <th><i class="bi bi-layers"></i> المستوى</th>
+            <th><i class="bi bi-person"></i> الاسم</th>
+            <th><i class="bi bi-card-text"></i> رقم القيد</th>
+            <th><i class="bi bi-envelope"></i> البريد الإلكتروني</th>
+            <th><i class="bi bi-telephone"></i> رقم الهاتف</th>
+            <th><i class="bi bi-gear"></i> خيارات</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($settings as $item)
+          @foreach ($students as $item)
             <tr>
-              <td class="fw-bold text-secondary">{{ $loop->iteration }}</td>
-              <td class="fw-bold text-dark">{{ $item->name }}</td>
-              <td class="fw-bold text-dark">{{ $item->email }}</td>
-              <td class="fw-bold text-dark">{{ $item->phone1 }}</td>
-              <td class="fw-bold text-dark">{{ $item->phone2 }}</td>
-              <td class="fw-bold text-dark">{{ $item->address }}</td>
-              <td>
-                <img src="{{ asset('image/setting-logo/' . $item->logo) }}" alt="Logo" class="img-fluid" width="50"
-                  height="50">
-              </td>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $item->department->name ?? '---' }}</td>
+              <td>{{ $item->level->name ?? '---' }}</td>
+              <td>{{ $item->name }}</td>
+              <td>{{ $item->ID }}</td>
+              <td>{{ $item->email }}</td>
+              <td>{{ $item->phone }}</td>
               <td>
                 <div class="dropdown">
                   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -86,14 +81,13 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li>
-                      <!-- Button trigger modal -->
                       <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal"
-                        data-bs-target="#editModal-setting{{ $item->id }}">
+                        data-bs-target="#editModal{{ $item->id }}">
                         <i class="bi bi-pencil"></i> تعديل
                       </button>
                     </li>
                     <li>
-                      <form action="{{ route('setting.destroy', $item->id) }}" method="POST" class="d-inline">
+                      <form action="{{ route('office_students.destroy', $item->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('delete')
                         <button type="submit" class="dropdown-item text-danger delete_confirm">
@@ -105,12 +99,10 @@
                 </div>
               </td>
             </tr>
-            <!-- model edit -->
-            @include('pages.setting._edit', compact('item'))
+            @include('pages.office_students._create', ['departments' => $departments, 'levels' => $levels])
           @endforeach
         </tbody>
       </table>
-
     </div>
   </div>
 @endsection
@@ -137,5 +129,5 @@
   </script>
   <!-- sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @include('pages.setting._delete')
+  @include('pages.office_students._delete')
 @endsection

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="staticBackdrop-setting" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content shadow-lg border-0 rounded-3">
@@ -53,12 +53,14 @@
           </div>
           <br>
           <div class="text-center">
-            <button type="submit" class="btn btn-success px-4 font-weight-bold">
+            <button type="submit" class="btn btn-outline-success px-4 py-2 font-weight-bold  ml-2">
               <i class="bi bi-save"></i> <strong>حفظ</strong>
             </button>
-            <button type="button" class="btn btn-danger px-4 font-weight-bold" data-bs-dismiss="modal"> <i class="bi bi-x"></i> <strong>اغلاق</strong>
+            <button type="button" class="btn btn-outline-danger px-4 py-2 font-weight-bold  ml-2" data-bs-dismiss="modal"> <i class="bi bi-x"></i> <strong>اغلاق</strong>
             </button>
           </div>
+          <br>
+          <br>
         </div>
       </form>
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('academic_students', function (Blueprint $table) {
             $table->id();
             $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
-            $table->foreignId('level_id')->constrained('level_accadmics')->cascadeOnDelete();
+            $table->foreignId('level_id')->constrained('level_accademics')->cascadeOnDelete();   
             $table->string('student_name');
             $table->string('classRoom');
             $table->enum('table',['1','2','3','4','5']);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academic_students');
+        Schema::dropIfExists('academic_students'); 
     }
 };
