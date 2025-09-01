@@ -93,10 +93,14 @@ return [
                 'visibility' => 'public',
             ],
 
+            'setting-logo' => [
+                'driver' => 'local',
+                'root' => public_path('image/setting-logo'),
+                'url' => env('APP_URL') . '/image/setting-logo',
+                'visibility' => 'public',
+            ],
+
      
-
-
-
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

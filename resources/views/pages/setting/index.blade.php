@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'السنوات الدراسية')
+@section('title', '  الاعدادت العامة ')
 
 @section('css')
   <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -17,8 +17,8 @@
     <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋 جدول السنوات الدراسية  </h2>
-        <p class="mg-b-0"> يعرض جدول السنوات الدراسية </p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">  الإعدادات الادريه  </h2>
+        <p class="mg-b-0"> يعرض اعدادات الموقع    </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
@@ -39,40 +39,43 @@
   @include('include.success')
   <div class="card card-body">
     <div class="table-responsive mt-3">
-      <h2 class="text-primary mb-3">📋 جدول السنوات الدراسية</h2>
+      <h2 class="text-primary mb-3">📋 جدول  الإعدادات  العامه  </h2>
 
       <div class="d-flex justify-content-end ">
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة سنة دراسية</strong>
+          <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة إعدادات </strong>
         </button>
       </div>
 
-      <!-- Model academic_years -->
-      @include('pages.academic_years._create')
+      <!-- Model   -->
+      @include('pages.setting._create')
 
       <br>
       <br>
       <table id="example1"
         class="table table-hover table-striped align-middle text-center shadow-sm rounded-3 table-bordered " dir="rtl">
-        <thead class="bg-primary text-white">
+        <thead class="  text-white">
           <tr>
             <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> السنة الدراسية</th>
-            <th scope="col" class="h5"><i class="bi bi-check-circle"></i> الحالة</th>
-            <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
+            <th scope="col" class="h5"><i class="bi bi-person"></i> الاسم</th>
+            <th scope="col" class="h5"><i class="bi bi-envelope"></i> البريد الإلكتروني</th>
+            <th scope="col" class="h5"><i class="bi bi-telephone"></i> رقم الهاتف (1)</th>
+            <th scope="col" class="h5"><i class="bi bi-telephone"></i> رقم الهاتف (2)</th>
+            <th scope="col" class="h5"><i class="bi bi-house-door"></i> العنوان</th>
+            <th scope="col" class="h5"><i class="bi bi-image"></i> شعار الموقع</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($academicYears as $item)
+          @foreach ($settings as $item)
             <tr>
               <td class="fw-bold text-secondary">{{ $loop->iteration }}</td>
-              <td class="fw-bold text-dark">{{ $item->year }}</td>
+              <td class="fw-bold text-dark">{{ $item->name }}</td>
+              <td class="fw-bold text-dark">{{ $item->email }}</td>
+              <td class="fw-bold text-dark">{{ $item->phone1 }}</td>
+              <td class="fw-bold text-dark">{{ $item->phone2 }}</td>
+              <td class="fw-bold text-dark">{{ $item->address }}</td>
               <td>
-                @if($item->is_active)
-                  <span class="badge bg-success px-3 py-2"><i class="bi bi-check-lg"></i> مفعل</span>
-                @else
-                  <span class="badge bg-danger px-3 py-2"><i class="bi bi-x-lg"></i> غير مفعل</span>
-                @endif
+                <img src="{{ asset('image/setting-logo/' . $item->logo) }}" alt="Logo" class="img-fluid" width="50" height="50" >
               </td>
               <td>
                 <div class="dropdown">
@@ -89,7 +92,7 @@
                       </button>
                     </li>
                     <li>
-                      <form action="{{ route('academic_years.destroy', $item->id) }}" method="POST" class="d-inline">
+                      <form action="{{ route('setting.destroy', $item->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('delete')
                         <button type="submit" class="dropdown-item text-danger delete_confirm">
@@ -102,7 +105,7 @@
               </td>
             </tr>
             <!-- model edit -->
-            @include('pages.academic_years._edit', compact('item'))
+            @include('pages.setting._edit', compact('item'))
           @endforeach
         </tbody>
       </table>
@@ -133,5 +136,5 @@
     </script>
     <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @include('pages.academic_years._delete')
+    @include('pages.setting._delete')
 @endsection

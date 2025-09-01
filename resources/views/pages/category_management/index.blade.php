@@ -14,30 +14,22 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
-        <p class="mg-b-0">Sales monitoring dashboard template.</p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋🚀 جدول بيانات الاداره  </h2>
+        <p class="mg-b-0"> يعرض جدول بيانات الاداره </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
       <div>
-        <label class="tx-13 font-weight-bold">Customer Ratings</label>
-        <div class="main-star">
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star"></i>
-          <span>(14,873)</span>
-        </div>
+        <label class="tx-13 font-weight-bold">  التاريخ </label>
+        <div class="main-star text-primary">
+          <span class="text-dark"> {{ now()->format('H:i A | d-m-Y') }} </span>
+        </div> 
       </div>
       <div>
-        <label class="tx-13 font-weight-bold">Online Sales</label>
-        <h5>563,275</h5>
+        <label class="tx-13 font-weight-bold"> الصفحه الرئيسيه  </label>
+        <h5  > <a class="text-danger" href="{{ route('dashboard') }}" > <i class="bi bi-house-fill"></i> الرئيسيه</a></h5>
       </div>
-      <div>
-        <label class="tx-13 font-weight-bold">Offline Sales</label>
-        <h5>783,675</h5>
-      </div>
+
     </div>
   </div>
   <br>
@@ -56,13 +48,14 @@
         </h2>
       </div>
 
+      <br>
       <div id="collapseOne" class="collapse false " aria-labelledby="headingOne" data-parent="#facultyAccordion">
         <div class="table-responsive mt-3">
-          <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
+          <table id="example1" class="table table-bordered table-striped text-center align-middle shadow-sm rounded-3 table-bordered  table-hover  " dir="rtl">
             <thead>
                 <tr>
                   <th>#</th>
-                
+
                   <th class="text-primary font-weight-bold"> <i class="bi bi-person-fill"></i>  عميد الكلية</th>
                   <th class="text-primary font-weight-bold"> <i class="bi bi-person-fill"></i>   وكيل المعهد وشؤون الطلاب</th>
                   <th class="text-primary font-weight-bold"> <i class="bi bi-person-fill"></i>     الاعدادت </th>
@@ -103,7 +96,26 @@
 @endsection
 
 @section('js')
-  <!-- sweetalert -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @include('pages.category_management._delete')
+  <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.min.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#example1').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/ar.json"
+        }
+      });
+    });
+  </script>
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('pages.category_management._delete')
 @endsection

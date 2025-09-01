@@ -54,28 +54,10 @@
  						</ul>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3"/><path d="M19.37 12.8l-7.38 5.74-7.37-5.73L3 14.07l9 7 9-7zM12 2L3 9l1.63 1.27L12 16l7.36-5.73L21 9l-9-7zm0 11.47L6.26 9 12 4.53 17.74 9 12 13.47z"/></svg><span class="side-menu__label ">  test</span><i class="angle fe fe-chevron-down"></i></a>
+						<a class="side-menu__item" data-toggle="slide" href=" #"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3"/><path d="M19.37 12.8l-7.38 5.74-7.37-5.73L3 14.07l9 7 9-7zM12 2L3 9l1.63 1.27L12 16l7.36-5.73L21 9l-9-7zm0 11.47L6.26 9 12 4.53 17.74 9 12 13.47z"/></svg><span class="side-menu__label h6"> الاعدادت الادريه  </span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ url('/' . $page = 'alerts') }}">Alerts</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'avatar') }}">Avatar</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'breadcrumbs') }}">Breadcrumbs</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'buttons') }}">Buttons</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'badge') }}">Badge</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'dropdown') }}">Dropdown</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'thumbnails') }}">Thumbnails</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'list-group') }}">List Group</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'navigation') }}">Navigation</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'images') }}">Images</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'pagination') }}">Pagination</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'popover') }}">Popover</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'progress') }}">Progress</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'spinners') }}">Spinners</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'media-object') }}">Media Object</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'typography') }}">Typography</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'tooltip') }}">Tooltip</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'toast') }}">Toast</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'tags') }}">Tags</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page = 'tabs') }}">Tabs</a></li>
+							<li><a class="slide-item font-weight-bold" href="{{ route('setting.index') }}"> الاعدادت العامه </a></li>	
+ 							 
 						</ul>
 					</li>
 					<li class="slide">
@@ -99,10 +81,7 @@
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3"/><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-5 7c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10zM4.59 11.59l-.59.58V4h11v7H5.17l-.58.59z"/></svg><span class="side-menu__label h6"> الاعدادت العامه </span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item font-weight-bold text-2xl" href=" {{ route('facultyMembers.index') }}"> اضافه عضو هيئه تدريس </a></li>
-							<li><a class="slide-item font-weight-bold text-2xl" href="{{  route('facultyMembers.index') }}">Mail Compose</a></li>
-							<li><a class="slide-item font-weight-bold text-2xl" href="{{ url('/' . $page = 'mail-read') }}">Read-mail</a></li>
-							<li><a class="slide-item font-weight-bold text-2xl" href="{{ url('/' . $page = 'mail-settings') }}">mail-settings</a></li>
-							<li><a class="slide-item font-weight-bold text-2xl" href="{{ url('/' . $page = 'chat') }}">Chat</a></li>
+							<li><a class="slide-item font-weight-bold text-2xl" href="{{  route('facultyMembers.index') }}"> اضافه طالب مكتبه </a></li>
 						</ul>
 					</li>
 					<li class="slide">

@@ -13,16 +13,12 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('name');                 
+            $table->string('email');  
+            $table->string('phone1');             
+            $table->string('phone2');
+            $table->string('address');            
             $table->string('logo');
-            $table->string('favicon')->nullable();
-            $table->string('phone');
-            $table->string('email');
-            $table->string('address');
-            $table->string('facebook')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('youtube')->nullable();
-            $table->string('linkedin')->nullable();
             $table->timestamps();
         });
     }
