@@ -41,7 +41,7 @@
     <div class="table-responsive mt-3">
       <h2 class="text-primary mb-3">📋 جدول السنوات الدراسية</h2>
 
-      <div class="d-flex justify-content-end ">
+      <div class="d-flex justify-content-center ">
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة سنة دراسية</strong>
         </button>
@@ -54,7 +54,7 @@
       <br>
       <table id="example1"
         class="table table-hover table-striped align-middle text-center shadow-sm rounded-3 table-bordered " dir="rtl">
-        <thead class="bg-primary text-white">
+        <thead class="px-3 py-2  text-white">
           <tr>
             <th scope="col">#</th>
             <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> السنة الدراسية</th>
@@ -66,7 +66,7 @@
           @foreach($academicYears as $item)
             <tr>
               <td class="fw-bold text-secondary">{{ $loop->iteration }}</td>
-              <td class="fw-bold text-dark">{{ $item->year }}</td>
+              <td class="fw-bold text-danger">{{ $item->year }}</td>
               <td>
                 @if($item->is_active)
                   <span class="badge bg-success px-3 py-2"><i class="bi bi-check-lg"></i> مفعل</span>

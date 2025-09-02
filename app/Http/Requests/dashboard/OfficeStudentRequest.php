@@ -25,7 +25,7 @@ class OfficeStudentRequest extends FormRequest
              'department_id' => 'required|exists:departments,id',
              'level_id' => 'required|exists:level_accademics,id',
              'name' => 'required',
-             'Ip' => 'required|numeric',
+             'number_id' => 'required|numeric',
              'email' => 'required|email',
              'phone' => 'required|numeric',
         ];
@@ -37,10 +37,10 @@ class OfficeStudentRequest extends FormRequest
             'department_id.required' => 'القسم مطلوب',
             'level_id.required' => 'المرحلة مطلوبة',
             'name.required' => 'الاسم مطلوب',
-            'Ip.required' => 'الرقم مطلوب',
+            'number_id.required' => 'الرقم مطلوب',
             'email.required' => 'البريد الالكتروني مطلوب',
             'email.email' => 'البريد الالكتروني غير صحيح',
-            'Ip.numeric' => 'الرقم يجب ان يكون رقم',
+            'number_id.numeric' => 'الرقم يجب ان يكون رقم',
             'phone.numeric' => 'الهاتف يجب ان يكون رقم',
             'phone.required' => 'الهاتف مطلوب',
         ];

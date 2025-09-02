@@ -14,7 +14,7 @@ class OfficeStudent extends Model
         'department_id',
         'level_id',
         'name',
-        'ID',
+        'number_id',
         'email',
         'phone',
     ];

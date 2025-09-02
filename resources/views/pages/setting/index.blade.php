@@ -41,14 +41,13 @@
     <div class="table-responsive mt-3">
       <h2 class="text-primary mb-3">📋 جدول الإعدادات العامه </h2>
 
-      <div class="d-flex justify-content-end ">
+      <!-- <div class="d-flex justify-content-end ">
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-setting">
           <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة إعدادات </strong>
         </button>
-      </div>
-
-      <!-- Model   -->
-      @include('pages.setting._create')
+      </div> -->
+      <!-- Model  
+      @include('pages.setting._create') -->
 
       <br>
       <br>
@@ -75,7 +74,7 @@
               <td class="fw-bold text-dark">{{ $item->phone2 }}</td>
               <td class="fw-bold text-dark">{{ $item->address }}</td>
               <td>
-                <img src="{{ asset('image/setting-logo/' . $item->logo) }}" alt="Logo" class="img-fluid" width="50"
+                <img src="{{ asset('image/setting-logo/' . $item->logo)  }}" alt="Logo" class="img-fluid" width="50"
                   height="50">
               </td>
               <td>

@@ -45,10 +45,9 @@
           <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold text-2xl"> إضافة طالب </strong>
         </button>
       </div>
-      <br>
-      <br>
-
       @include('pages.office_students._create')
+      <br>
+      <br>
       <table id="example1"
         class="table table-hover table-striped align-middle text-center shadow-sm rounded-3 table-bordered " dir="rtl">
         <thead class="text-white">
@@ -68,11 +67,11 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $item->department->name ?? '---' }}</td>
-              <td>{{ $item->level->name ?? '---' }}</td>
+              <td>{{ $item->level->level_name ?? '---' }}</td>
               <td>{{ $item->name }}</td>
-              <td>{{ $item->ID }}</td>
+              <td class="text-danger">{{ $item->number_id }}</td>
               <td>{{ $item->email }}</td>
-              <td>{{ $item->phone }}</td>
+              <td class="text-danger">{{ $item->phone }}</td>
               <td>
                 <div class="dropdown">
                   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -99,8 +98,8 @@
                 </div>
               </td>
             </tr>
-            @include('pages.office_students._create', ['departments' => $departments, 'levels' => $levels])
-          @endforeach
+            @include('pages.office_students._edit')
+           @endforeach
         </tbody>
       </table>
     </div>

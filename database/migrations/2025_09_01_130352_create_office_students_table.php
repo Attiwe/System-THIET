@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('department_id')->constrained()->cascadeOnDelete();
             $table->foreignId('level_id')->constrained('level_accademics')->cascadeOnDelete();
             $table->string('name');
-            $table->integer('Ip')->nullable();
+            $table->string('number_id') ;
             $table->string('email');
             $table->string('phone');
             $table->timestamps();
