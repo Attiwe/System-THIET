@@ -10,8 +10,11 @@ class Department extends Model
     protected $fillable = [
         'name',
         'description',
-        'depart_vision',
+        'requerd_file',
+        'dapart_image',
         'depart_massage',
+        'depart_vision',
+        'is_active',
     ];
 
     public function officeStudents()

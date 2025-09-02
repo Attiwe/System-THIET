@@ -99,6 +99,19 @@ return [
                 'url' => env('APP_URL') . '/image/setting-logo',
                 'visibility' => 'public',
             ],
+            'department-file' => [
+                'driver' => 'local',
+                'root' => public_path('image/department-file'),
+                'url' => env('APP_URL') . '/image/department-file',
+                'visibility' => 'public',
+            ],
+
+            'department-image' => [
+                'driver' => 'local',
+                'root' => public_path('image/department-image'),
+                'url' => env('APP_URL') . '/image/department-image',
+                'visibility' => 'public',
+            ],
 
      
         's3' => [

@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\OfficeStudentController;
 use App\Http\Controllers\Dashboard\QualityFormController;
 use App\Http\Controllers\Dashboard\QualityItemController;
+use App\Http\Controllers\Dashboard\DepartmentController;
 
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -56,4 +57,11 @@ Route::resource('quality_item', QualityItemController::class)->names('quality_it
 Route::get('/quality_item/trashed', [QualityItemController::class, 'trashed'])->name('quality_item.trashed');
 Route::get('/quality_item/restore/{id}', [QualityItemController::class, 'restore'])->name('quality_item.restore');
 Route::delete('/quality_item/forceDelete/{id}', [QualityItemController::class, 'forceDelete'])->name('quality_item.forceDelete');
+
+//=====================Route Department ================================
+Route::resource('department', DepartmentController::class)->names('department')->except(['show']);
+Route::get('/department/requerd_file/{id}', [DepartmentController::class, 'file'])->name('department.file');
+ 
+
+
 

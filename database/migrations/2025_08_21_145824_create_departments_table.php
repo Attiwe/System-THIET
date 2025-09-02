@@ -16,6 +16,9 @@ return new class extends Migration {
             $table->string('description')->nullable();
             $table->text('depart_vision');
             $table->text('depart_massage');
+            $table->string('requerd_file') ;
+            $table->string('dapart_image') ;
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
