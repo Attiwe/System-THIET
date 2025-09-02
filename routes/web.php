@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\AcademicYearController;
 use App\Http\Controllers\Dashboard\CategoryManagementController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\OfficeStudentController;
+use App\Http\Controllers\Dashboard\QualityFormController;
 
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -41,4 +42,12 @@ Route::resource('setting', SettingController::class)->names('setting')->except([
 
 //=====================Route Office Student================================
 Route::resource('office_students', OfficeStudentController::class)->names('office_students')->except(['show']);
+
+//=====================Route Quality Form================================
+Route::resource('quality_form', QualityFormController::class)->names('quality_form')->except(['show']);
+Route::get('/quality_form/trashed', [QualityFormController::class, 'trashed'])->name('quality_form.trashed');
+Route::get('/quality_form/restore/{id}', [QualityFormController::class, 'restore'])->name('quality_form.restore');
+Route::delete('/quality_form/forceDelete/{id}', [QualityFormController::class, 'forceDelete'])->name('quality_form.forceDelete');
+
+
 
