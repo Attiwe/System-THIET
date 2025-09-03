@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Department;
+use App\Models\FeaturedWork;
 
-class DepartmentRepository
+class FeaturedWorkRepository
 {
     public function getAll()
     {
-        return Department::latest()->get();
+        return FeaturedWork::latest()->get();
     }
     public function checkId($id)
     {

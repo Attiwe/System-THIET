@@ -104,7 +104,7 @@
                   <td>{{ $item->linkedin ?? '--' }}</td>
                   <td>
                     @if($item->personal_image)
-                      <img src="{{ asset('image/images_doctor/' . $item->personal_image) }}" width="100" class="img-thumbnail">
+                      <img src="{{ asset('image/images_doctor/' . $item->personal_image) }}" width="40" class="img-thumbnail">
                     @else
                       <span class="text-muted">لا يوجد صورة</span>
                     @endif

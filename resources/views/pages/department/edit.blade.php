@@ -1,11 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'تعديل عضو هيئة تدريس')
-
+@section('title', 'تعديل القسم')
 @section('css')
-  <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
-  <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
-  <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('vendor/file-input/css/fileinput.min.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css"
     crossorigin="anonymous">
@@ -51,142 +50,89 @@
 
       <div class="card shadow-sm">
         <div class="card-header d-flex  justify-content-between align-items-center ">
-          <h2 class="main-content-title tx-24 font-weight-bold text-dark  "> 📰 تعديل عضو هيئة تدريس</h2>
-          <a href="{{ route('facultyMembers.index') }}" class="btn btn-primary">
+          <h2 class="main-content-title tx-24 font-weight-bold text-dark  "> 📰 تعديل القسم</h2>
+          <a href="{{ route('departments.index') }}" class="btn btn-primary">
             <i class="bi bi-arrow-left"></i> رجوع
           </a>
         </div>
 
         <div class="card-body bg-white">
-          <form action="{{ route('facultyMembers.update', $facultyMember->id) }}" method="POST"
+          <form action="{{ route('departments.update', $department->id) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
+            <input type="hidden" name="id" value="{{ $department->id }}">
             <div class="row">
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-person-fill"></i> الاسم</label>
-                <input type="text" class="form-control" name="name" value="{{ $facultyMember->name }}">
-              </div>
-
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-person-badge"></i> النوع</label>
-                <select name="type" class="form-control">
-                  <option value="">اختر النوع</option>
-                  <option value="دكتور" {{ $facultyMember->type == 'دكتور' ? 'selected' : '' }}>دكتور</option>
-                  <option value="معيد" {{ $facultyMember->type == 'معيد' ? 'selected' : '' }}>معيد</option>
-                </select>
-              </div>
-
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-calendar"></i> تاريخ التعيين</label>
-                <input type="date" class="form-control" name="appointment_date"
-                  value="{{ $facultyMember->appointment_date }}">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-building"></i> القسم</label>
-                <select name="department_id" class="form-control">
-                  <option value="">اختر القسم</option>
-                  @foreach ($departments as $department)
-                    <option value="{{ $department->id }}" {{ $facultyMember->department_id == $department->id ? 'selected' : '' }}>
-                      {{ $department->name }}
-                    </option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-code-slash"></i> كود العضو</label>
-                <input type="number" class="form-control" name="faculty_code" value="{{ $facultyMember->faculty_code }}">
-              </div>
-
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-briefcase"></i> نوع التعيين</label>
-                <select name="appointment_type" class="form-control">
-                  <option value="">اختر نوع التعيين</option>
-                  <option value="معين" {{ $facultyMember->appointment_type == 'معين' ? 'selected' : '' }}>معين</option>
-                  <option value="منتدب" {{ $facultyMember->appointment_type == 'منتدب' ? 'selected' : '' }}>منتدب جزئي
-                  </option>
-                  <option value="غير ذلك" {{ $facultyMember->appointment_type == 'غير ذلك' ? 'selected' : '' }}>غير ذلك
-                  </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="groud row">
-              <div class="form-group col-md-4">
-                <label for="username" class="font-weight-bold lead text-primary"> <i class="bi bi-person-circle"></i>
-                  اسم المستخدم </label>
-                <input type="text" class="form-control" id="username" name="username"
-                  value="{{ $facultyMember->username }}" placeholder="أدخل اسم المستخدم">
-              </div>
-
-              <div class="form-group col-md-4">
-                <label for="email" class="font-weight-bold lead text-primary"> <i class="bi bi-envelope"></i> البريد
-                  الإلكتروني </label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ $facultyMember->email }}"
-                  placeholder="أدخل البريد الإلكتروني">
-              </div>
-
-              <div class="form-group col-md-4">
-                <label for="password" class="font-weight-bold lead text-primary"> <i class="bi bi-lock"></i> كلمة المرور
-                </label>
-                <input type="password" class="form-control" id="password" name="password"
-                  value="{{ $facultyMember->password }}" placeholder="أدخل كلمة المرور">
-              </div>
-            </div>
-
-            <div class="groud row">
               <div class="form-group col-md-6">
-                <label for="phone" class="font-weight-bold lead text-primary"> <i class="bi bi-phone"></i> رقم الهاتف
+                <label for="name" class="font-weight-bold text-primary">
+                  <i class="bi bi-person-fill"></i> اسم البرنامج التعليمي
                 </label>
-                <input type="text" class="form-control" id="phone" name="phone" value="{{ $facultyMember->phone }}"
-                  placeholder="أدخل رقم الهاتف">
+                <input type="text" class="form-control" id="name" name="name" value="{{ $department->name }}"
+                  placeholder="أدخل اسم البرنامج">
               </div>
-
               <div class="form-group col-md-6">
-                <label for="facebook" class="font-weight-bold lead text-primary"> <i class="bi bi-facebook"></i> فيسبوك
+                <label for="is_active" class="font-weight-bold text-primary">
+                  <i class="bi bi-barcode"></i> الحالة
                 </label>
-                <input type="text" class="form-control" id="facebook" name="facebook"
-                  value="{{ $facultyMember->facebook ?? old('facebook') }}" placeholder="أدخل رابط فيسبوك">
+                <select name="is_active" id="is_active" class="form-control">
+                  <option value="" selected>اختر الحالة</option>
+                  <option value="1" {{ $department->is_active == 1 ? 'selected' : '' }}>مفعل</option>
+                  <option value="0" {{ $department->is_active == 0 ? 'selected' : '' }}>غير مفعل</option>
+                </select>
               </div>
             </div>
 
-            <!-- ملفات الصورة والسيرة والأبحاث -->
             <div class="row">
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-person-bounding-box"></i> الصورة
-                  الشخصية</label>
-                <input type="file" id="personal_image" name="personal_image" class="form-control-file" accept="image/*">
+              <div class="form-group col-md-12">
+                <label for="description" class="font-weight-bold text-primary">
+                  <i class="bi bi-person-fill"></i> وصف البرنامج التعليمي
+                </label>
+                <input type="text" class="form-control" id="description" name="description"
+                  value="{{ $department->description }}" placeholder="أدخل وصف البرنامج">
               </div>
+            </div>
 
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-file-earmark-pdf"></i> السيرة
-                  الذاتية</label>
-                <input type="file" id="resume" name="resume" class="form-control-file" value="{{ $facultyMember->resume }}" accept="application/pdf">
-                @if($facultyMember->resume)
-                  <p class="text-muted">السيرة الذاتية الحالية:
-                    <a href="{{ route('resume.show', $facultyMember->id) }}"
-                      target="_blank">{{ $facultyMember->resume }}</a>
-                  </p>
+            <div class="form-group">
+              <label for="depart_vision" class="font-weight-bold text-primary">
+                <i class="bi bi-person-bounding-box"></i> رؤية البرنامج
+              </label>
+              <textarea class="form-control" id="depart_vision" name="depart_vision" rows="3"
+                placeholder="أدخل رؤية البرنامج">{{ $department->depart_vision }}</textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="depart_massage" class="font-weight-bold text-primary">
+                <i class="bi bi-person-bounding-box"></i> رسالة البرنامج
+              </label>
+              <textarea class="form-control" id="depart_massage" name="depart_massage" rows="3"
+                placeholder="أدخل رسالة البرنامج">{{ $department->depart_massage }}</textarea>
+            </div>
+            <br>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="requerd_file" class="font-weight-bold text-primary">
+                  <i class="bi bi-file-earmark-text-fill"></i> إضافة ملف البرنامج التعليمي
+                </label>
+                <input type="file" class="form-control-file" id="requerd_file" name="requerd_file"
+                  accept="application/pdf">
+                <input type="hidden" name="old_requerd_file" value="{{ $department->requerd_file }}">
+                @if($department->requerd_file)
+                  <a href="{{ asset('image/department-file/' . $department->requerd_file) }}" target="_blank"
+                    class="btn btn-outline-danger btn-sm">
+                    <i class="bi bi-file-earmark-pdf-fill"></i> عرض ملف البرنامج
+                  </a>
+                @else
+                  <span class="text-muted"><i class="bi bi-file-earmark-x"></i> لا يوجد ملف</span>
                 @endif
               </div>
 
-              <div class="form-group col-md-4">
-                <label class="font-weight-bold lead text-primary"><i class="bi bi-journal-text"></i> قرارات البحث</label>
-                <input type="file" id="researches" name="researches" class="form-control-file" value="{{ $facultyMember->researches }}" accept="application/pdf">
-                @if($facultyMember->researches)
-                  <p class="text-muted">قرارات البحث الحالية:
-                    <a href="{{ route('researches.show', $facultyMember->id) }}"
-                      target="_blank">{{ $facultyMember->researches }}</a>
-                  </p>
-                @endif
+              <div class="form-group col-md-6">
+                <label for="dapart_image" class="font-weight-bold text-primary">
+                  <i class="bi bi-file-earmark-text-fill"></i> إضافة صورة البرنامج
+                </label>
+                <input type="file" class="form-control-file" id="dapart_image" name="dapart_image" accept="image/*">
               </div>
             </div>
-
             <div class="d-flex justify-content-center mt-3">
               <button type="submit" class="btn btn-outline-primary font-weight-bold">✔ تحديث</button>
               <button type="reset" class="mr-3 btn btn-outline-danger font-weight-bold ml-3">❌ إلغاء</button>
@@ -203,15 +149,15 @@
   <script src="{{ asset('vendor/file-input/themes/fa/theme.min.js') }}"></script>
 
   <script>
-    $("#personal_image").fileinput({
+    $("#dapart_image").fileinput({
       theme: "fa",
       showUpload: false,
       showRemove: true,
       initialPreview: [
-        @if($facultyMember->personal_image)
-          "{{ asset('image/images_doctor/' . $facultyMember->personal_image) }}"
+        @if($department->dapart_image)
+          "{{ asset('image/department-image/' . $department->dapart_image) }}"
         @endif
-          ],
+            ],
       initialPreviewAsData: true,
       initialPreviewFileType: 'image',
       overwriteInitial: true,

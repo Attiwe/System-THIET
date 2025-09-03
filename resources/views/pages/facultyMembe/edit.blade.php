@@ -155,8 +155,7 @@
               </div>
             </div>
 
-            <!-- ملفات الصورة والسيرة والأبحاث -->
-            <div class="row">
+             <div class="row">
               <div class="form-group col-md-4">
                 <label class="font-weight-bold lead text-primary"><i class="bi bi-person-bounding-box"></i> الصورة
                   الشخصية</label>

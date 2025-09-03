@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Repositories\DepartmentRepository;
 
-class DepartmentServices
+class FeaturedWorServices
 {
     protected $department ;
  

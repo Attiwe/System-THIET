@@ -24,8 +24,8 @@ class SettingProvider extends ServiceProvider
                 'phone1' => '20403103727',
                 'phone2' => '20403103727',
                 'address' => 'طنطا -الغربية',
-                'logo' => 'include/logo/logo.webp',
-            ]);
+                'logo' => '',
+             ]);
         });
 
 

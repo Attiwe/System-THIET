@@ -13,35 +13,48 @@ class DepartmentRequest extends FormRequest
 
     public function rules(): array
     {
-        return [
+        $data = [
             'name' => 'bail|required|string|max:255',
-            'description' => 'bail|required|string',
+            'description' => 'bail|required|string|max:255',
             'dapart_image' => 'bail|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'requerd_file'=>'bail|required|mimes:pdf,doc,docx|max:2048',
-            'depart_massage'=>'bail|required|string',
-            'depart_vision'=>'bail|required|string',
-            'is_active'=>'bail|required|in:0,1',
+            'requerd_file' => 'bail|required|mimes:pdf,doc,docx|max:2048',
+            'depart_massage' => 'bail|required|string|max:255',
+            'depart_vision' => 'bail|required|string|max:255',
+            'is_active' => 'bail|required|in:0,1',
         ];
+
+        if ($this->isMethod('put')) {
+            $data['dapart_image'] = 'sometimes|bail|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+            $data['requerd_file'] = 'sometimes|bail|required|mimes:pdf,doc,docx|max:2048';
+        }
+        return $data;
     }
 
-    public function massage (){
+    public function messages(): array
+    {
         return [
-            'name.required'=>'الاسم مطلوب',
-            'description.required'=>'الوصف مطلوب',
-            'dapart_image.required'=>'الصورة مطلوبة',
-            'dapart_image.image'=>'الصورة يجب ان تكون صورة',
-            'dapart_image.max'=>'الصورة يجب ان تكون اقل من 2048 كيلوبايت',
-            'requerd_file.required'=>'الملف مطلوب',
-            'depart_massage.required'=>'الرسالة مطلوبة',
-            'depart_vision.required'=>'الرؤية مطلوبة',
-            'is_active.required'=>'الحالة مطلوبة',
-            'is_active.in'=>'الحالة يجب ان تكون 0 أو 1',
-            'requerd_file.max'=>'الملف يجب ان تكون اقل من 2048 كيلوبايت',
-            'requerd_file.mimes'=>'الملف يجب ان يكون ملف',
-            'depart_massage.string'=>'الرسالة يجب ان تكون نص',
-            'depart_vision.string'=>'الرؤية يجب ان تكون نص',
-            'depart_massage.max'=>'الرسالة يجب ان تكون اقل من 255 حرف',
-            'depart_vision.max'=>'الرؤية يجب ان تكون اقل من 255 حرف',
+            'name.required' => 'الاسم مطلوب',
+            'description.required' => 'الوصف مطلوب',
+
+            'dapart_image.required' => 'الصورة مطلوبة',
+            'dapart_image.image' => 'الملف يجب أن يكون صورة',
+            'dapart_image.mimes' => 'الصورة يجب أن تكون من نوع: jpeg, png, jpg, gif, svg',
+            'dapart_image.max' => 'حجم الصورة يجب أن يكون أقل من 2 ميجابايت',
+
+            'requerd_file.required' => 'الملف مطلوب',
+            'requerd_file.mimes' => 'الملف يجب أن يكون من نوع: pdf, doc, docx',
+            'requerd_file.max' => 'حجم الملف يجب أن يكون أقل من 2 ميجابايت',
+
+            'depart_massage.required' => 'الرسالة مطلوبة',
+            'depart_massage.string' => 'الرسالة يجب أن تكون نص',
+            'depart_massage.max' => 'الرسالة يجب ألا تزيد عن 255 حرف',
+
+            'depart_vision.required' => 'الرؤية مطلوبة',
+            'depart_vision.string' => 'الرؤية يجب أن تكون نص',
+            'depart_vision.max' => 'الرؤية يجب ألا تزيد عن 255 حرف',
+
+            'is_active.required' => 'الحالة مطلوبة',
+            'is_active.in' => 'الحالة يجب أن تكون 0 (غير نشط) أو 1 (نشط)',
         ];
     }
 }

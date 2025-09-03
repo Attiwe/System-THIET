@@ -59,9 +59,20 @@ Route::get('/quality_item/restore/{id}', [QualityItemController::class, 'restore
 Route::delete('/quality_item/forceDelete/{id}', [QualityItemController::class, 'forceDelete'])->name('quality_item.forceDelete');
 
 //=====================Route Department ================================
-Route::resource('department', DepartmentController::class)->names('department')->except(['show']);
+Route::resource('departments', DepartmentController::class)->names('departments')->except(['show']);
 Route::get('/department/requerd_file/{id}', [DepartmentController::class, 'file'])->name('department.file');
  
+ 
+//=====================Route Featured Work ================================
+Route::resource('featured_work', FeaturedWorkController::class)->names('featured_work')->except(['show']);
+Route::get('/featured_work/trashed', [FeaturedWorkController::class, 'trashed'])->name('featured_work.trashed');
+Route::get('/featured_work/restore/{id}', [FeaturedWorkController::class, 'restore'])->name('featured_work.restore');
+Route::delete('/featured_work/forceDelete/{id}', [FeaturedWorkController::class, 'forceDelete'])->name('featured_work.forceDelete');
 
 
 
+
+Route::get('/', function () {
+
+  return view('login-test.test-login');
+});
