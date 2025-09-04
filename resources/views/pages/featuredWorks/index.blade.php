@@ -51,7 +51,6 @@
         </div>
       </div>
 
-
       <!-- Model   -->
       @include('pages.featuredWorks._create')
 
@@ -62,12 +61,12 @@
         <thead class="px-3 py-2  text-white">
           <tr>
             <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i>  اسم الطالب || الطالبه </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i>  الصورة </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i>    العنوان </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i>    التفاصيل </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i>    الحالة </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i>    تاريخ النشطه </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> اسم الطالب || الطالبه </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> الصورة </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> العنوان </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> التفاصيل </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> الحالة </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> تاريخ النشطه </th>
             <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
         </thead>
@@ -76,9 +75,11 @@
             <tr>
               <td class="fw-bold text-secondary">{{ $loop->iteration }}</td>
               <td class="fw-bold text-dark">{{ $item->name }}</td>
-              <td class="fw-bold text-dark">{{ $item->image }}</td>
+              <td class="fw-bold text-dark"> <img src="{{ asset('image/student_featured_work/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover;"> </td>
               <td class="fw-bold text-dark">{{ $item->title }}</td>
-              <td class="fw-bold text-dark">{{ $item->details }}</td>
+              <td class="fw-bold text-dark text-wrap" style="white-space: normal; max-width: 250px; text-align:right;">
+                {{ \Illuminate\Support\Str::limit($item->details, 100, ' ...') ?? '--' }}
+              </td>
               <td>
                 @if($item->is_active)
                   <span class="badge bg-success px-3 py-2"><i class="bi bi-check-lg"></i> مفعل</span>

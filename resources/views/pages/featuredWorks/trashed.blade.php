@@ -40,8 +40,8 @@
   <div class="card card-body">
 
     <div class="d-flex justify-content-between align-items-center">
-      <h2 class="text-primary mb-3">📋 العناصر المحذوفه </h2>
-      <a href="{{ route('quality_item.index') }}" class="btn btn-outline-primary">
+      <h2 class="text-primary mb-3">📋 الانشطه الطلابية المحذوفه </h2>
+      <a href="{{ route('featured_work.index') }}" class="btn btn-outline-primary">
         <i class="bi bi-arrow-left"></i> العوده للصفحه الرئيسيه
       </a>
     </div>
@@ -53,22 +53,22 @@
       <thead class="px-3 py-2  text-white">
         <tr>
           <th scope="col">#</th>
-          <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> اسم العنصر </th>
-          <th scope="col" class="h5"><i class="bi bi-check-circle"></i> النموذج</th>
-          <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> تاريخ العنصر</th>
+          <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> اسم الطالب / الطالبه </th>
+          <th scope="col" class="h5"><i class="bi bi-check-circle"></i> العنوان</th>
+          <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> تاريخ  </th>
            <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($qualityItems as $item)
+        @foreach($featuredWorks as $item)
           <tr>
             <td class="fw-bold text-secondary">{{ $loop->iteration }}</td>
             <td class="fw-bold text-dark">{{ $item->name }}</td>
-            <td class="fw-bold text-dark"> {{ $item->qualityForm->name }}</td>
+            <td class="fw-bold text-dark"> {{ $item->title }}</td>
             <td class="fw-bold text-danger">{{ $item->created_at->format('Y-m-d') }}</td>
              <td>
               <!-- restore -->
-              <form action="{{ route('quality_item.restore', $item->id) }}" method="POST" class="d-inline">
+              <form action="{{ route('featured_work.restore', $item->id) }}" method="POST" class="d-inline">
                 @csrf
                 @method('HEAD')
                 <button type="submit" class="btn btn-outline-success">
@@ -76,7 +76,7 @@
                 </button>
               </form>
               <!-- delete -->
-              <form action="{{ route('quality_item.forceDelete', $item->id) }}" method="POST" class="d-inline">
+              <form action="{{ route('featured_work.forceDelete', $item->id) }}" method="POST" class="d-inline">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-outline-danger delete_confirm">
@@ -119,13 +119,13 @@
       var form = $(this).closest('form');
       e.preventDefault();
       Swal.fire({
-        title: 'هل انت متاكد من حذف هذا العنصر',
-        text: "لا يمكن استرجاع هذا العنصر",
+        title: 'هل انت متاكد من حذف هذا النشطه الطلابية',
+        text: "لا يمكن استرجاع هذا النشطه الطلابية",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'نعم, حذف هذا العنصر'
+        confirmButtonText: 'نعم, حذف هذا النشطه الطلابية'
       }).then((result) => {
         if (result.isConfirmed) {
           form.submit();

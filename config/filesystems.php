@@ -112,6 +112,12 @@ return [
                 'url' => env('APP_URL') . '/image/department-image',
                 'visibility' => 'public',
             ],
+            'student_featured_work' => [
+                'driver' => 'local',
+                'root' => public_path('image/student_featured_work'),
+                'url' => env('APP_URL') . '/image/student_featured_work',
+                'visibility' => 'public',
+            ],
 
      
         's3' => [

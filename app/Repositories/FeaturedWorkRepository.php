@@ -12,23 +12,23 @@ class FeaturedWorkRepository
     }
     public function checkId($id)
     {
-        return Department::find($id);
+        return FeaturedWork::find($id);
     }
 
     public function store($data)
     {
-        return Department::create($data);
+        return FeaturedWork::create($data);
     }
 
     public function update($id, array $data)
     {
-        $department = $this->checkId($id);
-        $department->update($data);
-        return $department;
+        $featuredWork = $this->checkId($id);
+        $featuredWork->update($data);
+        return $featuredWork;
     }
 
-    public function delete($department){
-        return $department->delete();
+    public function delete($featuredWork){
+        return $featuredWork->delete();
     }
 
 }

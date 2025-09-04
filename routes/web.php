@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\OfficeStudentController;
 use App\Http\Controllers\Dashboard\QualityFormController;
 use App\Http\Controllers\Dashboard\QualityItemController;
 use App\Http\Controllers\Dashboard\DepartmentController;
+use App\Http\Controllers\Dashboard\FeaturedWorkController;
 
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');

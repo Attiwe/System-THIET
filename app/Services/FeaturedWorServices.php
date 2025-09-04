@@ -2,53 +2,52 @@
 
 namespace App\Services;
 
-use App\Repositories\DepartmentRepository;
+use App\Repositories\FeaturedWorkRepository;
 
 class FeaturedWorServices
 {
-    protected $department ;
+    protected $featuredWork ;
  
-    public function __construct(DepartmentRepository $department)
+    public function __construct(FeaturedWorkRepository $featuredWork)
     {
-        $this->department = $department;
+        $this->featuredWork = $featuredWork;
     }
 
     public function checkId($id)
     {
-        return $this->department->checkId($id);
+        return $this->featuredWork->checkId($id);
     }
 
     public function getAll()
     {
-        return $this->department->getAll();
+        return $this->featuredWork->getAll();
     }
     
     public function store($data){
-        return $this->department->store($data);
+        return $this->featuredWork->store($data);
     }
 
     public function update($id, array $data)
     {
-        $department = $this->checkId($id);
-        $department->update($data);
-        return $department;
+        $featuredWork = $this->checkId($id);
+        $featuredWork->update($data);
+        return $featuredWork;
     }
 
 
     public function delete($id)
     {
-        $department = $this->department->checkId($id);
+        $featuredWork = $this->featuredWork->checkId($id);
 
-        if (!$department) {
+        if (!$featuredWork) {
             abort(404);
         }
 
-        $departmentData = clone $department;
+        $featuredWorkData = clone $featuredWork;
 
-        $department->delete();
+        $featuredWork->delete();
 
-        return $departmentData;
+        return $featuredWorkData;
     }
-
     
 }
