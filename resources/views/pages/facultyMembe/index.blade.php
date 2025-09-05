@@ -104,9 +104,14 @@
                   <td>{{ $item->linkedin ?? '--' }}</td>
                   <td>
                     @if($item->personal_image)
-                      <img src="{{ asset('image/images_doctor/' . $item->personal_image) }}" width="40" class="img-thumbnail">
+                      <img src="{{ asset('image/images_doctor/' . $item->personal_image) }}" width="40" class="img-fluid">
+                      <figcaption class="figure-caption text-center">
+                        <a href="{{ asset('image/images_doctor/' . $item->personal_image) }}" target="_blank">
+                          <i class="bi bi-eye-fill"></i> عرض الصوره
+                        </a>
+                      </figcaption>
                     @else
-                      <span class="text-muted">لا يوجد صورة</span>
+                      <span class="text-muted">لا يوجد صورة</span>  
                     @endif
                   </td>
                   <td class=" text-secondary">{{ $item->faculty_code }}</td>

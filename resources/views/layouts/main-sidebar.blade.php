@@ -16,7 +16,7 @@
 	</div>
 	<div class="main-sidemenu ">
 		<ul class="side-menu  ">
-			<li class="side-item side-item-category">Main</li>
+			<li class="side-item side-item-category"> الموقع </li>
 			<li class="slide">
 				<a class="side-menu__item" href="{{ url('/' . $page = 'index') }}"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
@@ -120,14 +120,16 @@
 						<circle cx="9.5" cy="7.5" r="1.5" />
 						<circle cx="14.5" cy="7.5" r="1.5" />
 						<circle cx="17.5" cy="11.5" r="1.5" />
-					</svg><span class="side-menu__label h6 font-weight-bold"> الاقسام </span><i
-						class="angle fe fe-chevron-down"></i></a>
+					</svg><span class="side-menu__label font-weight-bold h6 "> اداره الموقع </span><i	
+						class="angle fe fe-chevron-down font-weight-bold h6 "></i></a>
 				<ul class="slide-menu">
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('departments.index') }}"> البرمج
 							التعلميه </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href=" ">Carousel</a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('studentOpinions.index') }} ">  اراء الطلاب 	</a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('libraryOpinions.index') }}">     صوره  المكتبه واراء الطلاب 	</a></li>
 				</ul>
 			</li>
+
 			<li class="side-item side-item-category"> الاعدادت العامه </li>
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg

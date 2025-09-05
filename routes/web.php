@@ -14,6 +14,10 @@ use App\Http\Controllers\Dashboard\QualityFormController;
 use App\Http\Controllers\Dashboard\QualityItemController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\FeaturedWorkController;
+use App\Http\Controllers\Dashboard\StudentOpinionsController;
+use App\Http\Controllers\Dashboard\LibraryOpinionController;
+
+
 
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -52,7 +56,6 @@ Route::get('/quality_form/trashed', [QualityFormController::class, 'trashed'])->
 Route::get('/quality_form/restore/{id}', [QualityFormController::class, 'restore'])->name('quality_form.restore');
 Route::delete('/quality_form/forceDelete/{id}', [QualityFormController::class, 'forceDelete'])->name('quality_form.forceDelete');
 
-
 //=====================Route Quality Item   ================================
 Route::resource('quality_item', QualityItemController::class)->names('quality_item')->except(['show']);
 Route::get('/quality_item/trashed', [QualityItemController::class, 'trashed'])->name('quality_item.trashed');
@@ -63,12 +66,20 @@ Route::delete('/quality_item/forceDelete/{id}', [QualityItemController::class, '
 Route::resource('departments', DepartmentController::class)->names('departments')->except(['show']);
 Route::get('/department/requerd_file/{id}', [DepartmentController::class, 'file'])->name('department.file');
  
- 
 //=====================Route Featured Work ================================
 Route::resource('featured_work', FeaturedWorkController::class)->names('featured_work')->except(['show']);
 Route::get('/featured_work/trashed', [FeaturedWorkController::class, 'trashed'])->name('featured_work.trashed');
 Route::get('/featured_work/restore/{id}', [FeaturedWorkController::class, 'restore'])->name('featured_work.restore');
 Route::delete('/featured_work/forceDelete/{id}', [FeaturedWorkController::class, 'forceDelete'])->name('featured_work.forceDelete');
+
+//=====================Route Student Opinions ================================
+Route::resource('studentOpinions', StudentOpinionsController::class)->names('studentOpinions')->except(['show']);
+Route::get('/studentOpinions/trashed', [StudentOpinionsController::class, 'trashed'])->name('studentOpinions.trashed');
+Route::get('/studentOpinions/restore/{id}', [StudentOpinionsController::class, 'restore'])->name('studentOpinions.restore');
+Route::delete('/studentOpinions/forceDelete/{id}', [StudentOpinionsController::class, 'forceDelete'])->name('studentOpinions.forceDelete');
+
+//=====================Rote library Opinions ==================================
+Route::resource('libraryOpinions', LibraryOpinionController::class)->names('libraryOpinions')->except(['show']);
 
 
 

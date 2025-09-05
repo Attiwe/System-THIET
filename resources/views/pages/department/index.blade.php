@@ -75,9 +75,15 @@
                     @if($item->dapart_image)
                       <img src="{{ asset('image/department-image/' . $item->dapart_image) }}" width="40"
                         class="img-thumbnail">
+                        <figcaption>
+                          <a href="{{ asset('image/department-image/' . $item->dapart_image) }}" target="_blank">
+                            <i class="bi bi-eye-fill"></i> عرض الصوره
+                          </a>
+                        </figcaption>
                     @else
                       <span class="text-muted"><i class="bi bi-image"></i> لا يوجد صورة</span>
                     @endif
+
                   </td>
                   <td class="text-center">
                     @if($item->is_active === 1)

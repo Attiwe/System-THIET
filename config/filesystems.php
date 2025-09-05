@@ -118,6 +118,18 @@ return [
                 'url' => env('APP_URL') . '/image/student_featured_work',
                 'visibility' => 'public',
             ],
+            'studentOpinions' => [
+                'driver' => 'local',
+                'root' => public_path('image/studentOpinions'),
+                'url' => env('APP_URL') . '/image/studentOpinions',
+                'visibility' => 'public',
+            ],
+            'libraryOpinions' => [
+                'driver' => 'local',
+                'root' => public_path('image/libraryOpinions'),
+                'url' => env('APP_URL') . '/image/libraryOpinions',
+                'visibility' => 'public',
+            ],
 
      
         's3' => [

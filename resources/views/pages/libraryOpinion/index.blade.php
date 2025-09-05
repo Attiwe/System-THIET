@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', '  الانشطه الطلابية')
+@section('title', ' صوره المكتبه وراء الطلاب ')
 
 @section('css')
   <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -17,8 +17,8 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋 الانشطه الطلابية </h2>
-        <p class="mg-b-0"> يعرض جدول الانشطه الطلابية </p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋 صوره المكتبه وراء الطلاب </h2>
+        <p class="mg-b-0"> يعرض جدول صوره المكتبه وراء الطلاب </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
@@ -40,18 +40,18 @@
   <div class="card card-body">
     <div class="table-responsive mt-3">
       <div class="d-flex justify-content-between align-items-center ">
-        <h2 class="text-primary mb-3 ">📋 جدول الانشطه الطلابية</h2>
+        <h2 class="text-primary mb-3 ">📋 جدول صوره المكتبه وراء الطلاب</h2>
         <div class="d-flex gap-4">
-          <a href="{{ route('featured_work.trashed') }}" class="btn btn-outline-danger">
-            <i class="bi bi-trash"></i> ارشفه
-          </a>
+
           <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> اضافة انشطه طلابه</strong>
+            <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> اضافة صوره المكتبه وراء الطلاب</strong>
           </button>
         </div>
       </div>
+
       <!-- Model   -->
-      @include('pages.featuredWorks._create')
+      @include('pages.libraryOpinion._create')
+
       <br>
       <br>
       <table id="example1"
@@ -59,42 +59,42 @@
         <thead class="px-3 py-2  text-white">
           <tr>
             <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> اسم الطالب || الطالبه </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> الصورة </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> العنوان </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> التفاصيل </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> الحالة </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> تاريخ النشطه </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> عدد القاعات والمدرجات </th>
+            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> عدد الجوائز </th>
+            <th scope="col" class="h5"><i class="bi bi-image"></i> صوره اراء الطلابه </th>
+            <th scope="col" class="h5"><i class="bi bi-image"></i> صوره المكتبه </th>
             <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($featuredWorks as $item)
+          @foreach($libraryOpinions as $item)
             <tr>
               <td class="fw-bold text-secondary">{{ $loop->iteration }}</td>
-              <td class="fw-bold text-dark">{{ $item->name }}</td>
-              <td class="fw-bold text-dark"> 
+              <td class="fw-bold text-dark">{{ $item->number_library }}</td>
+              <td class="fw-bold text-dark">{{ $item->number_prizes }}</td>
+              <td>
                 <figure class="figure">
-                  <img src="{{ asset('image/student_featured_work/' . $item->image) }}" alt="{{ $item->name }}" class="figure-img img-fluid rounded" style="width: 50px; height: 50px; object-fit: cover;">
+                  <img src="{{ asset('image/libraryOpinions/' . $item->image_student) }}" alt="{{ $item->name }}"
+                    class="figure-img img-fluid rounded" style="height: 40px; object-fit: cover;">
                   <figcaption class="figure-caption text-center">
-                    <a href="{{ asset('image/student_featured_work/' . $item->image) }}" target="_blank">
+                    <a href="{{ asset('image/libraryOpinions/' . $item->image_student) }}" target="_blank">
                       <i class="bi bi-eye-fill"></i> عرض الصوره
                     </a>
                   </figcaption>
                 </figure>
-            </td>
-              <td class="fw-bold text-dark">{{ $item->title }}</td>
-              <td class="fw-bold text-dark text-wrap" style="white-space: normal; max-width: 250px; text-align:right;">
-                {{ \Illuminate\Support\Str::limit($item->details, 100, ' ...') ?? '--' }}
               </td>
               <td>
-                @if($item->is_active)
-                  <span class="badge bg-success px-3 py-2"><i class="bi bi-check-lg"></i> مفعل</span>
-                @else
-                  <span class="badge bg-danger px-3 py-2"><i class="bi bi-x-lg"></i> غير مفعل</span>
-                @endif
+                <figure class="figure">
+                  <img src="{{ asset('image/libraryOpinions/' . $item->image_library) }}" alt="{{ $item->name }}"
+                    class="figure-img img-fluid rounded" style="height: 40px; object-fit: cover;">
+                  <figcaption class="figure-caption text-center">
+                    <a href="{{ asset('image/libraryOpinions/' . $item->image_library) }}" target="_blank">
+                      <i class="bi bi-eye-fill"></i> عرض الصوره
+                    </a>
+                  </figcaption>
+                </figure>
               </td>
-              <td class="fw-bold text-danger">{{ $item->created_at->format('Y-m-d') }}</td>
+
               <td>
                 <div class="dropdown">
                   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -110,7 +110,7 @@
                       </button>
                     </li>
                     <li>
-                      <form action="{{ route('featured_work.destroy', $item->id) }}" method="POST" class="d-inline">
+                      <form action="{{ route('libraryOpinions.destroy', $item->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('delete')
                         <button type="submit" class="dropdown-item text-danger delete_confirm">
@@ -123,7 +123,7 @@
               </td>
             </tr>
             <!-- model edit -->
-            @include('pages.featuredWorks._edit', compact('item'))
+            @include('pages.libraryOpinion._edit', compact('item'))
           @endforeach
         </tbody>
       </table>
@@ -153,5 +153,5 @@
   </script>
   <!-- sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @include('pages.qualityItem._delete')
+  @include('pages.libraryOpinion._delete')
 @endsection
