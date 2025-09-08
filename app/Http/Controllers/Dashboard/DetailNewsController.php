@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\dashboard\DetailNewsRequest;
-use App\Models\DetailsNews;
-use App\Models\NewElements;
-use App\Utils\ImageMangment;
+
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -39,9 +37,9 @@ class DetailNewsController extends Controller
     public function store(DetailNewsRequest $request)
     {
         // return $request->all();
-        $data = $request->except(['image', '_token'])   ;
+        $data = $request->except(['image', '_token']);
         if ($request->hasFile('image')) {
-            $data['image'] = $this->storeFile($request, 'image','image', 'details_news');
+            $data['image'] = $this->storeFile($request, 'image', 'image', 'details_news');
         }
         $this->detailsNews->store($data);
         return redirect()->route('detailsNews.index')->with('success', 'تم إنشاء الخبر بنجاح');
@@ -67,7 +65,7 @@ class DetailNewsController extends Controller
         $data = $request->except(['image', '_token']);
         if ($request->hasFile('image')) {
             $this->deleteImageDisk($detailsNews->image);
-            $data = array_merge($data, $this->storeImage($request));
+            $data['image'] = $this->storeFile($request, 'image', 'image', 'details_news');
         }
         $this->detailsNews->update($id, $data);
         return redirect()->route('detailsNews.index')->with('success', 'تم تحديث الخبر بنجاح');
@@ -96,12 +94,12 @@ class DetailNewsController extends Controller
         if (!$imagePath)
             return;
 
-        if (Storage::disk('detail_news')->exists($imagePath)) {
-            Storage::disk('detail_news')->delete($imagePath);
+        if (Storage::disk('details_news')->exists($imagePath)) {
+            Storage::disk('details_news')->delete($imagePath);
         }
     }
 
-    private function storeFile($request, $file, $folder, $disk  )
+    private function storeFile($request, $file, $folder, $disk)
     {
         if ($request->hasFile($file)) {
             $filename = Str::uuid() . '.' . $request->file($file)->getClientOriginalExtension();

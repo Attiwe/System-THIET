@@ -74,14 +74,14 @@
               @foreach($detailsNews as $item)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $item->title }}</td>
-                  <td>{{ $item->description }}</td>
-                  <td>{{ $item->publisher }}</td>
                   <td>{{ $item->newElement->name }}</td>
+                  <td>{{ $item->title }}</td>
+                  <td>{{ $item->publisher }}</td>
+                  <td>{{ $item->description }}</td>
                   <td>
                     @if($item->image)
                       <figcaption class="figure-caption text-center">
-                         <a href="{{ asset('image/details_news/' . $item->image) }}" target="_blank">
+                          <a href="{{ asset('image/details_news/' . $item->image) }}" target="_blank">
                           <i class="bi bi-eye-fill"></i> عرض الصوره
                         </a>
                       </figcaption>
