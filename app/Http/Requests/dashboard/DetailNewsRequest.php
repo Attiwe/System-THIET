@@ -25,6 +25,8 @@ class DetailNewsRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,png|max:2048',
+            'new_element_id' => 'required|exists:new_elements,id',
+            'publisher' => 'required|string|max:255',
         ];
 
         if ($this->isMethod('put')) {
@@ -44,6 +46,12 @@ class DetailNewsRequest extends FormRequest
             'image.required' => 'الصورة مطلوبة',
             'image.max' => 'الصورة يجب ان يحتوي على 2048 حرف',
             'image.mimes' => 'الصورة يجب ان تكون من نوع jpeg,png,jpg,gif,png',
+            'new_element_id.required' => 'العنصر مطلوب',
+            'new_element_id.exists' => 'العنصر غير موجود',
+            'publisher.required' => 'الناشر مطلوب',
+            'publisher.max' => 'الناشر يجب ان يحتوي على 255 حرف',
+            'publisher.string' => 'الناشر يجب ان يكون نص',
+
         ];
     }
 }

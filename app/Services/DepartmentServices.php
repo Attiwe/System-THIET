@@ -13,6 +13,7 @@ class DepartmentServices
         $this->department = $department;
     }
 
+  
     public function checkId($id)
     {
         return $this->department->checkId($id);

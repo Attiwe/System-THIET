@@ -16,14 +16,17 @@ use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\FeaturedWorkController;
 use App\Http\Controllers\Dashboard\StudentOpinionsController;
 use App\Http\Controllers\Dashboard\LibraryOpinionController;
-
-
-
+use App\Http\Controllers\Dashboard\ArticleController;
+use App\Http\Controllers\Dashboard\NewElementsController;
+ 
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 //=======================Route News====================================
 Route::resource('dean_speech', DeanSpeechController::class)->names('dean_speech')->except(['show','destroy']);
+
+//=====================Route New Elements================================
+Route::resource('new_elements', NewElementsController::class)->names('new_elements')->except(['show']);
 
 //=====================Route Details News==============================
 Route::resource('detailsNews', DetailNewsController::class)->names('detailsNews')->except(['show']);
@@ -80,6 +83,9 @@ Route::delete('/studentOpinions/forceDelete/{id}', [StudentOpinionsController::c
 
 //=====================Rote library Opinions ==================================
 Route::resource('libraryOpinions', LibraryOpinionController::class)->names('libraryOpinions')->except(['show']);
+
+//=====================Route articles =======================================
+Route::resource('articles', ArticleController::class)->names('articles')->except(['show']);
 
 
 

@@ -1,16 +1,13 @@
 @extends('layouts.master')
-@section('title')
-  عرض الاخبار
-@endsection
+@section('title', 'أعضاء هيئة التدريس')
 
 @section('css')
   <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
-  <link href="{{URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet">
   <link href="{{URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
-  <link href="{{URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 @endsection
+
 @section('page-header')
 
   <!-- breadcrumb -->
@@ -23,104 +20,115 @@
     </div>
     <div class="main-dashboard-header-right">
       <div>
-        <label class="tx-13">Customer Ratings</label>
+        <label class="tx-13 font-weight-bold">Customer Ratings</label>
         <div class="main-star">
-          <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i
-            class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i>
+          <i class="typcn typcn-star active"></i>
+          <i class="typcn typcn-star active"></i>
+          <i class="typcn typcn-star active"></i>
+          <i class="typcn typcn-star active"></i>
+          <i class="typcn typcn-star"></i>
           <span>(14,873)</span>
         </div>
       </div>
       <div>
-        <label class="tx-13">Online Sales</label>
+        <label class="tx-13 font-weight-bold">Online Sales</label>
         <h5>563,275</h5>
       </div>
       <div>
-        <label class="tx-13">Offline Sales</label>
+        <label class="tx-13 font-weight-bold">Offline Sales</label>
         <h5>783,675</h5>
       </div>
     </div>
   </div>
-  <!-- success -->
+  <br>
   @include('include.success')
-  <!-- contant -->
-  <div class="row row-sm">
-    <div class="col-xl-12">
-      <div class="card mg-b-20">
-        <div class="card-body">
-          <div class="table-responsive">
-            <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
-              <thead class="thead-dark">
-                <tr class="text-white bg-dark">
-                  <th style="font-size: 18px;">#</th>
-                  <th style="font-size: 18px;">العنوان</th>
-                  <th style="font-size: 18px;">الصورة الرئيسية</th>
-                  <th style="font-size: 18px;">الوصف</th>
-                  <th style="font-size: 18px;">الإجراءات</th>
+
+  @include('pages.detailsNews.create')
+
+  <div class="accordion" id="facultyAccordion">
+    <div class="card">
+      <div class="card-header bg-primary text-white" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link text-white font-weight-bold" type="button" data-toggle="collapse"
+            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <strong class="h3"> 📋🚀 جدول أعضاء هيئة التدريس </strong>
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseOne" class="collapse false " aria-labelledby="headingOne" data-parent="#facultyAccordion">
+        <div class="table-responsive mt-3">
+          <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
+            <thead class=" ">
+              <tr class="text-white bg-dark">
+                <th style="font-size: 18px;">#</th>
+                <th style="font-size: 18px;">الاسم الخبر </th>
+                <th style="font-size: 18px;">العنوان</th>
+                <th style="font-size: 18px;"> الناشر </th>
+                <th style="font-size: 18px;"> التفاصيل </th>
+                <th style="font-size: 18px;"> الصورة </th>
+                <th style="font-size: 18px;">الإجراءات</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($detailsNews as $item)
+                <tr>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ $item->title }}</td>
+                  <td>{{ $item->description }}</td>
+                  <td>{{ $item->publisher }}</td>
+                  <td>{{ $item->newElement->name }}</td>
+                  <td>
+                    @if($item->image)
+                      <figcaption class="figure-caption text-center">
+                         <a href="{{ asset('image/details_news/' . $item->image) }}" target="_blank">
+                          <i class="bi bi-eye-fill"></i> عرض الصوره
+                        </a>
+                      </figcaption>
+                    @else
+                      <span class="text-muted">لا يوجد صورة</span>
+                    @endif
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bi bi-gear"></i> الاعدادت
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href=" {{ route('detailsNews.edit', $item->id) }}">تعديل</a>
+                        <form action="{{ route('detailsNews.destroy', $item->id) }}" method="POST" class="d-inline">
+                          @csrf
+                          @method('delete')
+                          <a type="submit" class="dropdown-item delete_confirm   ">
+                            حذف
+                          </a>
+                        </form>
+                      </div>
+                    </div>
+                  </td>
                 </tr>
-              </thead>
-              <tbody style="font-size: 16px; font-weight: 500;">
-                @foreach ($detailsNews as $item)
-                  <tr>
-                    <td>{{ $loop->iteration }}</td>
 
-                    <td class="text-center">{{ $item->title }}</td>
-
-                    <td>
-                      @if($item->image)
-                        <img src="{{ asset('image/detail-news/' . $item->image) }}" class="img-thumbnail" width="80">
-                      @endif
-                    </td>
-
-                    <td class="text-center" style="white-space: normal; word-wrap: break-word; max-width: 250px; text-align:right;">
-                      {{ \Illuminate\Support\Str::limit($item->description, 200, ' ...') ?? '--' }}
-                    </td>
-                    <td>
-                      <a href="{{ route('detailsNews.edit', $item->id) }}" class="btn btn-sm btn-primary  px-4 py-2">
-                        تعديل
-                      </a>
-
-                      <form action="{{ route('detailsNews.destroy', $item->id) }}" method="POST" class="d-inline">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-sm btn-danger delete_confirm px-4 py-2">
-                          حذف
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-
+              @endforeach
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
-
-
 @endsection
+
 @section('js')
   <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/pdfmake.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/vfs_fonts.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
-  <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
-  <!--Internal  Datatable js -->
-  <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
-
+  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.min.js')}}"></script>
+  <script>
+    $(document).ready(function () {
+      $('#example1').DataTable({
+        responsive: true,
+      });
+    });
+  </script>
   <!-- sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @include('pages.detailsNews._delete')
+  @include('pages.facultyMembe._delete')
 @endsection

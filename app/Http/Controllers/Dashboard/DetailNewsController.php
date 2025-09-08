@@ -5,19 +5,29 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\dashboard\DetailNewsRequest;
-use App\Models\detailsNews;
+use App\Models\DetailsNews;
+use App\Models\NewElements;
 use App\Utils\ImageMangment;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use App\Services\DetailsNewsServices;
 
 class DetailNewsController extends Controller
 {
 
+    protected $detailsNews;
+
+    public function __construct(DetailsNewsServices $detailsNews)
+    {
+        $this->detailsNews = $detailsNews;
+    }
+
     public function index()
     {
-        $detailsNews = detailsNews::latest()->get();
-        return view('pages.detailsNews.index', compact('detailsNews'));
+        $newElements = $this->detailsNews->getNewElements();
+        $detailsNews = $this->detailsNews->getAll();
+        return view('pages.detailsNews.index', compact('detailsNews', 'newElements'));
     }
 
 
@@ -28,11 +38,12 @@ class DetailNewsController extends Controller
 
     public function store(DetailNewsRequest $request)
     {
-        $data = $request->except(['image', '_token']);
+        // return $request->all();
+        $data = $request->except(['image', '_token'])   ;
         if ($request->hasFile('image')) {
-            $data = array_merge($data, $this->storeImage($request));
+            $data['image'] = $this->storeFile($request, 'image','image', 'details_news');
         }
-        detailsNews::create($data);
+        $this->detailsNews->store($data);
         return redirect()->route('detailsNews.index')->with('success', 'تم إنشاء الخبر بنجاح');
     }
 
@@ -44,20 +55,21 @@ class DetailNewsController extends Controller
 
     public function edit(string $id)
     {
-        $detailsNews = detailsNews::findOrFail($id);
-        return view('pages.detailsNews.edit', compact('detailsNews'));
+        $detailsNews = $this->detailsNews->checkId($id);
+        $newElements = $this->detailsNews->getNewElements();
+        return view('pages.detailsNews.edit', compact('detailsNews', 'newElements'));
     }
 
 
     public function update(DetailNewsRequest $request, string $id)
     {
-        $detailsNews = detailsNews::findOrFail($id);
+        $detailsNews = $this->detailsNews->checkId($id);
         $data = $request->except(['image', '_token']);
         if ($request->hasFile('image')) {
             $this->deleteImageDisk($detailsNews->image);
             $data = array_merge($data, $this->storeImage($request));
         }
-        $detailsNews->update($data);
+        $this->detailsNews->update($id, $data);
         return redirect()->route('detailsNews.index')->with('success', 'تم تحديث الخبر بنجاح');
     }
 
@@ -66,7 +78,7 @@ class DetailNewsController extends Controller
     public function destroy(string $id)
     {
         try {
-            $detailsNews = DetailsNews::findOrFail($id);
+            $detailsNews = $this->detailsNews->checkId($id);
 
             $this->deleteImageDisk($detailsNews->image);
             $detailsNews->delete();
@@ -89,12 +101,13 @@ class DetailNewsController extends Controller
         }
     }
 
-    private function storeImage($request)
+    private function storeFile($request, $file, $folder, $disk  )
     {
-        $file = $request->file('image');
-        $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-        $path = $file->storeAs('/details/news', $filename, ['disk' => 'detail_news']);
-        return ['image' => $path];
+        if ($request->hasFile($file)) {
+            $filename = Str::uuid() . '.' . $request->file($file)->getClientOriginalExtension();
+            $path = $request->file($file)->storeAs($folder, $filename, $disk);
+            return $path;
+        }
     }
 
 }

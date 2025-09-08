@@ -71,8 +71,9 @@
 				<ul class="slide-menu">
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('detailsNews.index') }}"> صفحه
 							تفاصيل الأخبار </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('detailsNews.create') }}"> اضافه
-							تفاصيل الأخبار </a></li>
+				 
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('new_elements.index') }}"> عناصر
+							الأخبار </a></li>
 				</ul>
 			</li>
 			<li class="side-item side-item-category font-weight-bold text-2xl h6"> الاداره </li>
@@ -127,6 +128,7 @@
 							التعلميه </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('studentOpinions.index') }} ">  اراء الطلاب 	</a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('libraryOpinions.index') }}">     صوره  المكتبه واراء الطلاب 	</a></li>
+ 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('articles.index') }}">    المقالات  و المشاركات </a></li>
 				</ul>
 			</li>
 

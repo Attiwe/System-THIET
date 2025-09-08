@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('details_news', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('new_element_id')->constrained('new_elements')->cascadeOnDelete();
             $table->string('title');
+            $table->string('publisher');
             $table->string('image');
-            $table->string('description')->nullable();
+            $table->string('description'); 
             $table->timestamps();
         });
     }

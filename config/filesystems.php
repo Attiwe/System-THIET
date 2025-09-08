@@ -70,68 +70,82 @@ return [
             'visibility' => 'public',
         ],
 
-       
 
-            'cv' => [
-                'driver' => 'local',
-                'root' => public_path('image/resume'),
-                'url' => env('APP_URL') . '/image/resume',
-                'visibility' => 'public',
-            ],
 
-            'researches' => [
-                'driver' => 'local',
-                'root' => public_path('image/researches'),
-                'url' => env('APP_URL') . '/image/researches',
-                'visibility' => 'public',
-            ],
+        'details_news' => [
+            'driver' => 'local',
+            'root' => public_path('image/details_news'),
+            'url' => env('APP_URL') . '/image/details_news',
+            'visibility' => 'public',
+        ],
 
-            'personal_image' => [
-                'driver' => 'local',
-                'root' => public_path('image/images_doctor'),
-                'url' => env('APP_URL') . '/image/images_doctor',
-                'visibility' => 'public',
-            ],
+        'cv' => [
+            'driver' => 'local',
+            'root' => public_path('image/resume'),
+            'url' => env('APP_URL') . '/image/resume',
+            'visibility' => 'public',
+        ],
 
-            'setting-logo' => [
-                'driver' => 'local',
-                'root' => public_path('image/setting-logo'),
-                'url' => env('APP_URL') . '/image/setting-logo',
-                'visibility' => 'public',
-            ],
-            'department-file' => [
-                'driver' => 'local',
-                'root' => public_path('image/department-file'),
-                'url' => env('APP_URL') . '/image/department-file',
-                'visibility' => 'public',
-            ],
+        'researches' => [
+            'driver' => 'local',
+            'root' => public_path('image/researches'),
+            'url' => env('APP_URL') . '/image/researches',
+            'visibility' => 'public',
+        ],
 
-            'department-image' => [
-                'driver' => 'local',
-                'root' => public_path('image/department-image'),
-                'url' => env('APP_URL') . '/image/department-image',
-                'visibility' => 'public',
-            ],
-            'student_featured_work' => [
-                'driver' => 'local',
-                'root' => public_path('image/student_featured_work'),
-                'url' => env('APP_URL') . '/image/student_featured_work',
-                'visibility' => 'public',
-            ],
-            'studentOpinions' => [
-                'driver' => 'local',
-                'root' => public_path('image/studentOpinions'),
-                'url' => env('APP_URL') . '/image/studentOpinions',
-                'visibility' => 'public',
-            ],
-            'libraryOpinions' => [
-                'driver' => 'local',
-                'root' => public_path('image/libraryOpinions'),
-                'url' => env('APP_URL') . '/image/libraryOpinions',
-                'visibility' => 'public',
-            ],
+        'personal_image' => [
+            'driver' => 'local',
+            'root' => public_path('image/images_doctor'),
+            'url' => env('APP_URL') . '/image/images_doctor',
+            'visibility' => 'public',
+        ],
 
-     
+        'setting-logo' => [
+            'driver' => 'local',
+            'root' => public_path('image/setting-logo'),
+            'url' => env('APP_URL') . '/image/setting-logo',
+            'visibility' => 'public',
+        ],
+        'department-file' => [
+            'driver' => 'local',
+            'root' => public_path('image/department-file'),
+            'url' => env('APP_URL') . '/image/department-file',
+            'visibility' => 'public',
+        ],
+
+        'department-image' => [
+            'driver' => 'local',
+            'root' => public_path('image/department-image'),
+            'url' => env('APP_URL') . '/image/department-image',
+            'visibility' => 'public',
+        ],
+        'student_featured_work' => [
+            'driver' => 'local',
+            'root' => public_path('image/student_featured_work'),
+            'url' => env('APP_URL') . '/image/student_featured_work',
+            'visibility' => 'public',
+        ],
+        'studentOpinions' => [
+            'driver' => 'local',
+            'root' => public_path('image/studentOpinions'),
+            'url' => env('APP_URL') . '/image/studentOpinions',
+            'visibility' => 'public',
+        ],
+
+        'libraryOpinions' => [
+            'driver' => 'local',
+            'root' => public_path('image/libraryOpinions'),
+            'url' => env('APP_URL') . '/image/libraryOpinions',
+            'visibility' => 'public',
+        ],
+        
+        'article' => [
+            'driver' => 'local',
+            'root' => public_path('image/article'),
+            'url' => env('APP_URL') . '/image/article',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

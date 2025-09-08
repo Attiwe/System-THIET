@@ -1,4 +1,4 @@
- <script>
+                                 <script>
   $(document).on('click', '.delete_confirm', function (e) {
     e.preventDefault();
     let form = $(this).closest('form');
