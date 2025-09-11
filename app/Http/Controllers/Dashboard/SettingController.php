@@ -48,7 +48,7 @@ class SettingController extends Controller
             $data = $request->except('logo');
             if ($request->hasFile('logo')) {
                 $this->deleteFile($setting->logo, 'setting-logo');
-                $data['logo'] = $this->storeFile($request, 'logo', 'logo', 'setting-logo');
+                $data['logo'] = $this->storeFile($request, 'logo', '', 'setting-logo');
             }
         $setting->update($data);
         return redirect()->route('setting.index')->with('success', 'تم تحديث الإعدادات بنجاح');

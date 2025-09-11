@@ -106,6 +106,8 @@
 				<ul class="slide-menu">
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('setting.index') }}"> الاعدادت
 							العامه </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit.index') }}">  
+							 المراكز و الوحدات  </a></li>
 
 				</ul>
 			</li>

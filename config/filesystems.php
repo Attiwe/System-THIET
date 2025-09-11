@@ -152,6 +152,12 @@ return [
             'url' => env('APP_URL') . '/image/image_slider',
             'visibility' => 'public',
         ],
+        'unit' => [
+            'driver' => 'local',
+            'root' => public_path('image/unit'),
+            'url' => env('APP_URL') . '/image/unit',
+            'visibility' => 'public',
+        ],
 
         
         's3' => [

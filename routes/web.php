@@ -19,6 +19,7 @@ use App\Http\Controllers\Dashboard\LibraryOpinionController;
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\NewElementsController;
 use App\Http\Controllers\Dashboard\SliderController;
+use App\Http\Controllers\Dashboard\UnitController;
 
  
 //========================Route Dashboard (Home)=======================
@@ -92,7 +93,8 @@ Route::resource('articles', ArticleController::class)->names('articles')->except
 //=====================Route Sliders ========================================
 Route::resource('sliders', SliderController::class)->names('slider')->except(['show']);
 
-
+//=====================Route Unit ========================================
+Route::resource('unit', UnitController::class)->names('unit')->except(['show']);
 
 
 Route::get('/', function () {
