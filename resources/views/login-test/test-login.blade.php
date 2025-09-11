@@ -171,13 +171,13 @@
                         </div>
 
                         <!-- Remember Me -->
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">تذكرني</label>
+                        <div class="form-check mb-3 custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label class="custom-control-label" for="remember">تذكرني</label>
                         </div>
 
                         <!-- Button -->
-                        <button type="submit" class="btn btn-login w-100">تسجيل الدخول</button>
+                        <button type="submit" class="btn btn-primary btn-block mt-4">تسجيل الدخول</button>
                     </form>
                 </div>
             </div>

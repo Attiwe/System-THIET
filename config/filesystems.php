@@ -146,6 +146,14 @@ return [
             'visibility' => 'public',
         ],
 
+        'slider' => [
+            'driver' => 'local',
+            'root' => public_path('image/image_slider'),
+            'url' => env('APP_URL') . '/image/image_slider',
+            'visibility' => 'public',
+        ],
+
+        
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

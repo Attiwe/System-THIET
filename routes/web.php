@@ -18,6 +18,8 @@ use App\Http\Controllers\Dashboard\StudentOpinionsController;
 use App\Http\Controllers\Dashboard\LibraryOpinionController;
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\NewElementsController;
+use App\Http\Controllers\Dashboard\SliderController;
+
  
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -87,10 +89,12 @@ Route::resource('libraryOpinions', LibraryOpinionController::class)->names('libr
 //=====================Route articles =======================================
 Route::resource('articles', ArticleController::class)->names('articles')->except(['show']);
 
+//=====================Route Sliders ========================================
+Route::resource('sliders', SliderController::class)->names('slider')->except(['show']);
+
 
 
 
 Route::get('/', function () {
-
   return view('login-test.test-login');
 });

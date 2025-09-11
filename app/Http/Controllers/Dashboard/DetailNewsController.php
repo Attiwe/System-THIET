@@ -36,8 +36,7 @@ class DetailNewsController extends Controller
 
     public function store(DetailNewsRequest $request)
     {
-        // return $request->all();
-        $data = $request->except(['image', '_token']);
+         $data = $request->except(['image', '_token']);
         if ($request->hasFile('image')) {
             $data['image'] = $this->storeFile($request, 'image', 'image', 'details_news');
         }
