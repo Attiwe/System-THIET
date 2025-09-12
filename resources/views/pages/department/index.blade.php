@@ -46,14 +46,14 @@
           <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
             <thead>
               <tr>
-                <th>#</th>
-                <th class="text-primary font-weight-bold">اسم البرنامج التعلمي</th>
-                <th class="text-primary font-weight-bold">وصف البرنامج التعلمي</th>
-                <th class="text-primary font-weight-bold">ملف البرنامج</th>
-                <th class="text-primary font-weight-bold">صورة البرنامج</th>
-                <th class="text-primary font-weight-bold">الحالة</th>
-                <th class="text-primary font-weight-bold">الاعدادت</th>
-              </tr>
+                <th class="text-primary" style="font-size: 18px;">#</th>
+                <th class="text-primary" style="font-size: 18px;">اسم البرنامج التعلمي</th>
+                <th class="text-primary" style="font-size: 18px;">وصف البرنامج التعلمي</th>
+                <th class="text-primary" style="font-size: 18px;">ملف البرنامج</th>
+                <th class="text-primary" style="font-size: 18px;">صورة البرنامج</th>
+                <th class="text-primary" style="font-size: 18px;">الحالة</th>
+                <th class="text-primary" style="font-size: 18px;">الاعدادت</th>
+              </tr></tbody>
             </thead>
             <tbody>
               @foreach($departments as $item)

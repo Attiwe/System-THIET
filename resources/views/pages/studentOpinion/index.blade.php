@@ -61,13 +61,12 @@
         class="table table-hover table-striped align-middle text-center shadow-sm rounded-3 table-bordered " dir="rtl">
         <thead class="px-3 py-2  text-white">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> اسم </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> الصوره </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> التفاصيل </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> الحالة </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> تاريخ </th>
-            <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> اسم </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> الصوره </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> التفاصيل </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> الحالة </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> تاريخ </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
         </thead>
         <tbody>

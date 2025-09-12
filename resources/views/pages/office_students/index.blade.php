@@ -52,14 +52,14 @@
         class="table table-hover table-striped align-middle text-center shadow-sm rounded-3 table-bordered " dir="rtl">
         <thead class="text-white">
           <tr>
-            <th>#</th>
-            <th><i class="bi bi-building h5"></i> القسم</th>
-            <th><i class="bi bi-layers"></i> المستوى</th>
-            <th><i class="bi bi-person"></i> الاسم</th>
-            <th><i class="bi bi-card-text"></i> رقم القيد</th>
-            <th><i class="bi bi-envelope"></i> البريد الإلكتروني</th>
-            <th><i class="bi bi-telephone"></i> رقم الهاتف</th>
-            <th><i class="bi bi-gear"></i> خيارات</th>
+            <th class="text-primary">#</th>
+            <th class="text-primary"><i class="bi bi-building h5" style="font-size: 18px;"></i> القسم</th>
+            <th class="text-primary"><i class="bi bi-layers" style="font-size: 18px;"></i> المستوى</th>
+            <th class="text-primary"><i class="bi bi-person" style="font-size: 18px;"></i> الاسم</th>
+            <th class="text-primary"><i class="bi bi-card-text" style="font-size: 18px;"></i> رقم القيد</th>
+            <th class="text-primary"><i class="bi bi-envelope" style="font-size: 18px;"></i> البريد الإلكتروني</th>
+            <th class="text-primary"><i class="bi bi-telephone" style="font-size: 18px;"></i> رقم الهاتف</th>
+            <th class="text-primary"><i class="bi bi-gear" style="font-size: 18px;"></i> خيارات</th>
           </tr>
         </thead>
         <tbody>

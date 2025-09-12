@@ -62,10 +62,10 @@
         <thead class="px-3 py-2  text-white">
           <tr>
             <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> نموذج الجوده </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> اسم العنصر </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> تاريخ النموذج</th>
-            <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> نموذج الجوده </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> اسم العنصر </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> تاريخ النموذج</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
         </thead>
         <tbody>

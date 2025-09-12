@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', '  الاعدادت العامة ')
+@section('title', ' مجلس اداره المعهد')
 
 @section('css')
   <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -17,8 +17,8 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> الإعدادات الادريه </h2>
-        <p class="mg-b-0"> يعرض اعدادات الموقع </p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋 مجلس اداره المعهد </h2>
+        <p class="mg-b-0"> يعرض جدول مجلس اداره المعهد </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
@@ -39,76 +39,75 @@
   @include('include.success')
   <div class="card card-body">
     <div class="table-responsive mt-3">
-      <h2 class="text-primary mb-3">📋 جدول الإعدادات العامه </h2>
-
-      <!-- <div class="d-flex justify-content-end ">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-setting">
-          <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة إعدادات </strong>
-        </button>
+      <div class="d-flex justify-content-between align-items-center ">
+      <h2 class="text-primary mb-3 ">📋 جدول مجلس اداره المعهد</h2>
+       <div class="d-flex gap-4">
+        <a href="{{ route('institute_board_members.trashed') }}" class="btn btn-outline-danger">
+          <i class="bi bi-trash"></i> ارشفه
+        </a>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة عضو مجلس اداره</strong>
+          </button>
+       </div>
       </div>
-      @include('pages.setting._create') -->
+      <!-- Model academic_years -->
+      @include('pages.institute_board_members._create')
 
       <br>
       <br>
       <table id="example1"
         class="table table-hover table-striped align-middle text-center shadow-sm rounded-3 table-bordered " dir="rtl">
-        <thead class="  text-white">
+        <thead class="px-3 py-2  text-white">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-person"></i> الاسم</th>
-            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-envelope"></i> البريد الإلكتروني</th>
-            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-telephone"></i> رقم الهاتف (1)</th>
-            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-telephone"></i> رقم الهاتف (2)</th>
-            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-house-door"></i> العنوان</th>
-            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-image"></i> شعار الموقع</th>
+            <th scope="col" class="text-primary">#</th>
+            <th scope="col" class="text-primary text-wrap" style="white-space: normal; max-width: 250px; text-align:right;font-size: 18px;"><i class="bi bi-calendar-week"></i> اسم العضو</th>
+            <th scope="col" class="text-primary text-wrap" style="white-space: normal; max-width: 250px; text-align:right;font-size: 18px;"><i class="bi bi-check-circle"></i> الدرجة</th>
+
+            <th scope="col" class="text-primary"><i class="bi bi-gear" style="font-size: 20px ;"></i> الإعدادات</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($settings as $item)
+          @foreach($instituteBoardMembers as $item)
             <tr>
               <td class="fw-bold text-secondary">{{ $loop->iteration }}</td>
-              <td class="fw-bold text-dark">{{ $item->name }}</td>
-              <td class="fw-bold text-dark">{{ $item->email }}</td>
-              <td class="fw-bold text-dark">{{ $item->phone1 }}</td>
-              <td class="fw-bold text-dark">{{ $item->phone2 }}</td>
-              <td class="fw-bold text-dark">{{ $item->address }}</td>
-              <td>
-                <img src="{{ asset('image/setting-logo/' . $item->logo) }}" alt="Logo" class="img-fluid" width="50"
-                  height="50">
+              <td class="fw-bold text-dark"> <a href="{{ route('facultyMembers.index', $item->facultyMembers->id) }}" target="_blank" > <strong class="text-success " style="font-size: 18px;"> {{ $item->facultyMembers->username }} </strong> <i class="bi bi-arrow-right"></i></a> </td>
+              <td class="fw-bold text-dark">
+                {{ $item->type }}
               </td>
-              <td>
+              <td class="fw-bold text-dark">
                 <div class="dropdown">
                   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-gear"></i> خيارات
+                    <i class="bi bi-gear"></i> الإعدادات
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal"
-                        data-bs-target="#editModal-setting{{ $item->id }}">
+                        data-bs-target="#editModal{{ $item->id }}">
                         <i class="bi bi-pencil"></i> تعديل
                       </button>
                     </li>
                     <li>
-                      <form action="{{ route('setting.destroy', $item->id) }}" method="POST" class="d-inline">
+                      <form action="{{ route('institute_board_members.destroy', $item->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('delete')
                         <button type="submit" class="dropdown-item text-danger delete_confirm">
                           <i class="bi bi-trash"></i> حذف
                         </button>
                       </form>
+
                     </li>
+
                   </ul>
                 </div>
               </td>
             </tr>
             <!-- model edit -->
-            @include('pages.setting._edit', compact('item'))
+            @include('pages.institute_board_members._edit', compact('item'))
           @endforeach
         </tbody>
       </table>
-
     </div>
   </div>
 @endsection
@@ -135,5 +134,5 @@
   </script>
   <!-- sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @include('pages.setting._delete')
+  @include('pages.institute_board_members._delete')
 @endsection

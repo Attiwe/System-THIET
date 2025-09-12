@@ -59,12 +59,12 @@
         <thead class="px-3 py-2  text-white">
           <tr>
             <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> عدد القاعات والمدرجات </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-week"></i> عدد الجوائز </th>
-            <th scope="col" class="h5"><i class="bi bi-image"></i> صوره اراء الطلابه </th>
-            <th scope="col" class="h5"><i class="bi bi-image"></i> صوره المكتبه </th>
-            <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
-          </tr>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> عدد القاعات والمدرجات </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> عدد الجوائز </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-image"></i> صوره اراء الطلابه </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-image"></i> صوره المكتبه </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-gear"></i> الإعدادات</th>
+          </tr></tbody>
         </thead>
         <tbody>
           @foreach($libraryOpinions as $item)

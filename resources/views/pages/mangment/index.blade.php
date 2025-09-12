@@ -52,16 +52,16 @@
               <thead class="thead-dark">
                 <tr class="text-white bg-dark">
                   <th>#</th>
-                  <th style="font-size: 18px;">الاسم</th>
-                  <th style="font-size: 18px;">المنصب</th>
-                  <th style="font-size: 18px;">السيرة الذاتية</th>
-                  <th style="font-size: 18px;">الوصف</th>
-                  <th style="font-size: 18px;">فيس بوك</th>
-                  <th style="font-size: 18px;">تويتر</th>
-                  <th style="font-size: 18px;">انستجرام</th>
-                  <th style="font-size: 18px;">لينكد ان</th>
-                  <th style="font-size: 18px;">الصورة</th>
-                  <th style="font-size: 18px;">الإجراءات</th>
+                  <th class="text-primary" style="font-size: 18px;">الاسم</th>
+                  <th class="text-primary" style="font-size: 18px;">المنصب</th>
+                  <th class="text-primary" style="font-size: 18px;">السيرة الذاتية</th>
+                  <th class="text-primary" style="font-size: 18px;">الوصف</th>
+                  <th class="text-primary" style="font-size: 18px;">فيس بوك</th>
+                  <th class="text-primary" style="font-size: 18px;">تويتر</th>
+                  <th class="text-primary" style="font-size: 18px;">انستجرام</th>
+                  <th class="text-primary" style="font-size: 18px;">لينكد ان</th>
+                  <th class="text-primary" style="font-size: 18px;">الصورة</th>
+                  <th class="text-primary" style="font-size: 18px;">الإجراءات</th>
                 </tr>
               </thead>
               <tbody style="font-size: 16px; font-weight: 500;">

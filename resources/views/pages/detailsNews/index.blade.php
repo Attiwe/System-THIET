@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'أعضاء هيئة التدريس')
+@section('title', 'تفاصيل الخبر')
 
 @section('css')
   <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -14,29 +14,20 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
-        <p class="mg-b-0">Sales monitoring dashboard template.</p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">تفاصيل الخبر</h2>
+        <p class="mg-b-0"> يعرض جدول تفاصيل الخبر </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
       <div>
-        <label class="tx-13 font-weight-bold">Customer Ratings</label>
+        <label class="tx-13 font-weight-bold"> التاريخ </label>
         <div class="main-star">
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star active"></i>
-          <i class="typcn typcn-star"></i>
-          <span>(14,873)</span>
+          <span class="text-dark"> {{ now()->format('H:i A | d-m-Y') }} </span>
         </div>
       </div>
       <div>
-        <label class="tx-13 font-weight-bold">Online Sales</label>
-        <h5>563,275</h5>
-      </div>
-      <div>
-        <label class="tx-13 font-weight-bold">Offline Sales</label>
-        <h5>783,675</h5>
+        <label class="tx-13 font-weight-bold"> الصفحه الرئيسيه </label>
+        <h5> <a class="text-danger" href="{{ route('dashboard') }}"> <i class="bi bi-house-fill"></i> الرئيسيه</a></h5>
       </div>
     </div>
   </div>
@@ -51,7 +42,7 @@
         <h2 class="mb-0">
           <button class="btn btn-link text-white font-weight-bold" type="button" data-toggle="collapse"
             data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <strong class="h3"> 📋🚀 جدول أعضاء هيئة التدريس </strong>
+            <strong class="h3"> 📋🚀 جدول تفاصيل الخبر </strong>
           </button>
         </h2>
       </div>
@@ -60,14 +51,14 @@
         <div class="table-responsive mt-3">
           <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
             <thead class=" ">
-              <tr class="text-white bg-dark">
-                <th style="font-size: 18px;">#</th>
-                <th style="font-size: 18px;">الاسم الخبر </th>
-                <th style="font-size: 18px;">العنوان</th>
-                <th style="font-size: 18px;"> الناشر </th>
-                <th style="font-size: 18px;"> التفاصيل </th>
-                <th style="font-size: 18px;"> الصورة </th>
-                <th style="font-size: 18px;">الإجراءات</th>
+              <tr class="text-white ">
+                <th class="text-primary" style="font-size: 18px;">#</th>
+                <th class="text-primary" style="font-size: 18px;">الاسم الخبر </th>
+                <th class="text-primary" style="font-size: 18px;">العنوان</th>
+                <th class="text-primary" style="font-size: 18px;"> الناشر </th>
+                <th class="text-primary" style="font-size: 18px;"> التفاصيل </th>
+                <th class="text-primary" style="font-size: 18px;"> الصورة </th>
+                <th class="text-primary" style="font-size: 18px;">الإجراءات</th>
               </tr>
             </thead>
             <tbody>

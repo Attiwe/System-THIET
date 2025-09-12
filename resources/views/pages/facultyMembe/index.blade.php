@@ -53,17 +53,17 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th class="text-primary font-weight-bold "> <i class="bi bi-person-fill"></i> اسم العضو هيئة التدريس </th>
-                <th class="text-primary font-weight-bold "> <i class="bi bi-person-fill"></i> اسم المستخدم </th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-file-earmark-text-fill"></i> السيرة الذاتية
+                <th class="text-primary text-wrap" > <i class="bi bi-person-fill"></i> اسم العضو هيئة التدريس </th>
+                <th class="text-primary text-wrap" > <i class="bi bi-person-fill"></i> اسم المستخدم </th>
+                <th class="text-primary text-wrap" > <i class="bi bi-file-earmark-text-fill"></i> السيرة الذاتية
                 </th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-file-earmark-text-fill"></i> الاابحاث</th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-linkedin"></i>لينكدإن</th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-person-bounding-box"></i>الصورة الشخصية</th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-barcode"></i>كود العضو</th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-envelope"></i>البريد الإلكتروني</th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-phone"></i>الهاتف</th>
-                <th class="text-primary font-weight-bold"> <i class="bi bi-gear"></i>الاعدادت</th>
+                <th class="text-primary text-wrap" > <i class="bi bi-file-earmark-text-fill"></i> الاابحاث</th>
+                <th class="text-primary text-wrap" > <i class="bi bi-linkedin"></i> التعيين </th>
+                <th class="text-primary text-wrap" > <i class="bi bi-person-bounding-box"></i>الصورة الشخصية</th>
+                <th class="text-primary text-wrap" > <i class="bi bi-barcode"></i>كود العضو</th>
+                <th class="text-primary text-wrap" > <i class="bi bi-envelope"></i>البريد الإلكتروني</th>
+                <th class="text-primary text-wrap" > <i class="bi bi-phone"></i>الهاتف</th>
+                <th class="text-primary text-wrap" > <i class="bi bi-gear"></i>الاعدادت</th>
               </tr>
             </thead>
             <tbody>
@@ -92,7 +92,7 @@
                     @endif
                   </td>
 
-                  <td>{{ $item->linkedin ?? '--' }}</td>
+                  <td>{{ $item->type ?? '--' }}</td>
                   <td>
                     @if($item->personal_image)
                       <img src="{{ asset('image/images_doctor/' . $item->personal_image) }}" width="40" class="img-fluid">

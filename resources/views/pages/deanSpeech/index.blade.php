@@ -47,43 +47,45 @@
     <div class="col-xl-12">
       <div class="card mg-b-20">
         <div class="card-body">
-      <div class="table-responsive">
-        <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
-          <thead class="thead-dark">
-            <tr class="text-white bg-dark">
-              <th style="font-size: 18px;">#</th>
-              <th style="font-size: 18px;">  اسم  المدير</th>
-              <th style="font-size: 18px;">الوظيفه</th>
-               <th style="font-size: 18px;">الصورة</th>
-               <th style="font-size: 18px;">الوصف</th>
-              <th style="font-size: 18px;">الإجراءات</th>
-            </tr>
-          </thead>
-          <tbody style="font-size: 16px; font-weight: 500;">
-            @foreach ($news as $item)
-              <tr>
-                <td>{{ $loop->iteration }}</td>
+          <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
+              <thead class="thead-dark">
+                <tr class="text-white bg-dark">
+                  <th class="text-primary" style="font-size: 18px;">#</th>
+                  <th class="text-primary" style="font-size: 18px;"> اسم المدير</th>
+                  <th class="text-primary" style="font-size: 18px;">الوظيفه</th>
+                  <th class="text-primary" style="font-size: 18px;">الصورة</th>
+                  <th class="text-primary" style="font-size: 18px;">الوصف</th>
+                  <th class="text-primary" style="font-size: 18px;">الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 16px; font-weight: 500;">
+                @foreach ($news as $item)
+                  <tr>
+                    <td>{{ $loop->iteration }}</td>
 
-                <td class="text-center">{{ $item->management->name }}</td>
-                <td class="text-center">{{ $item->title }}</td>
+                    <td class="text-center">{{ $item->management->name }}</td>
+                    <td class="text-center">{{ $item->title }}</td>
 
-                <td>
-                    <img src="{{ asset('image/detail-news/' . $item->management->image) }}" class="img-thumbnail" width="80">
-                </td>
+                    <td>
+                      <img src="{{ asset('image/detail-news/' . $item->management->image) }}" class="img-thumbnail"
+                        width="80">
+                    </td>
 
-                <td style="white-space: normal; word-wrap: break-word; max-width: 250px; text-align:right;">
-                  {{ \Illuminate\Support\Str::limit($item->management->description, 200, ' ...') }}
-                </td>
-                <td>
-                  <a href="{{ route('dean_speech.edit', $item->id) }}" class="btn btn-sm btn-primary font-weight-bold py-2 px-4 ">
-                    تعديل
-                  </a>
-                </td>
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
+                    <td style="white-space: normal; word-wrap: break-word; max-width: 250px; text-align:right;">
+                      {{ \Illuminate\Support\Str::limit($item->management->description, 200, ' ...') }}
+                    </td>
+                    <td>
+                      <a href="{{ route('dean_speech.edit', $item->id) }}"
+                        class="btn btn-sm btn-primary font-weight-bold py-2 px-4 ">
+                        تعديل
+                      </a>
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
 
         </div>
       </div>
@@ -112,5 +114,5 @@
   <!--Internal  Datatable js -->
   <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
 
- 
+
 @endsection

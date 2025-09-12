@@ -14,20 +14,20 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋🚀 جدول بيانات الاداره  </h2>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋🚀 جدول بيانات الاداره </h2>
         <p class="mg-b-0"> يعرض جدول بيانات الاداره </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
       <div>
-        <label class="tx-13 font-weight-bold">  التاريخ </label>
+        <label class="tx-13 font-weight-bold"> التاريخ </label>
         <div class="main-star text-primary">
           <span class="text-dark"> {{ now()->format('H:i A | d-m-Y') }} </span>
-        </div> 
+        </div>
       </div>
       <div>
-        <label class="tx-13 font-weight-bold"> الصفحه الرئيسيه  </label>
-        <h5  > <a class="text-danger" href="{{ route('dashboard') }}" > <i class="bi bi-house-fill"></i> الرئيسيه</a></h5>
+        <label class="tx-13 font-weight-bold"> الصفحه الرئيسيه </label>
+        <h5> <a class="text-danger" href="{{ route('dashboard') }}"> <i class="bi bi-house-fill"></i> الرئيسيه</a></h5>
       </div>
 
     </div>
@@ -43,7 +43,7 @@
         <h2 class="mb-0">
           <button class="btn btn-link text-white font-weight-bold" type="button" data-toggle="collapse"
             data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <strong class="h3"> 📋🚀 جدول بيانات الاداره </strong>  
+            <strong class="h3"> 📋🚀 جدول بيانات الاداره </strong>
           </button>
         </h2>
       </div>
@@ -51,15 +51,19 @@
       <br>
       <div id="collapseOne" class="collapse false " aria-labelledby="headingOne" data-parent="#facultyAccordion">
         <div class="table-responsive mt-3">
-          <table id="example1" class="table table-bordered table-striped text-center align-middle shadow-sm rounded-3 table-bordered  table-hover  " dir="rtl">
+          <table id="example1"
+            class="table table-bordered table-striped text-center align-middle shadow-sm rounded-3 table-bordered  table-hover  "
+            dir="rtl">
             <thead>
-                <tr>
-                  <th>#</th>
-
-                  <th class="text-primary font-weight-bold"> <i class="bi bi-person-fill"></i>  عميد الكلية</th>
-                  <th class="text-primary font-weight-bold"> <i class="bi bi-person-fill"></i>   وكيل المعهد وشؤون الطلاب</th>
-                  <th class="text-primary font-weight-bold"> <i class="bi bi-person-fill"></i>     الاعدادت </th>
-                </tr>
+              <tr>
+                <th>#</th>
+                <th class="text-primary font-weight-bold" style="font-size: 18px;"> <i class="bi bi-person-fill"></i> عميد
+                  الكلية</th>
+                <th class="text-primary font-weight-bold" style="font-size: 18px;"> <i class="bi bi-person-fill"></i> وكيل
+                  المعهد وشؤون الطلاب</th>
+                <th class="text-primary font-weight-bold" style="font-size: 18px;"> <i class="bi bi-person-fill"></i>
+                  الاعدادت </th>
+              </tr>
             </thead>
             <tbody>
               @foreach($categoryManagements as $item)
@@ -115,7 +119,7 @@
       });
     });
   </script>
-    <!-- sweetalert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @include('pages.category_management._delete')
+  <!-- sweetalert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @include('pages.category_management._delete')
 @endsection

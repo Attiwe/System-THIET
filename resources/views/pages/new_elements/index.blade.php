@@ -58,9 +58,9 @@
         <thead class="px-3 py-2  text-white">
           <tr>
             <th scope="col">#</th>
-            <th scope="col" class="h5"><i class="bi bi-newspaper"></i> اسم الخبار </th>
-            <th scope="col" class="h5"><i class="bi bi-calendar-date"></i> تاريخ </th>
-            <th scope="col" class="h5"><i class="bi bi-gear"></i> الإعدادات</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-newspaper"></i> اسم الخبار </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-date"></i> تاريخ </th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
         </thead>
         <tbody>

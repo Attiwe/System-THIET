@@ -20,6 +20,7 @@ use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\NewElementsController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\UnitController;
+use App\Http\Controllers\Dashboard\InstituteBoardMemberController;
 
  
 //========================Route Dashboard (Home)=======================
@@ -37,7 +38,6 @@ Route::resource('detailsNews', DetailNewsController::class)->names('detailsNews'
 //=====================Route Management================================
 Route::resource('management', ManagementController::class)->names('management')->except(['show']);
 Route::get('/resume/{id}', [ManagementController::class, 'showResume'])->name('resume.show');
-
 
 //======================Route facultyMembers============================
 Route::resource('facultyMembers', FacultyMembersController::class)->names('facultyMembers')->except(['show']);
@@ -95,6 +95,13 @@ Route::resource('sliders', SliderController::class)->names('slider')->except(['s
 
 //=====================Route Unit ========================================
 Route::resource('unit', UnitController::class)->names('unit')->except(['show']);
+
+//=====================Route Institute Board Member ========================
+Route::resource('institute_board_members', InstituteBoardMemberController::class)->names('institute_board_members')->except(['show']);
+Route::get('/institute_board_members/trashed', [InstituteBoardMemberController::class, 'trashed'])->name('institute_board_members.trashed');
+Route::get('/institute_board_members/restore/{id}', [InstituteBoardMemberController::class, 'restore'])->name('institute_board_members.restore');
+Route::delete('/institute_board_members/forceDelete/{id}', [InstituteBoardMemberController::class, 'forceDelete'])->name('institute_board_members.forceDelete');
+
 
 
 Route::get('/', function () {
