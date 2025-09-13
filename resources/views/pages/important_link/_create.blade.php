@@ -1,0 +1,52 @@
+ @include('include.validation')
+ <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content shadow-lg border-0 rounded-3">
+
+      <!-- Header -->
+      <div class="modal-header text-white">
+        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+          <i class="bi bi-calendar-week"></i> إضافة رابط مهم
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <form action="{{ route('important_link.store') }}" method="POST">
+          @csrf
+
+           <div class="mb-3">
+            <label for="title" class="form-label fw-bold">
+              <i class="bi bi-calendar-date text-primary"></i> العنوان
+            </label>
+            <input type="text" class="form-control form-control-lg" id="title" name="title" value="{{ old('title') }} " required placeholder="العنوان">
+           
+          </div>
+
+          <!-- الرابط -->
+          <div class="mb-3">
+            <label for="url" class="form-label fw-bold">
+              <i class="bi bi-toggle-on text-success"></i> الرابط 
+            </label>
+            <input type="url" class="form-control form-control-lg" id="url" name="url" value="{{ old('url') }} " required placeholder="الرابط">
+            
+          </div>
+
+          <!-- Footer -->
+          <div class="modal-footer border-top-0">
+            <button type="submit" class="btn btn-success px-4">
+              <i class="bi bi-save"></i> حفظ
+            </button>
+            <button type="button" class="btn btn-outline-danger px-4" data-bs-dismiss="modal">
+              <i class="bi bi-x-circle"></i> إغلاق
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -21,6 +21,9 @@ use App\Http\Controllers\Dashboard\NewElementsController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\UnitController;
 use App\Http\Controllers\Dashboard\InstituteBoardMemberController;
+use App\Http\Controllers\Dashboard\ImportantLinkController;
+use App\Http\Controllers\Dashboard\FaqCategoriesController;
+use App\Http\Controllers\Dashboard\FaqAskedQuestionsController;
 
  
 //========================Route Dashboard (Home)=======================
@@ -101,6 +104,19 @@ Route::resource('institute_board_members', InstituteBoardMemberController::class
 Route::get('/institute_board_members/trashed', [InstituteBoardMemberController::class, 'trashed'])->name('institute_board_members.trashed');
 Route::get('/institute_board_members/restore/{id}', [InstituteBoardMemberController::class, 'restore'])->name('institute_board_members.restore');
 Route::delete('/institute_board_members/forceDelete/{id}', [InstituteBoardMemberController::class, 'forceDelete'])->name('institute_board_members.forceDelete');
+
+//=====================Route Important Link ========================
+Route::resource('important_link', ImportantLinkController::class)->names('important_link')->except(['show']);
+
+//=====================Route Faq Categories ========================
+Route::resource('faqCategories', FaqCategoriesController::class)->names('faqCategories')->except(['show']);
+
+//=====================Route Faq Asked Questions ========================
+Route::resource('faqAskedQuestions', FaqAskedQuestionsController::class)->names('faqAskedQuestions')->except(['show']);
+
+
+
+
 
 
 
