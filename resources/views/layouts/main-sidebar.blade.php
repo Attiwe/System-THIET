@@ -97,6 +97,8 @@
 							href="{{ route('institute_board_members.index') }}"> مجلس اداره المعهد
 						</a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('institutes.index') }}"> بيانات المعهد
+						</a>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('institute_mnagements.index') }}">  اداره المعهد
 						</a></li>
 				</ul>
 			</li>
