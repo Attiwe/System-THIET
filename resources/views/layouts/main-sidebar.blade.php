@@ -76,6 +76,9 @@
 							الأخبار </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('slider.index') }}">
 							السلايدر </a></li>
+
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqs.index') }}">
+							الأسئلة الشائعة </a></li>
 				</ul>
 			</li>
 			<li class="side-item side-item-category font-weight-bold text-2xl h6"> الاداره </li>

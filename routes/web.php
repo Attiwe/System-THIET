@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DeanSpeechController;
+use App\Http\Controllers\Dashboard\FaqsController;
 use App\Http\Controllers\Dashboard\InstituteMnagementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
@@ -126,6 +127,9 @@ Route::resource('activities', ActivitieController::class)->names('activities')->
 //==================== Route Institute Management ========================
 Route::resource('institute_mnagements', InstituteMnagementController::class)->names('institute_mnagements')->except(['show']);
  
+//==================== Route Faqs ========================
+Route::resource('faqs', FaqsController::class)->names('faqs')->except(['show']);
+
 
 Route::get('/', function () {
   return view('login-test.test-login');
