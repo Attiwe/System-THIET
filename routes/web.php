@@ -25,6 +25,7 @@ use App\Http\Controllers\Dashboard\ImportantLinkController;
 use App\Http\Controllers\Dashboard\FaqCategoriesController;
 use App\Http\Controllers\Dashboard\FaqAskedQuestionsController;
 use App\Http\Controllers\Dashboard\ActivitieController;
+use App\Http\Controllers\Dashboard\InstituteController;
 
  
 //========================Route Dashboard (Home)=======================
@@ -99,6 +100,9 @@ Route::resource('sliders', SliderController::class)->names('slider')->except(['s
 
 //=====================Route Unit ========================================
 Route::resource('unit', UnitController::class)->names('unit')->except(['show']);
+
+//=====================Route Institutes =   =======================================
+Route::resource('institutes', InstituteController::class)->names('institutes')->except(['show']);
 
 //=====================Route Institute Board Member ========================
 Route::resource('institute_board_members', InstituteBoardMemberController::class)->names('institute_board_members')->except(['show']);
