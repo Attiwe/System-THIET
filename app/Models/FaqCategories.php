@@ -4,11 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FaqCategories extends Model
+class faqCategories extends Model
 {
-    protected $table = 'faq_categories';
-    protected $fillable = [
-        'name',
-    ];
-    
+    //
 }

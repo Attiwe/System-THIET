@@ -24,6 +24,7 @@ use App\Http\Controllers\Dashboard\InstituteBoardMemberController;
 use App\Http\Controllers\Dashboard\ImportantLinkController;
 use App\Http\Controllers\Dashboard\FaqCategoriesController;
 use App\Http\Controllers\Dashboard\FaqAskedQuestionsController;
+use App\Http\Controllers\Dashboard\ActivitieController;
 
  
 //========================Route Dashboard (Home)=======================
@@ -114,11 +115,10 @@ Route::resource('faqCategories', FaqCategoriesController::class)->names('faqCate
 //=====================Route Faq Asked Questions ========================
 Route::resource('faqAskedQuestions', FaqAskedQuestionsController::class)->names('faqAskedQuestions')->except(['show']);
 
+//==================== Route Activities ========================
+Route::resource('activities', ActivitieController::class)->names('activities')->except(['show']);
 
-
-
-
-
+ 
 
 Route::get('/', function () {
   return view('login-test.test-login');
