@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\DeanSpeechController;
 use App\Http\Controllers\Dashboard\FaqsController;
 use App\Http\Controllers\Dashboard\InstituteMnagementController;
+use App\Http\Controllers\Dashboard\ScholarshipsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
@@ -130,6 +131,8 @@ Route::resource('institute_mnagements', InstituteMnagementController::class)->na
 //==================== Route Faqs ========================
 Route::resource('faqs', FaqsController::class)->names('faqs')->except(['show']);
 
+//==================== Route Scholarships ========================
+Route::resource('scholarships', ScholarshipsController::class)->names('scholarships')->except(['show']);
 
 Route::get('/', function () {
   return view('login-test.test-login');

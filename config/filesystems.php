@@ -158,8 +158,17 @@ return [
             'url' => env('APP_URL') . '/image/unit',
             'visibility' => 'public',
         ],
-
         
+        'scholarships' => [
+            'driver' => 'local',
+            'root' => public_path('image/scholarship'),
+            'url' => env('APP_URL') . '/image/scholarship',
+            'visibility' => 'public',
+        ],
+
+
+
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
