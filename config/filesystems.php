@@ -166,6 +166,14 @@ return [
             'visibility' => 'public',
         ],
 
+        'schedules' => [
+            'driver' => 'local',
+            'root' => public_path('image/schedules'),
+            'url' => env('APP_URL') . '/image/schedules',
+            'visibility' => 'public',
+        ],
+
+
 
 
 
