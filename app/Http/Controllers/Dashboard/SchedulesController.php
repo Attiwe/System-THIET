@@ -28,7 +28,7 @@ class SchedulesController extends Controller
 
     public function store(ScheduleRequest $request)
     {
-        $data = $request->except(['file_path', '_token']);
+         $data = $request->except(['file_path', '_token']);
 
         if ($request->hasFile('file_path')) {
             $data['file_path'] = $this->storeFile($request, 'file_path', '', 'schedules');

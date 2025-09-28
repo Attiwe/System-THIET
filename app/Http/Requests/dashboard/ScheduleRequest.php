@@ -27,6 +27,7 @@ class ScheduleRequest extends FormRequest
             'department_id' => 'required',
             'academic_year' => 'required',
             'file_path' => 'sometimes|required',
+            'class' => 'required',
         ];
     }
 
@@ -39,6 +40,7 @@ class ScheduleRequest extends FormRequest
             'academic_year.required' => 'الرجاء اختيار السنة الدراسية',
             'file_path.required' => 'الرجاء اختيار ملف الجدول',
             'file_path.sometimes' => 'الرجاء اختيار ملف الجدول',
+            'class.required' => 'الرجاء اختيار الترم الدراسي',
         ];
     }
 }

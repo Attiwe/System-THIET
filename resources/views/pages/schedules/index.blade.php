@@ -61,6 +61,7 @@
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i>     القسم  </th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i>     الفرقه الدراسية  </th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-check-circle"></i> السنة الدراسية</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-check-circle"></i> الترم الدراسي</th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-check-circle"></i>  ملف الجدول الدراسي  </th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
@@ -73,6 +74,7 @@
               <td class="fw-bold text-dark">{{ $item-> department->name }}</td>
               <td class="fw-bold text-dark">{{ $item->levelAcademic-> level_name }}</td>
               <td class="fw-bold text-dark">{{ $item-> academic_year }}</td>
+              <td class="fw-bold text-dark">{{ $item-> class }}</td>
               <td class="fw-bold text-muted">
                 <span class="badge bg-warning text-dark">
                   @if ($item->file_path)

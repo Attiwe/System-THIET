@@ -13,6 +13,7 @@ class Schedules extends Model
         'department_id',
         'academic_year',
         'file_path',
+        'class'
     ];
 
     public function levelAcademic()

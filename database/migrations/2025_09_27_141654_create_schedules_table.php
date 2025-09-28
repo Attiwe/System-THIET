@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('level_id')->constrained('level_accademics')->cascadeOnDelete();
             $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
             $table->date('academic_year');     
-            $table->string('file_path');     
+            $table->string('file_path');    
+            $table->enum('class', ['الترم الثاني', 'الترم الاول']);  
             $table->timestamps();
         });
     }

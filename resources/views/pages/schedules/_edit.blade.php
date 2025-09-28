@@ -18,24 +18,34 @@
 
           <!-- النوع + السنة الدراسية -->
           <div class="row g-4">
-            <div class="col-md-6">
-              <label for="type" class="form-label fw-bold">
-                <i class="bi bi-calendar-date text-primary"></i> النوع
-              </label>
-              <select name="type" id="type" class="form-select form-select-lg shadow-sm">
-                 <option value="جداول الامتحانات" {{ $item->type == 'جداول الامتحانات' ? 'selected' : '' }}>جداول الامتحانات</option>
-                <option value="جداول الدرسه" {{ $item->type == 'جداول الامتحانات' ? 'selected' : '' }}>جداول الدراسه</option>
-                <option value="غير ذالك" {{ $item->type == 'غير ذالك' ? 'selected' : '' }}>غير ذالك</option>
-              </select>
+            <div class="col-md-4">
+            <label for="type" class="form-label fw-bold">
+              <i class="bi bi-calendar-date text-primary"></i> النوع
+            </label>
+            <select name="type" id="type" class="form-select form-select-lg shadow-sm">
+              <option value="جداول الامتحانات" {{ $item->type == 'جداول الامتحانات' ? 'selected' : '' }}>جداول الامتحانات</option>
+              <option value="جداول الدرسه" {{ $item->type == 'جداول الدرسه' ? 'selected' : '' }}>جداول الدراسه</option>
+              <option value="غير ذالك" {{ $item->type == 'غير ذالك' ? 'selected' : '' }}>غير ذالك</option>
+            </select>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
               <label for="academic_year" class="form-label fw-bold">
                 <i class="bi bi-calendar-date text-primary"></i> السنة الدراسية
               </label>
               <input type="date" class="form-control form-control-lg shadow-sm" id="academic_year" name="academic_year"
                 required value="{{ $item->academic_year }}">
             </div>
+
+                <div class="col-md-4">
+                  <label for="class" class="form-label fw-bold">
+                    <i class="bi bi-calendar-date text-primary"></i> الترم الدراسي
+                  </label>
+                  <select name="class" id="class" class="form-select form-select-lg shadow-sm">
+                     <option value="الترم الثاني" {{ $item->class == 'الترم الثاني' ? 'selected' : '' }}>الترم الثاني</option>
+                    <option value="الترم الاول" {{ $item->class == 'الترم الاول' ? 'selected' : '' }}>الترم الاول</option>
+                  </select>
+                </div>
           </div>
 
           <br>

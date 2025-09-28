@@ -20,7 +20,7 @@
 
           <!-- النوع + السنة الدراسية -->
           <div class="row g-4">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <label for="type" class="form-label fw-bold">
                 <i class="bi bi-calendar-date text-primary"></i> النوع
               </label>
@@ -32,7 +32,18 @@
               </select>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
+              <label for="class" class="form-label fw-bold">
+                <i class="bi bi-calendar-date text-primary"></i> الترم الدراسي
+              </label>
+              <select name="class" id="class" class="form-select form-select-lg shadow-sm">
+                <option value="">اختر النوع</option>
+                <option value="الترم الثاني">الترم الثاني</option>
+                <option value="الترم الاول">الترم الاول</option>
+               </select>
+            </div>
+
+            <div class="col-md-4">
               <label for="academic_year" class="form-label fw-bold">
                 <i class="bi bi-calendar-date text-primary"></i> السنة الدراسية
               </label>
