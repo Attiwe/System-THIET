@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\InstituteMnagementController;
 use App\Http\Controllers\Dashboard\SchedulesController;
 use App\Http\Controllers\Dashboard\ScholarshipsController;
 use App\Http\Controllers\Dashboard\StudyMaterialsController;
+use App\Http\Controllers\Dashboard\StudentResultController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
@@ -146,7 +147,23 @@ Route::get('/study_materials/civilengineering', [StudyMaterialsController::class
 Route::get('/study_materials/communications_engineering', [StudyMaterialsController::class, 'communicationsEngineering'])->name('study_materials.communications_engineering');
 Route::get('/study_materials/Chemical_engineering', [StudyMaterialsController::class, 'chemicalEngineering'])->name('study_materials.chemical_engineering');
 
+//==================== Route Student Results ========================
+Route::resource('student-results', StudentResultController::class)->names('student-results')->except(['show']);
+Route::get('/student-results/preparatory_engineering', [StudentResultController::class, 'preparatoryEngineering'])->name('student-results.preparatory_engineering');
+Route::get('/student-results/civil_engineering', [StudentResultController::class, 'civilEngineering'])->name('student-results.civil_engineering');
+Route::get('/student-results/communications_engineering', [StudentResultController::class, 'communicationsEngineering'])->name('student-results.communications_engineering');
+Route::get('/student-results/chemical_engineering', [StudentResultController::class, 'chemicalEngineering'])->name('student-results.chemical_engineering');
 
+// File download route for student results
+Route::get('/student-results/file/{filename}', function ($filename) {
+    $path = storage_path('app/public/student-results/' . $filename);
+    
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    
+    return response()->file($path);
+})->name('student-results.download');
 
 Route::get('/', function () {
   return view('login-test.test-login');
