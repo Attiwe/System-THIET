@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\FaqsController;
 use App\Http\Controllers\Dashboard\InstituteMnagementController;
 use App\Http\Controllers\Dashboard\SchedulesController;
 use App\Http\Controllers\Dashboard\ScholarshipsController;
+use App\Http\Controllers\Dashboard\StudyMaterialsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
@@ -31,12 +32,12 @@ use App\Http\Controllers\Dashboard\FaqAskedQuestionsController;
 use App\Http\Controllers\Dashboard\ActivitieController;
 use App\Http\Controllers\Dashboard\InstituteController;
 
- 
+
 //========================Route Dashboard (Home)=======================
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 //=======================Route News====================================
-Route::resource('dean_speech', DeanSpeechController::class)->names('dean_speech')->except(['show','destroy']);
+Route::resource('dean_speech', DeanSpeechController::class)->names('dean_speech')->except(['show', 'destroy']);
 
 //=====================Route New Elements================================
 Route::resource('new_elements', NewElementsController::class)->names('new_elements')->except(['show']);
@@ -80,7 +81,7 @@ Route::delete('/quality_item/forceDelete/{id}', [QualityItemController::class, '
 //=====================Route Department ================================
 Route::resource('departments', DepartmentController::class)->names('departments')->except(['show']);
 Route::get('/department/requerd_file/{id}', [DepartmentController::class, 'file'])->name('department.file');
- 
+
 //=====================Route Featured Work ================================
 Route::resource('featured_work', FeaturedWorkController::class)->names('featured_work')->except(['show']);
 Route::get('/featured_work/trashed', [FeaturedWorkController::class, 'trashed'])->name('featured_work.trashed');
@@ -128,7 +129,7 @@ Route::resource('activities', ActivitieController::class)->names('activities')->
 
 //==================== Route Institute Management ========================
 Route::resource('institute_mnagements', InstituteMnagementController::class)->names('institute_mnagements')->except(['show']);
- 
+
 //==================== Route Faqs ========================
 Route::resource('faqs', FaqsController::class)->names('faqs')->except(['show']);
 
@@ -137,6 +138,15 @@ Route::resource('scholarships', ScholarshipsController::class)->names('scholarsh
 
 //==================== Route Schedules ========================
 Route::resource('schedules', SchedulesController::class)->names('schedules')->except(['show']);
+
+//==================== Route Study Materials ========================
+Route::resource('study_materials', StudyMaterialsController::class)->names('study_materials')->except(['show']);
+Route::get('/study_materials/preparatory_engineering', [StudyMaterialsController::class, 'preparatoryEngineering'])->name('study_materials.preparatory_engineering');
+Route::get('/study_materials/civilengineering', [StudyMaterialsController::class, 'civilEngineering'])->name('study_materials.civil_engineering');
+Route::get('/study_materials/communications_engineering', [StudyMaterialsController::class, 'communicationsEngineering'])->name('study_materials.communications_engineering');
+Route::get('/study_materials/Chemical_engineering', [StudyMaterialsController::class, 'chemicalEngineering'])->name('study_materials.chemical_engineering');
+
+
 
 Route::get('/', function () {
   return view('login-test.test-login');

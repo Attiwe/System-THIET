@@ -250,9 +250,8 @@
 					</svg><span class="side-menu__label font-weight-bold h6 text-dark">التعليم الطلاب</span><i class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('schedules.index') }}"> الجداول  الدراسية</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'border') }}">Border</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'display') }}">Display</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'flex') }}">Flex</a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('study_materials.index') }}"> المواد الدراسية</a></li>
+ 					<li><a class="slide-item" href="{{ url('/' . $page = 'flex') }}">Flex</a></li>
 					<li><a class="slide-item" href="{{ url('/' . $page = 'height') }}">Height</a></li>
 					<li><a class="slide-item" href="{{ url('/' . $page = 'margin') }}">Margin</a></li>
 					<li><a class="slide-item" href="{{ url('/' . $page = 'padding') }}">Padding</a></li>
