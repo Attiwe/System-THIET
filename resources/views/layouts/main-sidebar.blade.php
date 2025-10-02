@@ -252,6 +252,7 @@
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('schedules.index') }}"> الجداول  الدراسية</a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('study_materials.index') }}"> المواد الدراسية </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-results.index') }}"> نتائج الطلاب </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('military-education.index') }}"> التربية العسكرية </a></li>
  					<li><a class="slide-item" href="{{ url('/' . $page = 'flex') }}">Flex</a></li>
 					<li><a class="slide-item" href="{{ url('/' . $page = 'height') }}">Height</a></li>
 					<li><a class="slide-item" href="{{ url('/' . $page = 'margin') }}">Margin</a></li>

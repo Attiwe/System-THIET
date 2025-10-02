@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\SchedulesController;
 use App\Http\Controllers\Dashboard\ScholarshipsController;
 use App\Http\Controllers\Dashboard\StudyMaterialsController;
 use App\Http\Controllers\Dashboard\StudentResultController;
+use App\Http\Controllers\Dashboard\MilitaryEducationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
@@ -51,9 +52,10 @@ Route::resource('management', ManagementController::class)->names('management')-
 Route::get('/resume/{id}', [ManagementController::class, 'showResume'])->name('resume.show');
 
 //======================Route facultyMembers============================
-Route::resource('facultyMembers', FacultyMembersController::class)->names('facultyMembers')->except(['show']);
+Route::resource('facultyMembers', FacultyMembersController::class)->names('facultyMembers');
+Route::get('/facultyMembers/create/page', [FacultyMembersController::class, 'createPage'])->name('facultyMembers.create.page');
 Route::get('/resume/{id}', [FacultyMembersController::class, 'showResume'])->name('resume.show');
-Route::get('/researches/{id}', [FacultyMembersController::class, 'showResume'])->name('researches.show');
+Route::get('/researches/{id}', [FacultyMembersController::class, 'showResearches'])->name('researches.show');
 
 //=====================Route Academic Year==============================
 Route::resource('academic_years', AcademicYearController::class)->names('academic_years')->except(['show']);
@@ -164,6 +166,9 @@ Route::get('/student-results/file/{filename}', function ($filename) {
     
     return response()->file($path);
 })->name('student-results.download');
+
+//==================== Route Military Education ========================
+Route::resource('military-education', MilitaryEducationController::class)->names('military-education');
 
 Route::get('/', function () {
   return view('login-test.test-login');

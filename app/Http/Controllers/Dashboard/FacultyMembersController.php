@@ -33,6 +33,16 @@ class FacultyMembersController extends Controller
         // return view('pages.facultyMembe.create', compact('departments', 'facultyCode'));
     }
 
+    /**
+     * Show the form for creating a new resource in a separate page.
+     */
+    public function createPage()
+    {
+        $departments = Department::select('id', 'name')->get();
+        $facultyCode = $this->generateFacultyCode();
+        return view('pages.facultyMembe.create_page', compact('departments', 'facultyCode'));
+    }
+
     public function store(FacultyMembersRequest $request)
     {
         $data = $request->all();
@@ -42,10 +52,19 @@ class FacultyMembersController extends Controller
         //    dd($data);
         try {
             FacultyMembers::create($data);
-            return redirect()->back()->with('success', 'تم إنشاء عضو هيئة تدريس بنجاح');
+            return redirect()->route('facultyMembers.index')->with('success', 'تم إنشاء عضو هيئة تدريس بنجاح');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'حدث خطأ: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(FacultyMembers $facultyMember)
+    {
+        $facultyMember->load('department');
+        return view('pages.facultyMembe.show', compact('facultyMember'));
     }
 
     private function storeFile($request, $file, $folder, $disk = 'local')
@@ -154,8 +173,8 @@ class FacultyMembersController extends Controller
 
         $filePath = $feculty->researches;
 
-        if (!$filePath || !Storage::disk('cv')->exists($filePath)) {
-            abort(404, 'Resume not found');
+        if (!$filePath || !Storage::disk('researches')->exists($filePath)) {
+            abort(404, 'Researches not found');
         }
 
         $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
