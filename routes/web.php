@@ -36,6 +36,7 @@ use App\Http\Controllers\Dashboard\InstituteBoardMemberController;
 use App\Http\Controllers\Dashboard\ImportantLinkController;
 use App\Http\Controllers\Dashboard\DeputyDirectorController;
 use App\Http\Controllers\Dashboard\ImportantFilesController;
+use App\Http\Controllers\Dashboard\LecturesDecisionsController;
 use App\Http\Controllers\Dashboard\TrainingCourseController;
 use App\Http\Controllers\Dashboard\FaqCategoriesController;
 use App\Http\Controllers\Dashboard\FaqAskedQuestionsController;
@@ -109,6 +110,18 @@ Route::get('/important-files/file/{filename}', function ($filename) {
     
     return Storage::response($filePath);
 })->name('important-files.download');
+
+//==================== Route Lectures Decisions =======================
+Route::resource('lectures-decisions', LecturesDecisionsController::class)->names('lectures-decisions')->except(['show']);
+Route::get('/lectures-decisions/file/{filename}', function ($filename) {
+    $filePath = 'public/lectures-decisions/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('lectures-decisions.download');
 
 //==================== Route Training Courses =========================
 Route::resource('training-courses', TrainingCourseController::class)->names('training-courses')->except(['show']);

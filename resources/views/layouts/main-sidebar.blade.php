@@ -143,6 +143,7 @@
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('training-courses.index') }}">
 							     الدورات التدريبية    </a></li>
 					 <li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('important-files.index') }}">	الملفات المهمه   </a></li>	
+					 <li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('lectures-decisions.index') }}">محاضرات وقرارات     </a></li>	
 
 				</ul>
 			</li>

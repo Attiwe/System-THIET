@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'الملفات الهامة')
+@section('title', ' المحاضرات  قرارات     ')
 
 @section('css')
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -10,8 +10,8 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋 جدول الملفات الهامة </h2>
-        <p class="mg-b-0"> يعرض جدول الملفات الهامة </p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1"> 📋 جدول المحاضرات  قرارات    </h2>
+        <p class="mg-b-0"> يعرض جدول المحاضرات  قرارات    </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
@@ -36,7 +36,7 @@
   <div class="container-fluid py-4">
     <div class="card shadow-sm">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">الملفات الهامة</h5>
+        <h5 class="mb-0">قرارات المحاضرات</h5>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <i class="bi bi-plus-circle"></i> إضافة
         </button>
@@ -49,12 +49,12 @@
         @endif
 
         <div class="table-responsive">
-          <table class="table table-bordered align-middle" id="important_files">
+          <table class="table table-bordered align-middle" id="lectures_decisions">
             <thead>
               <tr>
-                <th class="fw-bold text-primary" style="font-size: 18px;" >#</th>
+                <th>#</th>
                 <th class="fw-bold text-primary" style="font-size: 18px;" >الوحدة</th>
-                <th class="fw-bold text-primary" style="font-size: 18px;">العنوان</th>
+                <th class="fw-bold text-primary" style="font-size: 18px;" >العنوان</th>
                 <th class="fw-bold text-primary" style="font-size: 18px;" >الملف</th>
                 <th class="fw-bold text-primary" style="font-size: 18px;" >الخيارات</th>
               </tr>
@@ -68,7 +68,7 @@
                   <td>
                     @if($item->file_path)
                       <?php $basename = basename($item->file_path); ?>
-                      <a class="btn btn-outline-info btn-sm" href="{{ route('important-files.download', $basename) }}" target="_blank">
+                      <a class="btn btn-outline-info btn-sm" href="{{ route('lectures-decisions.download', $basename) }}" target="_blank">
                         <i class="bi bi-box-arrow-up-right"></i> عرض/تحميل
                       </a>
                     @endif
@@ -87,7 +87,7 @@
                           </button>
                         </li>
                         <li>
-                          <form action="{{ route('important-files.destroy', $item->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('lectures-decisions.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button type="submit" class="dropdown-item text-danger delete_confirm">
@@ -99,7 +99,7 @@
                     </div>
                   </td>
                 </tr>
-                @include('pages.important_files._edit', ['item' => $item, 'units' => $units])
+                @include('pages.lectures_decisions._edit', ['item' => $item, 'units' => $units])
               @empty
                 <tr><td colspan="5" class="text-center">لا توجد بيانات</td></tr>
               @endforelse
@@ -110,7 +110,7 @@
     </div>
   </div>
 
-  @include('pages.important_files._create', ['units' => $units])
+  @include('pages.lectures_decisions._create', ['units' => $units])
 @endsection
 
 @section('js')
@@ -140,13 +140,12 @@
       });
     });
   </script>
-
-<script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+     <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       $(document).ready(function () {
-        $('#important_files').DataTable({
+        $('#lectures_decisions').DataTable({
           "paging": true,
           "lengthChange": true,
           "searching": true,
