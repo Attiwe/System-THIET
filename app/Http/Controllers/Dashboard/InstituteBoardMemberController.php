@@ -13,7 +13,7 @@ class InstituteBoardMemberController extends Controller
 
     public function index()
     {
-        $instituteBoardMembers = InstituteBoardMember::with('facultyMember')->latest()->get();
+        $instituteBoardMembers = InstituteBoardMember::with('facultyMembers')->latest()->get();
         $facultyMembers = FacultyMembers::select('id', 'username')->get();
         return view('pages.institute_board_members.index', compact('instituteBoardMembers', 'facultyMembers'));
     }

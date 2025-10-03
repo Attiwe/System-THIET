@@ -114,6 +114,10 @@
 @endsection
 
 @section('js')
+
+ 
+      
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
@@ -140,26 +144,7 @@
       });
     });
   </script>
-
-<script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $('#important_files').DataTable({
-          "paging": true,
-          "lengthChange": true,
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-          "responsive": true,
-          "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/ar.json"  
-          }
-        });
-      });
-    </script>
+ 
 @endsection
 
 
