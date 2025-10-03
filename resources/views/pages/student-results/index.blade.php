@@ -85,7 +85,7 @@
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-check-circle"></i> الفرقة الدراسية</th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> نوع النتيجة</th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-calendar-week"></i> السنة الأكاديمية</th>
-            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-file-earmark"></i> الملف</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-file-earmark"></i>  الملف الامتحانات</th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
         </thead>

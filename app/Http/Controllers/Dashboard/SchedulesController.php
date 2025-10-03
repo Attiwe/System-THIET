@@ -15,9 +15,9 @@ class SchedulesController extends Controller
 {
     public function index()
     {
-        $schedules =  Schedules::latest()->get();
-        $departments = Department::select('id', 'name')->get();
-        $levelAcademics = LevelAccadmic::select('id', 'level_name')->get();
+        $schedules = Schedules::with(['department', 'levelAcademic'])->latest()->get();
+        $departments = Department::select('id', 'name')->orderBy('name')->get();
+        $levelAcademics = LevelAccadmic::select('id', 'level_name')->orderBy('level_name')->get();
         return view('pages.schedules.index', compact('schedules', 'departments', 'levelAcademics'));
     }
 
@@ -25,6 +25,16 @@ class SchedulesController extends Controller
     // {
     //     return view('pages.schedules.create');
     // }
+
+    /**
+     * Show the form for creating a new resource in a separate page.
+     */
+    public function createPage()
+    {
+        $departments = Department::select('id', 'name')->orderBy('name')->get();
+        $levelAcademics = LevelAccadmic::select('id', 'level_name')->orderBy('level_name')->get();
+        return view('pages.schedules.create_page', compact('departments', 'levelAcademics'));
+    }
 
     public function store(ScheduleRequest $request)
     {
@@ -40,9 +50,18 @@ class SchedulesController extends Controller
             ->with('success', 'تم إضافة الجدول بنجاح ✅');
     }
 
+    public function show(Schedules $schedule)
+    {
+        $schedule->load(['department', 'levelAcademic']);
+        return view('pages.schedules.show', compact('schedule'));
+    }
+
     public function edit(Schedules $schedule)
     {
-        return view('pages.schedules.edit', compact('schedule'));
+        $schedule->load(['department', 'levelAcademic']);
+        $departments = Department::select('id', 'name')->orderBy('name')->get();
+        $levelAcademics = LevelAccadmic::select('id', 'level_name')->orderBy('level_name')->get();
+        return view('pages.schedules.edit', compact('schedule', 'departments', 'levelAcademics'));
     }
 
     public function update(ScheduleRequest $request, Schedules $schedule)

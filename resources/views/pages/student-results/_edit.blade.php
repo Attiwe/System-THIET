@@ -112,14 +112,14 @@
                     <div class="d-flex align-items-center">
                       <i class="bi bi-file-earmark-pdf text-danger fs-4 me-3"></i>
                       <div>
-                        <div class="fw-semibold">ملف النتيجة الحالي</div>
+                        <div class="fw-semibold">ملف    الامتحانات</div>
                         <small class="text-muted">{{ basename($item->example_file) }}</small>
                       </div>
                     </div>
                     <a href="{{ route('student-results.download', basename($item->example_file)) }}" target="_blank" class="btn btn-outline-primary btn-sm">
                       <i class="bi bi-download me-1"></i>تحميل
                     </a>
-                  </div>
+                  </div>  
                 @else
                   <div class="text-muted">
                     <i class="bi bi-file-x me-2"></i>لا يوجد ملف مرفق
@@ -131,7 +131,7 @@
             <!-- File Upload -->
             <div class="col-12">
               <label class="form-label fw-bold text-dark">
-                <i class="bi bi-file-earmark-arrow-up me-1 text-primary"></i>ملف النتيجة الجديد (اختياري)
+                <i class="bi bi-file-earmark-arrow-up me-1 text-primary"></i>ملف الامتحانات الجديد (اختياري)
               </label>
               <div class="input-group input-group-lg">
                 <span class="input-group-text bg-white border-end-0">

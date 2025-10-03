@@ -1,4 +1,23 @@
 <!-- main-sidebar -->
+<style>
+.main-sidemenu::-webkit-scrollbar {
+    width: 6px;
+}
+.main-sidemenu::-webkit-scrollbar-track {
+    background: transparent;
+}
+.main-sidemenu::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+}
+.main-sidemenu::-webkit-scrollbar-thumb:hover {
+    background-color: #999;
+}
+.main-sidemenu {
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+</style>
 <div class="app-sidebar__overlay  " data-toggle="sidebar"></div>
 <aside class="app-sidebar sidebar-scroll  ">
 	<div class="app-sidebar__user clearfix">
@@ -14,16 +33,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="main-sidemenu ">
+	<div class="main-sidemenu" style="max-height: calc(100vh - 200px); overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #ccc transparent;">
 		<ul class="side-menu  ">
 			<li class="side-item side-item-category"> الموقع </li>
 			<li class="slide">
 				<a class="side-menu__item" href="{{ route('dashboard') }}"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M5 5h4v6H5zm10 8h4v6h-4zM5 17h4v2H5zM15 5h4v2h-4z" opacity=".3" />
-						<path
-							d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
+						<path d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl">الصفحه الرئيسيه </span><span
 						class="badge badge-success side-badge"></span></a>
 			</li>
@@ -31,13 +48,8 @@
 				<a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
 						viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path
-							d="M12 4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm3.5 4c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-7 0c.83 0 1.5.67 1.5 1.5S9.33 11 8.5 11 7 10.33 7 9.5 7.67 8 8.5 8zm3.5 9.5c-2.33 0-4.32-1.45-5.12-3.5h1.67c.7 1.19 1.97 2 3.45 2s2.76-.81 3.45-2h1.67c-.8 2.05-2.79 3.5-5.12 3.5z"
-							opacity=".3" />
-						<circle cx="15.5" cy="9.5" r="1.5" />
-						<circle cx="8.5" cy="9.5" r="1.5" />
-						<path
-							d="M12 16c-1.48 0-2.75-.81-3.45-2H6.88c.8 2.05 2.79 3.5 5.12 3.5s4.32-1.45 5.12-3.5h-1.67c-.69 1.19-1.97 2-3.45 2zm-.01-14C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+						<path d="M4 6h16v2H4zm0 5h16v6H4z" opacity=".3" />
+						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v12h16V6H4zm2 3h12v6H6V9zm2 2v2h8v-2H8z" />
 					</svg><span class="side-menu__label font-weight-bold text-2xl"> اخبار </span><span class="badge  side-badge ">
 					</span></a>
 			</li>
@@ -45,9 +57,8 @@
 				<a class="side-menu__item" data-toggle="slide" href="{{ route('dean_speech.index')}}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M19 5H5v14h14V5zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" opacity=".3" />
-						<path
-							d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm2 0h14v14H5V5zm2 5h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" />
+						<path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" opacity=".3" />
+						<path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2zM12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
 					</svg><span class="side-menu__label h6 font-weight-bold "> كلمة العميد </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -62,10 +73,8 @@
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M3.31 11l2.2 8.01L18.5 19l2.2-8H3.31zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
-							opacity=".3" />
-						<path
-							d="M22 9h-4.79l-4.38-6.56c-.19-.28-.51-.42-.83-.42s-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1zM12 4.8L14.8 9H9.2L12 4.8zM18.5 19l-12.99.01L3.31 11H20.7l-2.2 8zM12 13c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+						<path d="M4 6h16v2H4zm0 5h16v6H4z" opacity=".3" />
+						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v12h16V6H4zm2 3h12v6H6V9zm2 2v2h8v-2H8z" />
 					</svg><span class="side-menu__label h6 font-weight-bold ">تفاصيل الأخبار</span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -88,9 +97,8 @@
 				<a class="side-menu__item" data-toggle="slide" href="{{ route('management.index') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M4 12c0 4.08 3.06 7.44 7 7.93V4.07C7.05 4.56 4 7.92 4 12z" opacity=".3" />
-						<path
-							d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 9.93V19h2.87c-.87.48-1.84.8-2.87.93zM18.24 17H13v-1h5.92c-.2.35-.43.69-.68 1zm1.5-3H13v-1h6.93c-.04.34-.11.67-.19 1z" />
+						<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" opacity=".3" />
+						<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm6 5H6v-.99c.2-.72 3.3-2.01 6-2.01s5.8 1.29 6 2v1z" />
 					</svg><span class="side-menu__label h6 font-weight-bold "> الاداره </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -113,9 +121,8 @@
 				<a class="side-menu__item" data-toggle="slide" href=" #"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3" />
-						<path
-							d="M19.37 12.8l-7.38 5.74-7.37-5.73L3 14.07l9 7 9-7zM12 2L3 9l1.63 1.27L12 16l7.36-5.73L21 9l-9-7zm0 11.47L6.26 9 12 4.53 17.74 9 12 13.47z" />
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" opacity=".3" />
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2zm0 3.08L9.58 9.4 7 9.27l2.5 2.44-.59 3.44L12 13.42l3.09 1.73-.59-3.44L17 9.27l-2.58.13L12 5.08z" />
 					</svg><span class="side-menu__label h6 font-weight-bold "> الاعدادت الادريه </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -123,6 +130,19 @@
 							العامه </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit.index') }}">
 							المراكز و الوحدات </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('organization-structure.index') }}">
+							  الهيكل التنظيمي </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit-objectives.index') }}">
+							  أهداف الوحدات </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management-boards.index') }}">
+							  مجلس الإدارة </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('internal-permanencies.index') }}">
+							     اللائحه الداخليه </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('deputy-directors.index') }}">
+							     مديرونائب الوحده    </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('training-courses.index') }}">
+							     الدورات التدريبية    </a></li>
+					 <li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('important-files.index') }}">	الملفات المهمه   </a></li>	
 
 				</ul>
 			</li>
@@ -130,15 +150,8 @@
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0z" fill="none" />
-						<path
-							d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65 0-1.38 1.12-2.5 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 10 6.5 10s1.5.67 1.5 1.5S7.33 13 6.5 13zm3-4C8.67 9 8 8.33 8 7.5S8.67 6 9.5 6s1.5.67 1.5 1.5S10.33 9 9.5 9zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 6 14.5 6s1.5.67 1.5 1.5S15.33 9 14.5 9zm4.5 2.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5z"
-							opacity=".3" />
-						<path
-							d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.21-.64-1.67-.08-.09-.13-.21-.13-.33 0-.28.22-.5.5-.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9zm4 13h-1.77c-1.38 0-2.5 1.12-2.5 2.5 0 .61.22 1.19.63 1.65.06.07.14.19.14.35 0 .28-.22.5-.5.5-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.14 8 7c0 2.21-1.79 4-4 4z" />
-						<circle cx="6.5" cy="11.5" r="1.5" />
-						<circle cx="9.5" cy="7.5" r="1.5" />
-						<circle cx="14.5" cy="7.5" r="1.5" />
-						<circle cx="17.5" cy="11.5" r="1.5" />
+						<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11h-3v8h-2v-6H9v6H7v-8H4l8-5.16z" opacity=".3" />
+						<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11h-3v8h-2v-6H9v6H7v-8H4l8-5.16z" />
 					</svg><span class="side-menu__label font-weight-bold h6 "> اداره الموقع </span><i
 						class="angle fe fe-chevron-down font-weight-bold h6 "></i></a>
 				<ul class="slide-menu">
@@ -158,9 +171,8 @@
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
-						<path
-							d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-5 7c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10zM4.59 11.59l-.59.58V4h11v7H5.17l-.58.59z" />
+						<path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" opacity=".3" />
+						<path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" />
 					</svg><span class="side-menu__label h6 font-weight-bold"> الاعدادت العامه </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -196,9 +208,8 @@
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M5 5h15v3H5zm12 5h3v9h-3zm-7 0h5v9h-5zm-5 0h3v9H5z" opacity=".3" />
-						<path
-							d="M20 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 19H5v-9h3v9zm7 0h-5v-9h5v9zm5 0h-3v-9h3v9zm0-11H5V5h15v3z" />
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" opacity=".3" />
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2zm0 3.08L9.58 9.4 7 9.27l2.5 2.44-.59 3.44L12 13.42l3.09 1.73-.59-3.44L17 9.27l-2.58.13L12 5.08z" />
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> اعدادت الجوده </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -212,9 +223,8 @@
 				<a class="side-menu__item" href="{{ route('important_link.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M5 5h4v4H5zm10 10h4v4h-4zM5 15h4v4H5zM16.66 4.52l-2.83 2.82 2.83 2.83 2.83-2.83z" opacity=".3" />
-						<path
-							d="M16.66 1.69L11 7.34 16.66 13l5.66-5.66-5.66-5.65zm-2.83 5.65l2.83-2.83 2.83 2.83-2.83 2.83-2.83-2.83zM3 3v8h8V3H3zm6 6H5V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm8-2v8h8v-8h-8zm6 6h-4v-4h4v4z" />
+						<path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.42l-.47.48a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24z" opacity=".3" />
+						<path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.42l-.47.48a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24z" />
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> روابط مهمه </span><span
 						class="badge badge-warning side-badge"> هام </span></a>
 			</li>
@@ -222,12 +232,8 @@
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path
-							d="M12 4C9.24 4 7 6.24 7 9c0 2.85 2.92 7.21 5 9.88 2.11-2.69 5-7 5-9.88 0-2.76-2.24-5-5-5zm0 7.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-							opacity=".3" />
-						<path
-							d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" />
-						<circle cx="12" cy="9" r="2.5" />
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v4z" opacity=".3" />
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v4z" />
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> الاسئله </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -242,67 +248,22 @@
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path
-							d="M10.9 19.91c.36.05.72.09 1.1.09 2.18 0 4.16-.88 5.61-2.3L14.89 13l-3.99 6.91zm-1.04-.21l2.71-4.7H4.59c.93 2.28 2.87 4.03 5.27 4.7zM8.54 12L5.7 7.09C4.64 8.45 4 10.15 4 12c0 .69.1 1.36.26 2h5.43l-1.15-2zm9.76 4.91C19.36 15.55 20 13.85 20 12c0-.69-.1-1.36-.26-2h-5.43l3.99 6.91zM13.73 9h5.68c-.93-2.28-2.88-4.04-5.28-4.7L11.42 9h2.31zm-3.46 0l2.83-4.92C12.74 4.03 12.37 4 12 4c-2.18 0-4.16.88-5.6 2.3L9.12 11l1.15-2z"
-							opacity=".3" />
-						<path
-							d="M12 22c5.52 0 10-4.48 10-10 0-4.75-3.31-8.72-7.75-9.74l-.08-.04-.01.02C13.46 2.09 12.74 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10zm0-2c-.38 0-.74-.04-1.1-.09L14.89 13l2.72 4.7C16.16 19.12 14.18 20 12 20zm8-8c0 1.85-.64 3.55-1.7 4.91l-4-6.91h5.43c.17.64.27 1.31.27 2zm-.59-3h-7.99l2.71-4.7c2.4.66 4.35 2.42 5.28 4.7zM12 4c.37 0 .74.03 1.1.08L10.27 9l-1.15 2L6.4 6.3C7.84 4.88 9.82 4 12 4zm-8 8c0-1.85.64-3.55 1.7-4.91L8.54 12l1.15 2H4.26C4.1 13.36 4 12.69 4 12zm6.27 3h2.3l-2.71 4.7c-2.4-.67-4.35-2.42-5.28-4.7h5.69z" />
+						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" opacity=".3" />
+						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
 					</svg><span class="side-menu__label font-weight-bold h6 text-dark">التعليم الطلاب</span><i class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('schedules.index') }}"> الجداول  الدراسية</a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('study_materials.index') }}"> المواد الدراسية </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-results.index') }}"> نتائج الطلاب </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('military-education.index') }}"> التربية العسكرية </a></li>
- 					<li><a class="slide-item" href="{{ url('/' . $page = 'flex') }}">Flex</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'height') }}">Height</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'margin') }}">Margin</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'padding') }}">Padding</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'position') }}">Position</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'width') }}">Width</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'extras') }}">Extras</a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-rights.index') }}"> حقوق الطلاب </a></li>
 				</ul>
 			</li>
-			<li class="slide">
-				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
-						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M6 20h12V10H6v10zm6-7c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" opacity=".3" />
-						<path
-							d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
-					</svg><span class="side-menu__label">Custom Pages</span><i class="angle fe fe-chevron-down"></i></a>
-				<ul class="slide-menu">
-					<li><a class="slide-item" href="{{ url('/' . $page = 'signin') }}">Sign In</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'signup') }}">Sign Up</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'forgot') }}">Forgot Password</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'reset') }}">Reset Password</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'lockscreen') }}">Lockscreen</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = 'underconstruction') }}">UnderConstruction</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = '404') }}">404 Error</a></li>
-					<li><a class="slide-item" href="{{ url('/' . $page = '500') }}">500 Error</a></li>
-				</ul>
-			</li>
-			<li class="slide ">
-				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
-						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path
-							d="M5 9h14V5H5v4zm2-3.5c.83 0 1.5.67 1.5 1.5S7.83 8.5 7 8.5 5.5 7.83 5.5 7 6.17 5.5 7 5.5zM5 19h14v-4H5v4zm2-3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"
-							opacity=".3" />
-						<path
-							d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-1 6H5v-4h14v4zm-12-.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zm-1 6H5V5h14v4zM7 8.5c.83 0 1.5-.67 1.5-1.5S7.83 5.5 7 5.5 5.5 6.17 5.5 7 6.17 8.5 7 8.5z" />
-					</svg><span class="side-menu__label">Submenus</span><i class="angle fe fe-chevron-down"></i></a>
-				<ul class="slide-menu">
-					<li class="sub-slide">
-						<a class="sub-side-menu__item" data-toggle="sub-slide" href="{{ url('/' . $page = '#') }}"><span
-								class="sub-side-menu__label">Level1</span><i class="sub-angle fe fe-chevron-down"></i></a>
-						<ul class="sub-slide-menu">
-							<li><a class="sub-slide-item" href="{{ url('/' . $page = '#') }}">Level01</a></li>
-							<li><a class="sub-slide-item" href="{{ url('/' . $page = '#') }}">Level02</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
+			<br>
+			<br>
 		</ul>
+		<br>
+		<br>
 	</div>
 </aside>
 <!-- main-sidebar -->

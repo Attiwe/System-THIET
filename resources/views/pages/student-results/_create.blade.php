@@ -104,7 +104,7 @@
             <!-- File Upload -->
             <div class="col-12">
               <label class="form-label fw-bold text-dark">
-                <i class="bi bi-file-earmark-arrow-up me-1 text-primary"></i>ملف النتيجة
+                <i class="bi bi-file-earmark-arrow-up me-1 text-primary"></i>ملف الامتحانات
               </label>
               <div class="input-group input-group-lg">
                 <span class="input-group-text bg-white border-end-0">

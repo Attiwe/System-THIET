@@ -8,6 +8,11 @@ use App\Http\Controllers\Dashboard\ScholarshipsController;
 use App\Http\Controllers\Dashboard\StudyMaterialsController;
 use App\Http\Controllers\Dashboard\StudentResultController;
 use App\Http\Controllers\Dashboard\MilitaryEducationController;
+use App\Http\Controllers\Dashboard\StudentRightsController;
+use App\Http\Controllers\Dashboard\OrganizationStructureController;
+use App\Http\Controllers\Dashboard\UnitObjectivesController;
+use App\Http\Controllers\Dashboard\ManagementBoardsController;
+use App\Http\Controllers\Dashboard\InternalPermanencyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
@@ -29,6 +34,9 @@ use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\UnitController;
 use App\Http\Controllers\Dashboard\InstituteBoardMemberController;
 use App\Http\Controllers\Dashboard\ImportantLinkController;
+use App\Http\Controllers\Dashboard\DeputyDirectorController;
+use App\Http\Controllers\Dashboard\ImportantFilesController;
+use App\Http\Controllers\Dashboard\TrainingCourseController;
 use App\Http\Controllers\Dashboard\FaqCategoriesController;
 use App\Http\Controllers\Dashboard\FaqAskedQuestionsController;
 use App\Http\Controllers\Dashboard\ActivitieController;
@@ -62,6 +70,48 @@ Route::resource('academic_years', AcademicYearController::class)->names('academi
 
 //=====================Route Category Management==============================
 Route::resource('category_management', CategoryManagementController::class)->names('category_management')->except(['show']);
+
+//==================== Route Management Boards ========================
+Route::resource('management-boards', ManagementBoardsController::class)->names('management-boards')->except(['show']);
+Route::get('/management-boards/file/{filename}', function ($filename) {
+    $filePath = 'public/management-boards/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('management-boards.download');
+
+//==================== Route Internal Permanencies ====================
+Route::resource('internal-permanencies', InternalPermanencyController::class)->names('internal-permanencies')->except(['show']);
+Route::get('/internal-permanencies/file/{filename}', function ($filename) {
+    $filePath = 'public/internal-permanencies/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('internal-permanencies.download');
+
+//==================== Route Deputy Directors =========================
+Route::resource('deputy-directors', DeputyDirectorController::class)->names('deputy-directors')->except(['show']);
+
+//==================== Route Important Files ==========================
+Route::resource('important-files', ImportantFilesController::class)->names('important-files')->except(['show']);
+Route::get('/important-files/file/{filename}', function ($filename) {
+    $filePath = 'public/important-files/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('important-files.download');
+
+//==================== Route Training Courses =========================
+Route::resource('training-courses', TrainingCourseController::class)->names('training-courses')->except(['show']);
 
 //=====================Route Setting========================================
 Route::resource('setting', SettingController::class)->names('setting')->except(['show']);
@@ -140,7 +190,8 @@ Route::resource('faqs', FaqsController::class)->names('faqs')->except(['show']);
 Route::resource('scholarships', ScholarshipsController::class)->names('scholarships')->except(['show']);
 
 //==================== Route Schedules ========================
-Route::resource('schedules', SchedulesController::class)->names('schedules')->except(['show']);
+Route::resource('schedules', SchedulesController::class)->names('schedules');
+Route::get('/schedules/create/page', [SchedulesController::class, 'createPage'])->name('schedules.create.page');
 
 //==================== Route Study Materials ========================
 Route::resource('study_materials', StudyMaterialsController::class)->names('study_materials')->except(['show']);
@@ -169,6 +220,30 @@ Route::get('/student-results/file/{filename}', function ($filename) {
 
 //==================== Route Military Education ========================
 Route::resource('military-education', MilitaryEducationController::class)->names('military-education');
+
+//==================== Route Student Rights ========================
+Route::resource('student-rights', StudentRightsController::class)->names('student-rights');
+
+//==================== Route Organization Structure ========================
+Route::resource('organization-structure', OrganizationStructureController::class)->names('organization-structure');
+
+// File download route for organization structure
+Route::get('/organization-structure/file/{filename}', function ($filename) {
+    $filePath = 'public/organization-structures/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('organization-structure.download');
+
+//==================== Route Unit Objectives ========================
+Route::resource('unit-objectives', UnitObjectivesController::class)->names('unit-objectives');
+
+ 
+ 
+
 
 Route::get('/', function () {
   return view('login-test.test-login');

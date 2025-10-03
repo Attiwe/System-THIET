@@ -41,9 +41,12 @@
     <div class="table-responsive mt-3">
       <h2 class="text-primary mb-3">📋 الجداول الدراسيه</h2>
 
-      <div class="d-flex justify-content-center ">
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          <i class="bi bi-plus-circle"></i> <strong class="h5 font-weight-bold"> إضافة جدول</strong>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="{{ route('schedules.create.page') }}" class="btn btn-success btn-lg">
+          <i class="bi bi-plus-circle me-2"></i>إضافة جدول جديد
+        </a>
+        <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <i class="bi bi-plus-square me-2"></i>إضافة سريع
         </button>
       </div>
 
@@ -76,13 +79,18 @@
               <td class="fw-bold text-dark">{{ $item-> academic_year }}</td>
               <td class="fw-bold text-dark">{{ $item-> class }}</td>
               <td class="fw-bold text-muted">
-                <span class="badge bg-warning text-dark">
+                <div class="d-flex gap-2">
+                  <a href="{{ route('schedules.show', $item->id) }}" class="btn btn-info btn-sm">
+                    <i class="bi bi-eye"></i>
+                  </a>
                   @if ($item->file_path)
-                    <a href="{{ asset('image/schedule/' . $item->file_path) }}" target="_blank"><i class="bi bi-file-earmark-text"></i>  ملف </a>
+                    <a href="{{ asset('image/schedule/' . $item->file_path) }}" target="_blank" class="btn btn-outline-warning btn-sm">
+                      <i class="bi bi-file-earmark-text"></i> ملف
+                    </a>
                   @else
-                    لا يوجد ملف
+                    <span class="badge bg-secondary">لا يوجد ملف</span>
                   @endif
-                </span>
+                </div>
              </td>
 
               <td>
@@ -92,6 +100,11 @@
                     <i class="bi bi-gear"></i> خيارات
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                      <a class="dropdown-item" href="{{ route('schedules.show', $item->id) }}">
+                        <i class="bi bi-eye text-info"></i> عرض
+                      </a>
+                    </li>
                     <li>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal"

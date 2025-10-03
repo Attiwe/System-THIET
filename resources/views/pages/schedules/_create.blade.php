@@ -8,7 +8,7 @@
       <div class="modal-header bg-gradient text-white rounded-top-4"
         style="background: linear-gradient(135deg,#0d6efd,#0b5ed7);">
         <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="staticBackdropLabel">
-          <i class="bi bi-calendar-week"></i> إضافة جدول
+          <i class="bi bi-plus-square"></i> إضافة سريع - جدول دراسي
         </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -24,10 +24,10 @@
               <label for="type" class="form-label fw-bold">
                 <i class="bi bi-calendar-date text-primary"></i> النوع
               </label>
-              <select name="type" id="type" class="form-select form-select-lg shadow-sm">
+              <select name="type" id="type" class="form-select form-select-lg shadow-sm" required>
                 <option value="">اختر النوع</option>
                 <option value="جداول الامتحانات">جداول الامتحانات</option>
-                <option value="جداول الدرسه">جداول الدراسه</option>
+                <option value="جداول الدرسه">جداول الدرسه</option>
                 <option value="غير ذالك">غير ذالك</option>
               </select>
             </div>
@@ -36,8 +36,8 @@
               <label for="class" class="form-label fw-bold">
                 <i class="bi bi-calendar-date text-primary"></i> الترم الدراسي
               </label>
-              <select name="class" id="class" class="form-select form-select-lg shadow-sm">
-                <option value="">اختر النوع</option>
+              <select name="class" id="class" class="form-select form-select-lg shadow-sm" required>
+                <option value="">اختر الترم</option>
                 <option value="الترم الثاني">الترم الثاني</option>
                 <option value="الترم الاول">الترم الاول</option>
                </select>
@@ -108,8 +108,17 @@
         </button>
       </div>
       </form>
-
-
+      </div>
+      
+      <!-- Footer -->
+      <div class="modal-footer">
+        <a href="{{ route('schedules.create.page') }}" class="btn btn-outline-primary">
+          <i class="bi bi-window me-2"></i>فتح في صفحة منفصلة
+        </a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="bi bi-x-circle me-2"></i>إغلاق
+        </button>
+      </div>
     </div>
   </div>
 </div>
