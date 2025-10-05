@@ -181,6 +181,10 @@
 							اضافه عضو هيئه تدريس </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('office_students.index') }}">
 							اضافه طالب مكتبه </a></li>
+
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('masterisDoctoralTheses.index') }}">
+							  رسائل الدكتوراه والماجستير </a></li>
+
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('featured_work.index') }}">
 							انشطه الطلابية </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('activities.index') }}">
@@ -208,6 +212,9 @@
 				 
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('category_management.index') }}">
 							بيانات الاداره </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('research_projects.index') }}">    المشاريع البحثية </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('institute_requirements.index') }}">    المتطلبات المعهد للبرامج </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('program_requirements.index') }}">    المتطلبات  البرنامج </a></li>
 				</ul>
 			</li>
 			<li class="slide">
@@ -247,6 +254,8 @@
 							الاسئله الشائعة </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqAskedQuestions.index') }}">
 							الاسئله الشائعة </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('labs.index') }}">    المعامل </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('scientific_trips.index') }}">    الرحلات العلمية </a></li>
 				</ul>
 			</li>
 
@@ -258,11 +267,18 @@
 						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
 					</svg><span class="side-menu__label font-weight-bold h6 text-dark">التعليم الطلاب</span><i class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
+
+				<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('studentProjects.index') }}"> المشاريع الطلابية </a></li>
+
+				 <li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('classTrainings.index') }}">    التدريب الصيفي </a></li>  
+
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('schedules.index') }}"> الجداول  الدراسية</a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('study_materials.index') }}"> المواد الدراسية </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-results.index') }}"> نتائج الطلاب </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('military-education.index') }}"> التربية العسكرية </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-rights.index') }}"> حقوق الطلاب </a></li>
+				 
+					 
 				</ul>
 			</li>
 			<br>

@@ -2,9 +2,9 @@
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content" style="border-radius: 1rem; border: none;">
-      <div class="modal-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 1rem 1rem 0 0;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #667eea 0%,rgb(143, 185, 162) 100%); color: white; border-radius: 1rem 1rem 0 0;">
         <h5 class="modal-title fw-bold" id="createModalLabel">
-          <i class="bi bi-plus-square me-2"></i>إضافة سريع - عضو هيئة تدريس
+          <i class="bi bi-plus-square me-2"></i>  إضافة سريع - عضو هيئة تدريس
         </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -15,7 +15,7 @@
           <div class="row g-3">
             <div class="col-md-4">
               <label for="name" class="form-label fw-bold text-primary">
-                <i class="bi bi-person-fill me-1"></i>اسم عضو هيئة التدريس
+                <i class="bi bi-person-fill me-1"></i>  اسم عضو هيئة التدريس
               </label>
               <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"
                 placeholder="أدخل اسم العضو" required>
@@ -40,6 +40,8 @@
                 value="{{ old('appointment_date') }}">
             </div>
           </div>
+
+          <br>
 
           <div class="row g-3">
             <div class="col-md-4">
@@ -76,7 +78,7 @@
               </select>
             </div>
           </div>
-
+          <br>
           <div class="row g-3">
             <div class="col-md-4">
               <label for="username" class="form-label fw-bold text-primary">
@@ -102,17 +104,21 @@
                 placeholder="أدخل كلمة المرور" required>
             </div>
           </div>
+          <br>
 
           <div class="row g-3">
             <div class="col-md-6">
+              
               <label for="phone" class="form-label fw-bold text-primary">
                 <i class="bi bi-phone me-1"></i>رقم الهاتف
-              </label>
+              </label> <small  class="text-danger"> يرجى ادخال رقم الهاتف بشكل صحيح </small>
               <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"
                 placeholder="أدخل رقم الهاتف">
             </div>
+            <br>
 
-            <div class="col-md-6">
+            <div class="col-md-6 ">
+              <br>
               <label for="facebook" class="form-label fw-bold text-primary">
                 <i class="bi bi-facebook me-1"></i>فيسبوك
               </label>
@@ -120,7 +126,8 @@
                 placeholder="https://facebook.com/username">
             </div>
           </div>
-
+          <br>
+          <br>
           <div class="row g-3">
             <div class="col-md-4">
               <label for="personal_image" class="form-label fw-bold text-primary">
@@ -129,7 +136,7 @@
               <input type="file" class="form-control" id="personal_image" name="personal_image" accept="image/*">
               <div class="form-text">صيغ مقبولة: JPG, PNG, GIF</div>
             </div>
-
+          <br>
             <div class="col-md-4">
               <label for="resume" class="form-label fw-bold text-primary">
                 <i class="bi bi-file-earmark-pdf me-1"></i>السيرة الذاتية
@@ -155,15 +162,15 @@
               <i class="bi bi-arrow-clockwise me-2"></i>إعادة تعيين
             </button>
           </div>
-
+          <br>
         </form>
       </div>
       <div class="modal-footer">
         <a href="{{ route('facultyMembers.create.page') }}" class="btn btn-outline-primary">
-          <i class="bi bi-window me-2"></i>فتح في صفحة منفصلة
+          <i class="bi bi-window me-2"></i>  فتح في صفحة منفصلة
         </a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          <i class="bi bi-x-circle me-2"></i>إغلاق
+          <i class="bi bi-x-circle me-2"></i>  إغلاق
         </button>
       </div>
     </div>

@@ -44,6 +44,14 @@ use App\Http\Controllers\Dashboard\FaqCategoriesController;
 use App\Http\Controllers\Dashboard\FaqAskedQuestionsController;
 use App\Http\Controllers\Dashboard\ActivitieController;
 use App\Http\Controllers\Dashboard\InstituteController;
+use App\Http\Controllers\Dashboard\ResearchProjectController;
+use App\Http\Controllers\Dashboard\InstituteRequirementController;
+use App\Http\Controllers\Dashboard\ProgramRequirementController;
+use App\Http\Controllers\Dashboard\LabController;
+use App\Http\Controllers\Dashboard\ScientificTripController;
+use App\Http\Controllers\Dashboard\MasterisDoctoralThesesController;
+use App\Http\Controllers\Dashboard\StudentProjectController;
+use App\Http\Controllers\Dashboard\ClassTrainingController;
 
 
 //========================Route Dashboard (Home)=======================
@@ -262,9 +270,75 @@ Route::get('/organization-structure/file/{filename}', function ($filename) {
 //==================== Route Unit Objectives ========================
 Route::resource('unit-objectives', UnitObjectivesController::class)->names('unit-objectives');
 
+//==================== Route Research Projects ========================
+Route::resource('research_projects', ResearchProjectController::class)->names('research_projects')->except(['show']);
+Route::get('/research_projects/file/{filename}', function ($filename) {
+    $filePath = 'public/research_projects/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('research_projects.download');
+
+//==================== Route Institute Requirements ========================
+Route::resource('institute_requirements', InstituteRequirementController::class)->names('institute_requirements')->except(['show']);
+Route::get('/institute_requirements/file/{filename}', function ($filename) {
+    $filePath = 'public/institute_requirements/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('institute_requirements.download');
+
+//==================== Route Program Requirements ========================
+Route::resource('program_requirements', ProgramRequirementController::class)->names('program_requirements')->except(['show']);
+Route::get('/program_requirements/file/{filename}', function ($filename) {
+    $filePath = 'public/program_requirements/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('program_requirements.download');
+
+//==================== Route Labs ========================
+Route::resource('labs', LabController::class)->names('labs')->except(['show']);
+Route::get('/labs/file/{filename}', function ($filename) {
+    $filePath = 'public/labs/' . $filename;
+    
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+    
+    return Storage::response($filePath);
+})->name('labs.download');
+
+//==================== Route Scientific Trips ========================
+Route::resource('scientific_trips', ScientificTripController::class)->names('scientific_trips')->except(['show']);
+
+//==================== Route Masteris Doctoral Theses ========================
+Route::resource('masterisDoctoralTheses', MasterisDoctoralThesesController::class)->names('masterisDoctoralTheses');
+Route::get('/masterisDoctoralTheses/create/page', [MasterisDoctoralThesesController::class, 'createPage'])->name('masterisDoctoralTheses.create.page');
+Route::get('/masterisDoctoralTheses/pdf/{id}', [MasterisDoctoralThesesController::class, 'showThesisPdf'])->name('masterisDoctoralTheses.showPdf');
+
+//==================== Route Student Projects ========================
+Route::resource('studentProjects', StudentProjectController::class)->names('studentProjects');
+Route::get('/studentProjects/create/page', [StudentProjectController::class, 'createPage'])->name('studentProjects.create.page');
+Route::get('/studentProjects/image/{id}', [StudentProjectController::class, 'showImage'])->name('studentProjects.showImage');
+Route::get('/studentProjects/pdf/{id}', [StudentProjectController::class, 'showPdf'])->name('studentProjects.showPdf');
+
+//==================== Route Class Trainings ========================
+Route::resource('classTrainings', ClassTrainingController::class)->names('classTrainings')->except(['show']);
+Route::get('/classTrainings/image/{id}', [ClassTrainingController::class, 'showImage'])->name('classTrainings.showImage');
+
  
  
- 
+
 
 
 Route::get('/', function () {
