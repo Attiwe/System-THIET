@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if(!Schema::hasTable('department_heads')){
         Schema::create('department_heads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
-            $table->string('name');
-             $table->string('description')->nullable();
+            $table->foreignId('faculty_members_id')->constrained('faculty_members')->cascadeOnDelete();
             $table->timestamps();
         });
     }
+    }
+
 
     /**
      * Reverse the migrations.

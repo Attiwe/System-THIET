@@ -12,11 +12,11 @@ class LecturesDecisionsController extends Controller
 {
     public function index()
     {
-        $items = LecturesDecisions::with(['unit:id,name'])->latest()->get();
+        $items = LecturesDecisions::with(['unit:id,name'])->latest()->paginate(10);
         $units = cache()->remember('units.id_name', 300, function () {
             return Unit::select('id', 'name')->get();
         });
-        return view('pages.lectures_decisions.index', compact('items', 'units'));
+        return view('pages.lectures_decisions.index', compact('items', 'units'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function store(LecturesDecisionsRequest $request)

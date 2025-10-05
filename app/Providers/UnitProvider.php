@@ -11,13 +11,13 @@ class UnitProvider extends ServiceProvider
     {
     }
 
-    public function boot(): void
-    {
-        $unit = Unit::first();
+    // public function boot(): void
+    // {
+    //     $unit = Unit::first();
 
-        view()->share([
-            'unitVision' => optional($unit)->vision,
-            'unitMessage' => optional($unit)->message,
-        ]);
-    }
+    //     view()->share([
+    //         'unitVision' => optional($unit)->vision,
+    //         'unitMessage' => optional($unit)->message,
+    //     ]);
+    // }
 }

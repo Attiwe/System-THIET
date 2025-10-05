@@ -13,6 +13,8 @@ use App\Http\Controllers\Dashboard\OrganizationStructureController;
 use App\Http\Controllers\Dashboard\UnitObjectivesController;
 use App\Http\Controllers\Dashboard\ManagementBoardsController;
 use App\Http\Controllers\Dashboard\InternalPermanencyController;
+use App\Http\Controllers\Dashboard\DepartmentHeadController;
+use App\Http\Controllers\Dashboard\DepartmentPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
@@ -68,6 +70,12 @@ Route::get('/researches/{id}', [FacultyMembersController::class, 'showResearches
 
 //=====================Route Academic Year==============================
 Route::resource('academic_years', AcademicYearController::class)->names('academic_years')->except(['show']);
+
+//=====================Route Department Head==============================
+Route::resource('department_heads', DepartmentHeadController::class)->names('department_heads')->except(['show']);
+
+//=====================Route Department Plan==============================
+Route::resource('department_plans', DepartmentPlanController::class)->names('department_plans')->except(['show']);
 
 //=====================Route Category Management==============================
 Route::resource('category_management', CategoryManagementController::class)->names('category_management')->except(['show']);
@@ -254,6 +262,7 @@ Route::get('/organization-structure/file/{filename}', function ($filename) {
 //==================== Route Unit Objectives ========================
 Route::resource('unit-objectives', UnitObjectivesController::class)->names('unit-objectives');
 
+ 
  
  
 

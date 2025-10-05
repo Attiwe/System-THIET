@@ -187,6 +187,10 @@
 							الانشطه </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="#">
 							اضافه انشطه رعايه الشباب </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('department_heads.index') }}">
+							  رؤساء الاقسام </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('department_plans.index') }}">
+							خطط الأقسام </a></li>
 				</ul>
 			</li>
 			<li class="slide">
@@ -201,6 +205,7 @@
 				<ul class="slide-menu">
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('academic_years.index')  }}">
 							السنوات الدراسية </a></li>
+				 
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('category_management.index') }}">
 							بيانات الاداره </a></li>
 				</ul>

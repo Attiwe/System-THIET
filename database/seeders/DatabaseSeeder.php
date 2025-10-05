@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\DepartmentSeed;
 use Database\Seeders\LevelAccadmicSeed;
+use Database\Seeders\DepartmentPlanSeed;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DepartmentSeed::class,
             LevelAccadmicSeed::class,
+            DepartmentPlanSeed::class,
         ]);
 
     }
