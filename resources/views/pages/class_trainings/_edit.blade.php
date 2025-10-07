@@ -18,7 +18,7 @@
           @csrf
           @method('PUT')
 
-          <!-- القسم -->
+          <!--القسم -->
           <div class="mb-3">
             <label for="department_id_{{ $item->id }}" class="form-label fw-bold">
               <i class="bi bi-building text-primary"></i> القسم

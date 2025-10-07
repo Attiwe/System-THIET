@@ -52,6 +52,8 @@ use App\Http\Controllers\Dashboard\ScientificTripController;
 use App\Http\Controllers\Dashboard\MasterisDoctoralThesesController;
 use App\Http\Controllers\Dashboard\StudentProjectController;
 use App\Http\Controllers\Dashboard\ClassTrainingController;
+use App\Http\Controllers\Dashboard\AuthorController;
+use App\Http\Controllers\Dashboard\PublishingController;
 
 
 //========================Route Dashboard (Home)=======================
@@ -335,6 +337,12 @@ Route::get('/studentProjects/pdf/{id}', [StudentProjectController::class, 'showP
 //==================== Route Class Trainings ========================
 Route::resource('classTrainings', ClassTrainingController::class)->names('classTrainings')->except(['show']);
 Route::get('/classTrainings/image/{id}', [ClassTrainingController::class, 'showImage'])->name('classTrainings.showImage');
+
+//==================== Route Authors ========================
+Route::resource('authors', AuthorController::class)->names('authors');
+
+//==================== Route Publishings ========================
+Route::resource('publishings', PublishingController::class)->names('publishings');
 
  
  

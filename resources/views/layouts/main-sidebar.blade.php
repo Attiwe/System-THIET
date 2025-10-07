@@ -164,6 +164,7 @@
 							صوره المكتبه واراء الطلاب </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('articles.index') }}"> المقالات و
 							المشاركات </a></li>
+					 
 				</ul>
 			</li>
 
@@ -279,6 +280,21 @@
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-rights.index') }}"> حقوق الطلاب </a></li>
 				 
 					 
+				</ul>
+			</li>
+
+			<li class="slide">
+				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
+						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+						<path d="M0 0h24v24H0V0z" fill="none" />
+						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" opacity=".3" />
+						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+					</svg><span class="side-menu__label font-weight-bold h6 text-dark">  المكتبه </span><i class="angle fe fe-chevron-down"></i></a>
+				<ul class="slide-menu">
+
+				<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('authors.index') }}"> المؤلفين </a></li>
+				<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishings.index') }}"> دور النشر </a></li>
+ 
 				</ul>
 			</li>
 			<br>
