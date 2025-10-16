@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('institute_board_members', function (Blueprint $table) {
             $table->id();
             $table->foreignId('faculty_members_id')->constrained('faculty_members')->cascadeOnDelete();
-            $table->enum('type', ['دكتور', 'معيد' ,'رئيس مجلس اداره','العميد']);
+            $table->enum('type', ['رئيس مجلس اداره','عميد المعهد','وكيل المعهد لشؤون المجتمع']);
+            $table->text('description');
             $table->softDeletes();
             $table->timestamps();
         });

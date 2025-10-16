@@ -62,6 +62,7 @@
             <th scope="col" class="text-primary">#</th>
             <th scope="col" class="text-primary text-wrap" style="white-space: normal; max-width: 250px; text-align:right;font-size: 18px;"><i class="bi bi-calendar-week"></i> اسم العضو</th>
             <th scope="col" class="text-primary text-wrap" style="white-space: normal; max-width: 250px; text-align:right;font-size: 18px;"><i class="bi bi-check-circle"></i> الدرجة</th>
+            <th scope="col" class="text-primary text-wrap" style="white-space: normal; max-width: 300px; text-align:right;font-size: 18px;"><i class="bi bi-file-text"></i> الوصف</th>
 
             <th scope="col" class="text-primary"><i class="bi bi-gear" style="font-size: 20px ;"></i> الإعدادات</th>
           </tr>
@@ -73,6 +74,13 @@
               <td class="fw-bold text-dark"> <a href="{{ route('facultyMembers.index', $item->facultyMembers->id) }}" target="_blank" > <strong class="text-success " style="font-size: 18px;"> {{ $item->facultyMembers->username }} </strong> <i class="bi bi-arrow-right"></i></a> </td>
               <td class="fw-bold text-dark">
                 {{ $item->type }}
+              </td>
+              <td class="fw-bold text-dark" style="max-width: 300px; text-align: right; word-wrap: break-word;">
+                @if($item->description)
+                  <span class="text-info">{{ Str::limit($item->description, 100) }}</span>
+                @else
+                  <span class="text-muted">لا يوجد وصف</span>
+                @endif
               </td>
               <td class="fw-bold text-dark">
                 <div class="dropdown">

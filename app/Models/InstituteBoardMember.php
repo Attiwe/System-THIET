@@ -14,6 +14,7 @@ class InstituteBoardMember extends Model
     protected $fillable = [
         'faculty_members_id',
         'type',
+        'description',
     ];
     public function facultyMembers()
     {

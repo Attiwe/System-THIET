@@ -10,7 +10,7 @@ class Institute extends Model
 
     protected $fillable = [
         'setting_id',
-        'unit_id',
+        'unit_institute_id',
         'vidio',
         'word',
         'muhadara',
@@ -32,8 +32,8 @@ class Institute extends Model
         return $this->belongsTo(Setting::class);
     }
 
-    public function unit()
+    public function unitInstitute()
     {
-        return $this->belongsTo(Unit::class);
+        return $this->belongsTo(unitInstitute::class);
     }
 }

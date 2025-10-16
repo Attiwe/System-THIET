@@ -47,6 +47,15 @@ return [
             'report' => false,
         ],
 
+        'unit_institutes' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/unit_institutes'),
+            'url' => env('APP_URL') . '/storage/unit_institutes',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
 
 
         'news_image' => [

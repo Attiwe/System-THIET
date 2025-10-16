@@ -54,6 +54,9 @@ use App\Http\Controllers\Dashboard\StudentProjectController;
 use App\Http\Controllers\Dashboard\ClassTrainingController;
 use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\PublishingController;
+use App\Http\Controllers\Dashboard\UnitInstitutesController;
+use App\Http\Controllers\Dashboard\AcademicCouncilController;
+
 
 
 //========================Route Dashboard (Home)=======================
@@ -344,7 +347,15 @@ Route::resource('authors', AuthorController::class)->names('authors');
 //==================== Route Publishings ========================
 Route::resource('publishings', PublishingController::class)->names('publishings');
 
- 
+//==================== Route Unit Institutes ========================
+Route::resource('about/institute', UnitInstitutesController::class)->names('unit_institutes');
+
+//==================== Route Academic Councils ========================
+Route::resource('academic/councils', AcademicCouncilController::class)->names('academic.councils');
+Route::get('/academic/councils/pdf/{id}', [AcademicCouncilController::class, 'showPdf'])->name('academic.councils.showPdf');
+Route::get('/academic/councils/download/{id}', [AcademicCouncilController::class, 'downloadPdf'])->name('academic.councils.download');
+
+  
  
 
 

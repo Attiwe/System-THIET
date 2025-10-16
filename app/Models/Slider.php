@@ -14,4 +14,9 @@ class Slider extends Model
         'image_slider',
         'is_active',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
 }

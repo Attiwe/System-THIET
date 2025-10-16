@@ -6,10 +6,12 @@ use App\Models\Slider;
 
 class SlidersRepository
 {
+    
     public function getAll()
     {
-        return Slider::latest()->get();
+        return Slider::query()->latest();
     }
+
     public function checkId($id)
     {
         return Slider::find($id);

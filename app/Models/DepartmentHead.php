@@ -10,6 +10,9 @@ class DepartmentHead extends Model
     protected $fillable = [
         'department_id',
         'faculty_members_id',   
+        'scientific_experiences',
+        'achievements',
+        'name',
     ];
     public function department()
     {

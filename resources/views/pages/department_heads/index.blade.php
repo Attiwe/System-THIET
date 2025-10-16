@@ -85,6 +85,9 @@
             <th scope="col">#</th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-building"></i> القسم</th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-person-badge"></i> رئيس القسم</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-person"></i>  المنصب</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-mortarboard"></i> الخبرات العلمية</th>
+            <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-trophy"></i> الإنجازات</th>
             <th scope="col" class="text-primary" style="font-size: 18px;"><i class="bi bi-gear"></i> الإعدادات</th>
           </tr>
         </thead>
@@ -94,6 +97,9 @@
               <td class="fw-bold text-dark">{{ $loop->iteration }}</td>
               <td class="fw-bold text-dark">{{ $item->department->name ?? 'غير محدد' }}</td>
               <td class="fw-bold text-dark">{{ $item->facultyMembers->name ?? 'غير محدد' }}</td>
+              <td class="fw-bold text-dark">{{ $item->name ?? 'غير محدد' }}</td>
+              <td class="text-muted" style="max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="{{ $item->scientific_experiences }}">{{ $item->scientific_experiences }}</td>
+              <td class="text-muted" style="max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="{{ $item->achievements }}">{{ $item->achievements }}</td>
               <td>
                 <div class="dropdown">
                   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"

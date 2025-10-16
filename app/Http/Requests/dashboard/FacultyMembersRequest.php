@@ -35,9 +35,9 @@ class FacultyMembersRequest extends FormRequest
             'password' => ['required', 'string', 'min:8'],
             'phone' => ['nullable', 'numeric' ],
             'facebook' => ['nullable', 'string', 'max:255'],
-            'personal_image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'resume' => ['required', 'file', 'mimes:pdf', 'max:2048'],
-            'researches' => ['nullable', 'file', 'mimes:pdf', 'max:2048'],
+            'personal_image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,png,webp', 'max:2048'],
+            'resume' => ['required', 'file', 'mimes:pdf', 'max: 20480'],
+            'researches' => ['nullable', 'file', 'mimes:pdf', 'max: 20480'],
         ];
 
         if($this->isMethod('post') || $this->isMethod('put')){
@@ -45,14 +45,14 @@ class FacultyMembersRequest extends FormRequest
             $data['username'] = ['required', 'string', 'max:255'];
             $data['email'] = ['required', 'email', 'max:255'];
             $data['password'] = ['required', 'string', 'min:8'];
-            $data['personal_image'] = ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'];
-            $data['resume'] = ['nullable', 'file', 'mimes:pdf', 'max:2048'];
-            $data['researches'] = ['nullable', 'file', 'mimes:pdf', 'max:2048'];
+            $data['personal_image'] = ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,png,webp', 'max:2048'];
+            $data['resume'] = ['required', 'file', 'mimes:pdf,doc,docx', 'max: 20480'];
+            $data['researches'] = ['nullable', 'file', 'mimes:pdf,doc,docx', 'max: 20480'];
 
             
         }
 
-        return $data;
+        return $data;     
     }
 
 
@@ -82,14 +82,14 @@ class FacultyMembersRequest extends FormRequest
             'phone.numeric' => 'الهاتف يجب ان يكون رقم',
             'facebook.string' => 'فيسبوك يجب ان يكون حروف فقط',
             'personal_image.image' => 'الصورة الشخصية يجب ان تكون صورة',
-            'personal_image.mimes' => 'الصورة الشخصية يجب ان تكون ملف من نوع jpeg,png,jpg,gif',
-            'personal_image.max' => 'الحد الاقصى للصورة الشخصية 2048 ميغابايت',
+            'personal_image.mimes' => 'الصورة الشخصية يجب ان تكون ملف من نوع jpeg,png,jpg,gif,webp',
+            'personal_image.max' => 'الحد الاقصى للصورة الشخصية 20480 ميغابايت',
             'resume.file' => 'السيمة يجب ان تكون ملف',
-            'resume.mimes' => 'السيمة يجب ان تكون ملف من نوع pdf',
-            'resume.max' => 'الحد الاقصى للسيمة 2048 ميغابايت',
+            'resume.mimes' => 'السيمة يجب ان تكون ملف من نوع pdf,doc,docx,jpg,jpeg,png,gif,webp',
+            'resume.max' => 'الحد الاقصى للسيمة 20480 ميغابايت',
             'researches.file' => 'الابحاث يجب ان تكون ملف',
-            'researches.mimes' => 'الابحاث يجب ان تكون ملف من نوع pdf',
-            'researches.max' => 'الحد الاقصى للابحاث 2048 ميغابايت',
+            'researches.mimes' => 'الابحاث يجب ان تكون ملف من نوع pdf,doc,docx,jpg,jpeg,png,gif,webp',
+            'researches.max' => 'الحد الاقصى للابحاث 20480 ميغابايت',
         ];
     }
 

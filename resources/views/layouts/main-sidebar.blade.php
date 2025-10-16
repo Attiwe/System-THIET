@@ -83,6 +83,14 @@
 
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('new_elements.index') }}"> عناصر
 							الأخبار </a></li>
+
+							<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit_institutes.index') }}">
+							عن المعهد </a></li>
+
+				 
+
+							 
+
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('slider.index') }}">
 							السلايدر </a></li>
 
@@ -115,6 +123,13 @@
 					<li><a class="slide-item font-weight-bold text-2xl text-dark"
 							href="{{ route('institute_mnagements.index') }}"> اداره المعهد
 						</a></li>
+
+					<a href="{{ route('academic.councils.index') }}">
+						<li class="slide-item font-weight-bold text-2xl text-dark">
+							مجلس الأكاديمي
+						</li>
+					</a>
+						 
 				</ul>
 			</li>
 			<li class="slide">
@@ -134,6 +149,7 @@
 							  الهيكل التنظيمي </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit-objectives.index') }}">
 							  أهداف الوحدات </a></li>
+					 
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management-boards.index') }}">
 							  مجلس الإدارة </a></li>
 					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('internal-permanencies.index') }}">
@@ -293,7 +309,7 @@
 				<ul class="slide-menu">
 
 				<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('authors.index') }}"> المؤلفين </a></li>
-				<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishings.index') }}"> دور النشر </a></li>
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishings.index') }}"> دور النشر </a></li>
  
 				</ul>
 			</li>

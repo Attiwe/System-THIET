@@ -19,8 +19,8 @@
           <img src="{{ asset($getSetting->logo) }}" alt="Logo" height="50">
         </div>
       @endif
-      <p class="mg-b-0 mt-2">رؤية الوحدة: {{ $unitVision }}</p>
-      <p class="mg-b-0">رسالة الوحدة: {{ $unitMessage }}</p>
+      <p class="mg-b-0 mt-2">رؤية المعهد: </p>
+      <p class="mg-b-0">رسالة المعهد: </p>
     </div>
   </div>
   <div class="main-dashboard-header-right">
@@ -53,10 +53,10 @@
         <div class="col-md-6">
           <div class="form-group">
             <label><i class="bi bi-diagram-3"></i> الوحدة</label>
-            <select name="unit_id" class="form-control">
+            <select name="unit_institute_id" class="form-control">
               <option value="">-- اختر الوحدة --</option>
-              @foreach($units as $u)
-                <option value="{{ $u->id }}" {{ $u->id == $institute->unit_id ? 'selected' : '' }}>{{ $u->name }}</option>
+              @foreach($unitInstitutes as $u)
+                <option value="{{ $u->id }}" {{ $u->id == $institute->unit_institute_id ? 'selected' : '' }}>{{ $u->name }}</option>
               @endforeach
             </select>
             <small class="form-text text-muted">اختياري: إذا تركته فارغاً سيُستخدم نفس الوحدة الحالية.</small>

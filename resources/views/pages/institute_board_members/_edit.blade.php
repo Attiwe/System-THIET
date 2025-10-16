@@ -1,7 +1,7 @@
 @include('include.validation')
 <div class="modal fade" id="editModal{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content shadow-lg border-0 rounded-3">
       <div class="modal-header text-white">
         <h5 class="modal-title fw-bold" id="staticBackdropLabel">
@@ -35,12 +35,20 @@
               </label>
               <select class="form-select form-select-lg" id="type" name="type" required>
                 <option value="" selected>اختر الدرجة</option>
-                <option value="العميد" {{ $item->type == 'العميد' ? 'selected' : '' }}>العميد</option>
-                <option value="رئيس مجلس اداره" {{ $item->type == 'رئيس مجلس اداره' ? 'selected' : '' }}>رئيس
-                  مجلس اداره</option>
-                <option value="دكتور" {{ $item->type == 'دكتور' ? 'selected' : '' }}>دكتور</option>
-                <option value="معيد" {{ $item->type == 'معيد' ? 'selected' : '' }}>معيد</option>
+                <option value="عميد المعهد" {{ old('type') == 'عميد المعهد' ? 'selected' : '' }}>عميد المعهد</option>
+                <option value="رئيس مجلس اداره" {{ old('type') == 'رئيس مجلس اداره' ? 'selected' : '' }}>رئيس مجلس اداره</option>
+                <option value="وكيل المعهد لشؤون المجتمع" {{ old('type') == 'وكيل المعهد لشؤون المجتمع' ? 'selected' : '' }}>وكيل المعهد
+                  لشؤون المجتمع</option>
               </select>
+
+            </div>
+            <br>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-bold">
+                <i class="bi bi-file-text text-info"></i> الوصف
+              </label>
+              <textarea class="form-control" id="description" name="description" rows="4" 
+                        placeholder="أدخل وصفاً لعضو مجلس الإدارة...">{{ $item->description }}</textarea>
             </div>
             <div class="modal-footer border-top-0">
               <button type="submit" class="btn btn-success px-4">

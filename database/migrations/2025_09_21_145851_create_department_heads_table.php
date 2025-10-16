@@ -16,6 +16,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
             $table->foreignId('faculty_members_id')->constrained('faculty_members')->cascadeOnDelete();
+            $table->string('scientific_experiences');
+             $table->string('achievements'); 
+            $table->string('name')->comment('name of the department head');
             $table->timestamps();
         });
     }

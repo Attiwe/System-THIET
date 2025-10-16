@@ -14,25 +14,25 @@ return new class extends Migration
         Schema::create('institutes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('setting_id')->constrained('settings')->cascadeOnDelete();
-            $table->foreignId('unit_id')->constrained('units')->cascadeOnDelete();
+            $table->foreignId('unit_institute_id')->constrained('unit_institutes')->cascadeOnDelete();
            
             $table->string('vidio')->nullable();
-            $table->string('word')->nullable(); // كلمة
-            $table->string('muhadara')->nullable(); // المحارو 
-            $table->string('values')->nullable(); //  القيم 
-            $table->string('plan')->nullable(); //   الخطه 
-            $table->string('goals')->nullable(); //   الاهداف 
+            $table->string('word')->nullable();  
+            $table->string('muhadara')->nullable();  
+            $table->string('values')->nullable();  
+            $table->string('plan')->nullable();  
+            $table->string('goals')->nullable();  
  
-            // intager
-            $table->integer('number')->nullable(); //    عدد الطلاب
-            $table->integer('employees')->nullable(); //       العاملين المعهد
-            $table->integer('classrooms')->nullable(); //         المدرجات و القاعات الدراسية
-            $table->integer('graduates')->nullable(); //        الخرجين
+                
+            $table->integer('number')->nullable();       
+            $table->integer('employees')->nullable();       
+            $table->integer('classrooms')->nullable();         
+            $table->integer('graduates')->nullable();        
             
-            /// files
-            $table->string('academic_council')->nullable(); // المجلس الأكاديمي
-            $table->string('structure')->nullable(); //    الهيكل التنظيمي
-            $table->string('strategy')->nullable(); //       استراتيجية التعليم
+            
+            $table->string('academic_council')->nullable();     
+            $table->string('structure')->nullable();         
+            $table->string('strategy')->nullable();         
              $table->timestamps();
         });
     }

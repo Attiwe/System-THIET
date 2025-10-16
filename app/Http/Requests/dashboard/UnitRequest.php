@@ -23,12 +23,12 @@ class UnitRequest extends FormRequest
     {
         $data = [
             'name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,webp,png,jpg,gif,svg|max:2048',
             'vision' => 'required|string',
             'message' => 'required|string',
         ];
         if ($this->method() == 'PUT' || $this->method() == 'PATCH') {
-            $data['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+            $data['image'] = 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:2048';
         }
         return $data;
     }
@@ -42,6 +42,7 @@ class UnitRequest extends FormRequest
             'message.required' => 'الرسالة مطلوبه',
             'image.image' => 'الصوره يجب ان تكون صورة',
             'image.max' => 'الصوره يجب ان تكون اقل من 2048 كيلوبايت',
+            'image.mimes' => 'الصوره يجب ان تكون من نوع: jpeg, png, webp, jpg, gif, svg',
 
         ];
     }

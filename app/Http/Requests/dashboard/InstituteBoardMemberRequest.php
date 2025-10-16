@@ -24,6 +24,7 @@ class InstituteBoardMemberRequest extends FormRequest
         return [
             'faculty_members_id' => 'required|exists:faculty_members,id',
             'type' => 'required|in:دكتور,معيد,رئيس مجلس اداره,العميد',
+            'description' => 'required|string|max:1000',
         ];
 
     }
@@ -35,6 +36,9 @@ class InstituteBoardMemberRequest extends FormRequest
             'faculty_members_id.exists' => 'العضو الدراسي غير صحيح',
             'type.required' => 'النوع مطلوب',
             'type.in' => 'النوع غير صحيح',
+            'description.required' => 'الوصف مطلوب',
+            'description.string' => 'الوصف يجب أن يكون نصاً',
+            'description.max' => 'الوصف يجب أن يكون أقل من 1000 حرف',
         ];
     }
 }

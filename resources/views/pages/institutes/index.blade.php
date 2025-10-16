@@ -100,8 +100,8 @@
         <div class="info-item">
           <div class="info-icon"><i class="bi bi-eye"></i></div>
           <div class="info-content">
-            <div class="info-label">رؤية الوحدة</div>
-            <div class="info-value">{{ $unitVision }}</div>
+            <div class="info-label">رؤية المعهد</div>
+            <div class="info-value">{{  $unitInstitutes->vision ?? 'غير محدد' }}</div>
           </div>
         </div>
       </div>
@@ -109,8 +109,8 @@
         <div class="info-item">
           <div class="info-icon"><i class="bi bi-envelope"></i></div>
           <div class="info-content">
-            <div class="info-label">رسالة الوحدة</div>
-            <div class="info-value">{{ $unitMessage }}</div>
+            <div class="info-label">رسالة المعهد </div>
+            <div class="info-value">{{ $unitInstitutes->message ?? 'غير محدد' }}</div>
           </div>
         </div>
       </div>

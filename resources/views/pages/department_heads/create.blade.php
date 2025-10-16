@@ -1,4 +1,4 @@
-@extends('layouts.master')
+  @extends('layouts.master')
 
 @section('title', 'إضافة رئيس قسم جديد')
 @section('css')
@@ -185,11 +185,15 @@
                 </div>
               </div>
               
-              <!-- Preview Section -->
-              <div class="preview-card" id="previewSection">
-                <h5 class="text-primary mb-3">
-                  <i class="bi bi-eye"></i> معاينة التعيين
-                </h5>
+              <!-- الخبرات العلمية -->
+              <div class="form-group">
+                <label for="scientific_experiences" class="form-label fw-bold text-white">
+                  <i class="bi bi-mortarboard text-info"></i> الخبرات العلمية <span class="text-danger">*</span>
+                </label>
+                <textarea class="form-control @error('scientific_experiences') is-invalid @enderror" id="scientific_experiences" name="scientific_experiences" rows="3" placeholder="اكتب الخبرات العلمية" required>{{ old('scientific_experiences') }}</textarea>
+                @error('scientific_experiences')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
                 <div class="row">
                   <div class="col-md-6">
                     <strong>القسم:</strong>

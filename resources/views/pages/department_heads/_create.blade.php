@@ -48,6 +48,30 @@
             </select>
           </div>
 
+          <!-- اسم رئيس القسم -->
+          <div class="mb-3">
+            <label for="name" class="form-label fw-bold">
+              <i class="bi bi-person-circle text-primary"></i>  المنصب
+            </label>
+            <input type="text" id="name" name="name" class="form-control" placeholder=" اكتب اسم المنصب القسم مثلاً: رئيس قسم الهندسة المدنيه"   value="{{ old('name') }}" required />
+          </div>
+
+          <!-- الخبرات العلمية -->
+          <div class="mb-3">
+            <label for="scientific_experiences" class="form-label fw-bold">
+              <i class="bi bi-mortarboard text-info"></i> الخبرات العلمية
+            </label>
+            <textarea id="scientific_experiences" name="scientific_experiences" rows="3" class="form-control" placeholder="اكتب الخبرات العلمية" required>{{ old('scientific_experiences') }}</textarea>
+          </div>
+
+          <!-- الإنجازات -->
+          <div class="mb-3">
+            <label for="achievements" class="form-label fw-bold">
+              <i class="bi bi-trophy text-warning"></i> الإنجازات
+            </label>
+            <textarea id="achievements" name="achievements" rows="3" class="form-control" placeholder="اكتب الإنجازات" required>{{ old('achievements') }}</textarea>
+          </div>
+
           <!-- Footer -->
           <div class="modal-footer border-top-0">
             <button type="submit" class="btn btn-success px-4">

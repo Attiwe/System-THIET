@@ -19,7 +19,7 @@ class SliderController extends Controller
     }
     public function index()
     {
-        $sliders = $this->sliders->getAll();
+        $sliders = $this->sliders->getAll()->get();
         return view('pages.slider.index', compact('sliders'));
     }
 

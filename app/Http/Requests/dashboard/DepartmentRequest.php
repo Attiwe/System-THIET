@@ -16,16 +16,16 @@ class DepartmentRequest extends FormRequest
         $data = [
             'name' => 'bail|required|string|max:255',
             'description' => 'bail|required|string|max:255',
-            'dapart_image' => 'bail|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'requerd_file' => 'bail|required|mimes:pdf,doc,docx|max:2048',
+            'dapart_image' => 'bail|required|image|mimes:jpeg,webp,png,jpg,gif,svg|max:2048',
+            'requerd_file' => 'bail|required|mimes:pdf,doc,docx|max:12048',
             'depart_massage' => 'bail|required|string|max:255',
             'depart_vision' => 'bail|required|string|max:255',
             'is_active' => 'bail|required|in:0,1',
         ];
 
         if ($this->isMethod('put')) {
-            $data['dapart_image'] = 'sometimes|bail|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
-            $data['requerd_file'] = 'sometimes|bail|required|mimes:pdf,doc,docx|max:2048';
+            $data['dapart_image'] = 'sometimes|bail|required|image|mimes:jpeg,png,jpg,gif,webp,png,svg|max:2048';
+            $data['requerd_file'] = 'sometimes|bail|required|mimes:pdf,doc,docx|max:12048';
         }
         return $data;
     }
@@ -43,7 +43,7 @@ class DepartmentRequest extends FormRequest
 
             'requerd_file.required' => 'الملف مطلوب',
             'requerd_file.mimes' => 'الملف يجب أن يكون من نوع: pdf, doc, docx',
-            'requerd_file.max' => 'حجم الملف يجب أن يكون أقل من 2 ميجابايت',
+            'requerd_file.max' => 'حجم الملف يجب أن يكون أقل من 12 ميجابايت',
 
             'depart_massage.required' => 'الرسالة مطلوبة',
             'depart_massage.string' => 'الرسالة يجب أن تكون نص',
