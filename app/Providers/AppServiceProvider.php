@@ -22,5 +22,11 @@ class AppServiceProvider extends ServiceProvider
     {
         // Set the default pagination view to Bootstrap 4 style
         Paginator::useBootstrap();
+
+        foreach(Config('permessions') as $key => $value) {
+            Gate::define($key , function ($auth) use ($key){
+                return  $auth->hasPermission($key);
+            });
+        }
     }
 }

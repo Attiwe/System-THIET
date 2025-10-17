@@ -45,6 +45,20 @@
 						class="badge badge-success side-badge"></span></a>
 			</li>
 			<li class="slide">
+				<form action="{{ route('logout') }}" method="POST" class="d-inline w-100">
+					@csrf
+					<button type="submit" class="side-menu__item w-100 text-right border-0 bg-transparent" style="cursor: pointer;">
+						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+							<polyline points="16,17 21,12 16,7"/>
+							<line x1="21" y1="12" x2="9" y2="12"/>
+						</svg>
+						<span class="side-menu__label h6 font-weight-bold text-2xl">تسجيل الخروج</span>
+					</button>
+				</form>
+			</li>
+			@if(\App\Helpers\PermissionHelper::hasPermission('news.read'))
+			<li class="slide">
 				<a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
 						viewBox="0 0 24 24">
 						<path d="M0 0h24v24H0V0z" fill="none" />
@@ -53,6 +67,7 @@
 					</svg><span class="side-menu__label font-weight-bold text-2xl"> اخبار </span><span class="badge  side-badge ">
 					</span></a>
 			</li>
+			@endif
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ route('dean_speech.index')}}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -62,13 +77,17 @@
 					</svg><span class="side-menu__label h6 font-weight-bold "> كلمة العميد </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('dean_speech.index') }}"> كلمة
-							العميد </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('dean_speech.create') }}">
-							الاضافه </a></li>
-
+					@if(\App\Helpers\PermissionHelper::hasPermission('dean_speech.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('dean_speech.index') }}"> كلمة
+								العميد </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('dean_speech.create'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('dean_speech.create') }}">
+								الاضافه </a></li>
+					@endif
 				</ul>
 			</li>
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['news.read', 'slider.read', 'faqs.read', 'scholarships.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -78,29 +97,37 @@
 					</svg><span class="side-menu__label h6 font-weight-bold ">تفاصيل الأخبار</span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('detailsNews.index') }}"> صفحه
-							تفاصيل الأخبار </a></li>
-
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('new_elements.index') }}"> عناصر
-							الأخبار </a></li>
-
-							<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit_institutes.index') }}">
-							عن المعهد </a></li>
-
-				 
-
-							 
-
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('slider.index') }}">
-							السلايدر </a></li>
-
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqs.index') }}">
-							الأسئلة الشائعة </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('scholarships.index') }}">
-							منح دراسيه </a></li>
+					@if(\App\Helpers\PermissionHelper::hasPermission('news.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('detailsNews.index') }}"> صفحه
+								تفاصيل الأخبار </a></li>
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('new_elements.index') }}"> عناصر
+								الأخبار </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('institutes.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit_institutes.index') }}">
+								عن المعهد </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('departments.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('videos_departments.index') }}">
+								الفيديوهات التعريفيه  للاقسام </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('slider.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('slider.index') }}">
+								السلايدر </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('faqs.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqs.index') }}">
+								الأسئلة الشائعة </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('scholarships.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('scholarships.index') }}">
+								منح دراسيه </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
 			<li class="side-item side-item-category font-weight-bold text-2xl h6"> الاداره </li>
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['management.read', 'management.create', 'institutes.read', 'academic_councils.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ route('management.index') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -110,28 +137,36 @@
 					</svg><span class="side-menu__label h6 font-weight-bold "> الاداره </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management.index') }}"> قائمه
-						</a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management.create') }}"> الاضافه
-						</a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark"
-							href="{{ route('institute_board_members.index') }}"> مجلس اداره المعهد
-						</a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('institutes.index') }}"> بيانات
-							المعهد
+					@if(\App\Helpers\PermissionHelper::hasPermission('management.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management.index') }}"> قائمه
+							</a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('management.create'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management.create') }}"> الاضافه
+							</a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('institutes.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark"
+								href="{{ route('institute_board_members.index') }}"> مجلس اداره المعهد
+							</a></li>
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('institutes.index') }}"> بيانات
+								المعهد
+							</a>
+						<li><a class="slide-item font-weight-bold text-2xl text-dark"
+								href="{{ route('institute_mnagements.index') }}"> اداره المعهد
+							</a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('academic_councils.read'))
+						<a href="{{ route('academic.councils.index') }}">
+							<li class="slide-item font-weight-bold text-2xl text-dark">
+								مجلس الأكاديمي
+							</li>
 						</a>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark"
-							href="{{ route('institute_mnagements.index') }}"> اداره المعهد
-						</a></li>
-
-					<a href="{{ route('academic.councils.index') }}">
-						<li class="slide-item font-weight-bold text-2xl text-dark">
-							مجلس الأكاديمي
-						</li>
-					</a>
-						 
+					@endif
 				</ul>
 			</li>
+			@endif
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['settings.read', 'units.read', 'organization_structure.read', 'management_boards.read', 'training_courses.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href=" #"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
@@ -141,28 +176,48 @@
 					</svg><span class="side-menu__label h6 font-weight-bold "> الاعدادت الادريه </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('setting.index') }}"> الاعدادت
-							العامه </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit.index') }}">
-							المراكز و الوحدات </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('organization-structure.index') }}">
-							  الهيكل التنظيمي </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit-objectives.index') }}">
-							  أهداف الوحدات </a></li>
-					 
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management-boards.index') }}">
-							  مجلس الإدارة </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('internal-permanencies.index') }}">
-							     اللائحه الداخليه </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('deputy-directors.index') }}">
-							     مديرونائب الوحده    </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('training-courses.index') }}">
-							     الدورات التدريبية    </a></li>
-					 <li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('important-files.index') }}">	الملفات المهمه   </a></li>	
-					 <li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('lectures-decisions.index') }}">محاضرات وقرارات     </a></li>	
-
+					@if(\App\Helpers\PermissionHelper::hasPermission('settings.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('setting.index') }}"> الاعدادت
+								العامه </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('units.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit.index') }}">
+								المراكز و الوحدات </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('organization_structure.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('organization-structure.index') }}">
+								  الهيكل التنظيمي </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('unit_objectives.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('unit-objectives.index') }}">
+								  أهداف الوحدات </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('management_boards.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('management-boards.index') }}">
+								  مجلس الإدارة </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('internal_permanencies.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('internal-permanencies.index') }}">
+								     اللائحه الداخليه </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('deputy_directors.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('deputy-directors.index') }}">
+								     مديرونائب الوحده    </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('training_courses.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('training-courses.index') }}">
+								     الدورات التدريبية    </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('important_files.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('important-files.index') }}">	الملفات المهمه   </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('lectures_decisions.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('lectures-decisions.index') }}">محاضرات وقرارات     </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['articles.read', 'articles.create', 'departments.read', 'student_opinions.read', 'library_opinions.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
@@ -172,19 +227,28 @@
 					</svg><span class="side-menu__label font-weight-bold h6 "> اداره الموقع </span><i
 						class="angle fe fe-chevron-down font-weight-bold h6 "></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('departments.index') }}"> البرمج
-							التعلميه </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('studentOpinions.index') }} ">
-							اراء الطلاب </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('libraryOpinions.index') }}">
-							صوره المكتبه واراء الطلاب </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('articles.index') }}"> المقالات و
-							المشاركات </a></li>
-					 
+					@if(\App\Helpers\PermissionHelper::hasPermission('departments.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('departments.index') }}"> البرمج
+								التعلميه </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('student_opinions.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('studentOpinions.index') }} ">
+								اراء الطلاب </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('library_opinions.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('libraryOpinions.index') }}">
+								صوره المكتبه واراء الطلاب </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('articles.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('articles.index') }}"> المقالات و
+								المشاركات </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
 
 			<li class="side-item side-item-category"> الاعدادت العامه </li>
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['faculty.read', 'office_students.read', 'masteris_doctoral_theses.read', 'featured_work.read', 'activities.read', 'department_heads.read', 'department_plans.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -194,26 +258,38 @@
 					</svg><span class="side-menu__label h6 font-weight-bold"> الاعدادت العامه </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href=" {{ route('facultyMembers.index') }}">
-							اضافه عضو هيئه تدريس </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('office_students.index') }}">
-							اضافه طالب مكتبه </a></li>
-
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('masterisDoctoralTheses.index') }}">
-							  رسائل الدكتوراه والماجستير </a></li>
-
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('featured_work.index') }}">
-							انشطه الطلابية </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('activities.index') }}">
-							الانشطه </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="#">
-							اضافه انشطه رعايه الشباب </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('department_heads.index') }}">
-							  رؤساء الاقسام </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('department_plans.index') }}">
-							خطط الأقسام </a></li>
+					@if(\App\Helpers\PermissionHelper::hasPermission('faculty.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href=" {{ route('facultyMembers.index') }}">
+								اضافه عضو هيئه تدريس </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('office_students.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('office_students.index') }}">
+								اضافه طالب مكتبه </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('masteris_doctoral_theses.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('masterisDoctoralTheses.index') }}">
+								  رسائل الدكتوراه والماجستير </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('featured_work.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('featured_work.index') }}">
+								انشطه الطلابية </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('activities.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('activities.index') }}">
+								الانشطه </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('department_heads.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{  route('department_heads.index') }}">
+								  رؤساء الاقسام </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('department_plans.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('department_plans.index') }}">
+								خطط الأقسام </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['academic_years.read', 'category_management.read', 'research_projects.read', 'institute_requirements.read', 'program_requirements.read', 'roles.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
@@ -224,16 +300,39 @@
 					</svg><span class="side-menu__label h6 font-weight-bold "> اعدادت المؤسسة </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('academic_years.index')  }}">
-							السنوات الدراسية </a></li>
-				 
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('category_management.index') }}">
-							بيانات الاداره </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('research_projects.index') }}">    المشاريع البحثية </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('institute_requirements.index') }}">    المتطلبات المعهد للبرامج </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('program_requirements.index') }}">    المتطلبات  البرنامج </a></li>
+					@if(\App\Helpers\PermissionHelper::hasPermission('academic_years.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('academic_years.index')  }}">
+								السنوات الدراسية </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('category_management.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('category_management.index') }}">
+								بيانات الاداره </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('research_projects.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('research_projects.index') }}">    المشاريع البحثية </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('institute_requirements.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('institute_requirements.index') }}">    المتطلبات المعهد للبرامج </a></li>
+					@endif
+
+					@if(\App\Helpers\PermissionHelper::hasPermission('program_requirements.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('program_requirements.index') }}">    المتطلبات  البرنامج </a></li>
+					@endif
+
+					@if(\App\Helpers\PermissionHelper::hasPermission('roles.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('roles.index') }}">
+								🔐 إدارة الصلاحيات </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('roles.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('permissions.index') }}">
+								🛡️ الصلاحيات الفرعية </a></li>
+					@endif
+					 
+					 
 				</ul>
 			</li>
+			@endif
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['quality_form.read', 'quality_item.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
@@ -243,12 +342,18 @@
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> اعدادت الجوده </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-xl text-dark" href="{{ route('quality_form.index') }}"> اضافه
-							نموذج جوده </a></li>
-					<li><a class="slide-item font-weight-bold text-xl text-dark" href="{{ route('quality_item.index') }}"> اداره
-							العناصر </a></li>
+					@if(\App\Helpers\PermissionHelper::hasPermission('quality_form.read'))
+						<li><a class="slide-item font-weight-bold text-xl text-dark" href="{{ route('quality_form.index') }}"> اضافه
+								نموذج جوده </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('quality_item.read'))
+						<li><a class="slide-item font-weight-bold text-xl text-dark" href="{{ route('quality_item.index') }}"> اداره
+								العناصر </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
+			@if(\App\Helpers\PermissionHelper::hasPermission('important_links.read'))
 			<li class="slide">
 				<a class="side-menu__item" href="{{ route('important_link.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
 						class="side-menu__icon" viewBox="0 0 24 24">
@@ -258,6 +363,8 @@
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> روابط مهمه </span><span
 						class="badge badge-warning side-badge"> هام </span></a>
 			</li>
+			@endif
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['faq_categories.read', 'faq_asked_questions.read', 'labs.read', 'scientific_trips.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -267,15 +374,25 @@
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> الاسئله </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqCategories.index') }}"> اقسام
-							الاسئله الشائعة </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqAskedQuestions.index') }}">
-							الاسئله الشائعة </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('labs.index') }}">    المعامل </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('scientific_trips.index') }}">    الرحلات العلمية </a></li>
+					@if(\App\Helpers\PermissionHelper::hasPermission('faq_categories.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqCategories.index') }}"> اقسام
+								الاسئله الشائعة </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('faq_asked_questions.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('faqAskedQuestions.index') }}">
+								الاسئله الشائعة </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('labs.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('labs.index') }}">    المعامل </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('scientific_trips.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('scientific_trips.index') }}">    الرحلات العلمية </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
 
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['student_projects.read', 'student_projects.create', 'student_results.read', 'schedules.read', 'study_materials.read', 'military_education.read', 'student_rights.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -284,21 +401,32 @@
 						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
 					</svg><span class="side-menu__label font-weight-bold h6 text-dark">التعليم الطلاب</span><i class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-
-				<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('studentProjects.index') }}"> المشاريع الطلابية </a></li>
-
-				 <li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('classTrainings.index') }}">    التدريب الصيفي </a></li>  
-
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('schedules.index') }}"> الجداول  الدراسية</a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('study_materials.index') }}"> المواد الدراسية </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-results.index') }}"> نتائج الطلاب </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('military-education.index') }}"> التربية العسكرية </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-rights.index') }}"> حقوق الطلاب </a></li>
-				 
-					 
+					@if(\App\Helpers\PermissionHelper::hasPermission('student_projects.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('studentProjects.index') }}"> المشاريع الطلابية </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('class_trainings.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('classTrainings.index') }}">    التدريب الصيفي </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('schedules.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('schedules.index') }}"> الجداول  الدراسية</a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('study_materials.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('study_materials.index') }}"> المواد الدراسية </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('student_results.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-results.index') }}"> نتائج الطلاب </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('military_education.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('military-education.index') }}"> التربية العسكرية </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('student_rights.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('student-rights.index') }}"> حقوق الطلاب </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
 
+			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['authors.read', 'authors.create', 'publishings.read', 'publishings.create']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
 						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -307,12 +435,18 @@
 						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
 					</svg><span class="side-menu__label font-weight-bold h6 text-dark">  المكتبه </span><i class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
-
-				<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('authors.index') }}"> المؤلفين </a></li>
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishings.index') }}"> دور النشر </a></li>
- 
+					@if(\App\Helpers\PermissionHelper::hasPermission('authors.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('authors.index') }}"> المؤلفين </a></li>
+					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('publishings.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishings.index') }}"> دور النشر </a></li>
+					@endif
 				</ul>
 			</li>
+			@endif
+
+
+			
 			<br>
 			<br>
 		</ul>

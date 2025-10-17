@@ -146,7 +146,7 @@
                     <h4 class="text-center mb-3">مرحبا بك</h4>
                     <p class="text-center text-muted">يرجى تسجيل الدخول للمتابعة</p>
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('login.attempt') }}">
                         @csrf
                         <!-- Email -->
                         <div class="mb-3">

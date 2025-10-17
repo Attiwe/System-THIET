@@ -250,7 +250,15 @@
 										<div class="d-flex wd-100p">
 											<div class="main-img-user"><img alt="" src="{{URL::asset('include/logo/logo.webp')}}" class=""></div>
 											<div class="mr-3 my-auto">
-												<h6>Petey Cruiser</h6><span>Premium Member</span>
+												<h6>{{ Auth::user()->name ?? 'المستخدم' }}</h6>
+												<span>{{ Auth::user()->email ?? 'admin@college.edu' }}</span>
+												@if(\App\Helpers\PermissionHelper::isSuperAdmin())
+													<div class="mt-1">
+														<span class="badge bg-success">
+															<i class="bi bi-shield-check"></i> مدير عام
+														</span>
+													</div>
+												@endif
 											</div>
 										</div>
 									</div>
@@ -259,7 +267,22 @@
 									<a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
 									<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
 									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
-									<a class="dropdown-item" href="{{ url('/' . $page='page-signin') }}"><i class="bx bx-log-out"></i> Sign Out</a>
+									@if(session('role_auth'))
+										<div class="dropdown-divider"></div>
+										<form action="{{ route('role.logout') }}" method="POST" class="d-inline">
+											@csrf
+											<button type="submit" class="dropdown-item border-0 bg-transparent w-100 text-left" style="cursor: pointer;">
+												<i class="bx bx-shield-x"></i> تسجيل الخروج من الصلاحية
+											</button>
+										</form>
+									@endif
+									<div class="dropdown-divider"></div>
+									<form action="{{ route('logout') }}" method="POST" class="d-inline">
+										@csrf
+										<button type="submit" class="dropdown-item border-0 bg-transparent w-100 text-left" style="cursor: pointer;">
+											<i class="bx bx-log-out"></i> تسجيل الخروج الكامل
+										</button>
+									</form>
 								</div>
 							</div>
 							<div class="dropdown main-header-message right-toggle">

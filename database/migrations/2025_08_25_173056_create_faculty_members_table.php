@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('faculty_members', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('roles_id')->constrained('roles')->onDelete('cascade'); 
+
             $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
             $table->string('name');
             $table->enum('type', ['دكتور', 'معيد']);  

@@ -21,4 +21,9 @@ class Department extends Model
     {
         return $this->hasMany(OfficeStudent::class);
     }
+
+    public function videosDepartments()
+    {
+        return $this->hasMany(VideosDepartment::class);
+    }
 }

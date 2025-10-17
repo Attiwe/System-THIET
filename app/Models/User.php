@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_protected',
     ];
 
     /**
@@ -44,5 +45,34 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the permissions for the user.
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'user_permissions', 'user_id', 'permission_id');
+    }
+
+    /**
+     * Check if user has a specific permission.
+     */
+    public function hasPermission($permission)
+    {
+        // صلاحية المدير العام لها كل الصلاحيات
+        if ($this->permissions->contains('name', 'super.admin')) {
+            return true;
+        }
+
+        return $this->permissions->contains('name', $permission);
+    }
+
+    /**
+     * Check if user is super admin.
+     */
+    public function isSuperAdmin()
+    {
+        return $this->hasPermission('super.admin');
     }
 }

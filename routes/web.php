@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\InternalPermanencyController;
 use App\Http\Controllers\Dashboard\DepartmentHeadController;
 use App\Http\Controllers\Dashboard\DepartmentPlanController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\DetailNewsController;
 use App\Http\Controllers\Dashboard\ManagementController;
@@ -56,11 +57,41 @@ use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\PublishingController;
 use App\Http\Controllers\Dashboard\UnitInstitutesController;
 use App\Http\Controllers\Dashboard\AcademicCouncilController;
+use App\Http\Controllers\Dashboard\VideosDepartmentController;
+use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\PermissionController;
+use App\Http\Controllers\Dashboard\RoleAuthController;
 
 
 
 //========================Route Dashboard (Home)=======================
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::middleware(['auth', 'role.permission'])->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+// Authentication
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
+
+// Role Authentication
+Route::middleware(['auth', 'role.permission'])->group(function () {
+    Route::get('/role-login', [RoleAuthController::class, 'showRoleLoginForm'])->name('role.login.form');
+    Route::post('/role-login', [RoleAuthController::class, 'roleLogin'])->name('role.login');
+    Route::post('/role-logout', [RoleAuthController::class, 'roleLogout'])->name('role.logout');
+});
+
+// Test route for debugging
+Route::middleware('auth')->get('/test-permissions', function() {
+    $user = Auth::user();
+    $roleAuth = session('role_auth');
+    
+    return response()->json([
+        'user' => $user ? $user->email : 'غير مسجل',
+        'role_auth' => $roleAuth,
+        'permissions' => $roleAuth ? $roleAuth['permissions'] : [],
+    ]);
+})->name('test.permissions');
 
 //=======================Route News====================================
 Route::resource('dean_speech', DeanSpeechController::class)->names('dean_speech')->except(['show', 'destroy']);
@@ -355,11 +386,50 @@ Route::resource('academic/councils', AcademicCouncilController::class)->names('a
 Route::get('/academic/councils/pdf/{id}', [AcademicCouncilController::class, 'showPdf'])->name('academic.councils.showPdf');
 Route::get('/academic/councils/download/{id}', [AcademicCouncilController::class, 'downloadPdf'])->name('academic.councils.download');
 
+//==================== Route Videos Departments ========================
+Route::resource('videos_departments', VideosDepartmentController::class)->names('videos_departments');
+Route::get('/videos_departments/video/{id}', [VideosDepartmentController::class, 'showVideo'])->name('videos_departments.showVideo');
+
+//==================== Route Roles Management ========================
+// Temporary routes without middleware for testing
+Route::middleware('auth')->group(function () {
+    Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
+    Route::get('roles/create', [RoleController::class, 'create'])->name('roles.create');
+    Route::post('roles', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('roles/{role}', [RoleController::class, 'show'])->name('roles.show');
+    Route::get('roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::put('roles/{role}', [RoleController::class, 'update'])->name('roles.update');
+    Route::delete('roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+});
+
+//==================== Route Permissions Management ========================
+Route::middleware(['auth', 'role.permission:roles.read'])->group(function () {
+    Route::get('permissions', [PermissionController::class, 'index'])->name('permissions.index');
+    Route::get('permissions/{permission}', [PermissionController::class, 'show'])->name('permissions.show');
+    Route::get('permissions-all', function() {
+        return view('pages.permissions.all-permissions');
+    })->name('permissions.all');
+});
+
+Route::middleware(['auth', 'role.permission:roles.create'])->group(function () {
+    Route::get('permissions/create', [PermissionController::class, 'create'])->name('permissions.create');
+    Route::post('permissions', [PermissionController::class, 'store'])->name('permissions.store');
+});
+
+Route::middleware(['auth', 'role.permission:roles.update'])->group(function () {
+    Route::get('permissions/{permission}/edit', [PermissionController::class, 'edit'])->name('permissions.edit');
+    Route::put('permissions/{permission}', [PermissionController::class, 'update'])->name('permissions.update');
+});
+
+Route::middleware(['auth', 'role.permission:roles.delete'])->group(function () {
+    Route::delete('permissions/{permission}', [PermissionController::class, 'destroy'])->name('permissions.destroy');
+});
+
   
  
 
 
 
 Route::get('/', function () {
-  return view('login-test.test-login');
+  return redirect()->route('login');
 });

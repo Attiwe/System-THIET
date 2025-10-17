@@ -10,8 +10,16 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
     <div>
-      <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
-      <p class="mg-b-0">Sales monitoring dashboard template.</p>
+      <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">
+        مرحباً، {{ \App\Helpers\PermissionHelper::getCurrentUserName() ?? 'المستخدم' }}!
+      </h2>
+      <p class="mg-b-0">
+        @if(\App\Helpers\PermissionHelper::isSuperAdmin())
+          <strong class="text-success">مدير عام</strong> - جميع الصلاحيات
+        @else
+          المستخدم: <strong class="text-primary">{{ Auth::user()->email ?? 'غير محدد' }}</strong>
+        @endif
+      </p>
     </div>
     </div>
     <div class="main-dashboard-header-right">
@@ -128,6 +136,50 @@
     </div>
   </div>
   <!-- row closed -->
+
+  <!-- معلومات المستخدم -->
+  @if(Auth::check())
+  <div class="row row-sm mb-4">
+    <div class="col-md-12">
+      <div class="card border-primary">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0"><i class="bi bi-person-check"></i> معلومات المستخدم النشط</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="text-center">
+                <h6 class="text-muted">اسم المستخدم</h6>
+                <h4 class="text-primary">{{ Auth::user()->name }}</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center">
+                <h6 class="text-muted">البريد الإلكتروني</h6>
+                <h5 class="text-info">{{ Auth::user()->email }}</h5>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center">
+                <h6 class="text-muted">عدد الصلاحيات</h6>
+                <h4 class="text-success">{{ count(\App\Helpers\PermissionHelper::getCurrentPermissions()) }}</h4>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-3">
+            <h6 class="text-muted mb-2">الصلاحيات المتاحة:</h6>
+            <div class="d-flex flex-wrap gap-2">
+              @foreach(\App\Helpers\PermissionHelper::getCurrentPermissions() as $permission)
+                <span class="badge bg-light text-dark border">{{ $permission }}</span>
+              @endforeach
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endif
 
   <!-- row opened -->
   <div class="row row-sm">

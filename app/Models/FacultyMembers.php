@@ -10,6 +10,7 @@ class FacultyMembers extends Model
     protected $fillable = [
         'name',
         'type',
+        'roles_id',
         'department_id',
         'faculty_code',
         'email',
@@ -27,5 +28,23 @@ class FacultyMembers extends Model
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Roles::class, 'roles_id');
+    }
+
+    public function hasPermission($key)
+    {
+        $roles =  $this->role;
+        if (!$roles) {
+            return false;
+        }
+        foreach ($roles->permissions as $permission) {
+            if ($permission == $key ?? ' ') {
+                return true;
+            }
+        }
     }
 }
