@@ -23,4 +23,64 @@ class DepartmentHeadController extends Controller
         
         return $this->successResponse($departmentHeads, 'The department heads fetched successfully');
       }
+
+    // Basic Sciences department head
+    public function BasicSciences()
+    {
+        $head = DepartmentHead::where('department_id', 1)
+            ->with(['department', 'facultyMembers'])
+            ->latest()
+            ->first();
+
+        if (is_null($head)) {
+            return $this->errorResponse('Department head not found', 404);
+        }
+
+        return $this->successResponse(DepartmentHeadResource::make($head), 'The department head fetched successfully', 200);
+    }
+
+    // Computer Engineering department head
+    public function ComputerEngineering()
+    {
+        $head = DepartmentHead::where('department_id', 4)
+            ->with(['department', 'facultyMembers'])
+            ->latest()
+            ->first();
+
+        if (is_null($head)) {
+            return $this->errorResponse('Department head not found', 404);
+        }
+
+        return $this->successResponse(DepartmentHeadResource::make($head), 'The department head fetched successfully', 200);
+    }
+
+    // Construction and Building Engineering department head
+    public function ConstructionAndBuildingEngineering()
+    {
+        $head = DepartmentHead::where('department_id', 2)
+            ->with(['department', 'facultyMembers'])
+            ->latest()
+            ->first();
+
+        if (is_null($head)) {
+            return $this->errorResponse('Department head not found', 404);
+        }
+
+        return $this->successResponse(DepartmentHeadResource::make($head), 'The department head fetched successfully', 200);
+    }
+
+    // Chemical Engineering department head
+    public function ChemicalEngineering()
+    {
+        $head = DepartmentHead::where('department_id', 3)
+            ->with(['department', 'facultyMembers'])
+            ->latest()
+            ->first();
+
+        if (is_null($head)) {
+            return $this->errorResponse('Department head not found', 404);
+        }
+
+        return $this->successResponse(DepartmentHeadResource::make($head), 'The department head fetched successfully', 200);
+    }
 }

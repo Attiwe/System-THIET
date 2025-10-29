@@ -44,33 +44,33 @@
           <div class="mb-3">
             <label class="form-label text-muted">اسم الصلاحية</label>
             <div class="form-control-plaintext fw-bold text-primary fs-5">
-              <i class="bi bi-shield-fill"></i> {{ $role->role }}
+              <i class="bi bi-shield-fill"></i> {{ $user->name }}
             </div>
           </div>
 
           <div class="mb-3">
             <label class="form-label text-muted">البريد الإلكتروني</label>
             <div class="form-control-plaintext fw-bold">
-              <i class="bi bi-envelope"></i> {{ $role->email }}
+              <i class="bi bi-envelope"></i> {{ $user->email }}
             </div>
           </div>
 
           <div class="mb-3">
             <label class="form-label text-muted">تاريخ الإنشاء</label>
             <div class="form-control-plaintext fw-bold">
-              <i class="bi bi-calendar"></i> {{ $role->created_at->format('d/m/Y H:i') }}
+              <i class="bi bi-calendar"></i> {{ $user->created_at ? $user->created_at->format('d/m/Y H:i') : 'غير محدد' }}
             </div>
           </div>
 
           <div class="mb-3">
             <label class="form-label text-muted">آخر تحديث</label>
             <div class="form-control-plaintext fw-bold">
-              <i class="bi bi-clock"></i> {{ $role->updated_at->format('d/m/Y H:i') }}
+              <i class="bi bi-clock"></i> {{ $user->updated_at ? $user->updated_at->format('d/m/Y H:i') : 'غير محدد' }}
             </div>
           </div>
 
           <div class="d-grid gap-2">
-            <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary">
+            <a href="{{ route('roles.edit', $user->id) }}" class="btn btn-primary">
               <i class="bi bi-pencil"></i> تعديل الصلاحية
             </a>
             <a href="{{ route('roles.index') }}" class="btn btn-outline-secondary">
@@ -87,13 +87,13 @@
         <div class="card-header bg-success text-white">
           <h5 class="mb-0">
             <i class="bi bi-shield-check"></i> الصلاحيات المرتبطة 
-            <span class="badge bg-light text-dark">{{ $role->permissions->count() }}</span>
+            <span class="badge bg-light text-dark">{{ $user->permissions->count() }}</span>
           </h5>
         </div>
         <div class="card-body">
-          @if($role->permissions->count() > 0)
+          @if($user->permissions->count() > 0)
             @php
-              $groupedPermissions = $role->permissions->groupBy('group');
+              $groupedPermissions = $user->permissions->groupBy('group');
             @endphp
             
             @foreach($groupedPermissions as $group => $permissions)
@@ -129,7 +129,7 @@
               <i class="bi bi-shield-x" style="font-size: 64px;"></i>
               <h5 class="mt-3">لا توجد صلاحيات مرتبطة</h5>
               <p>هذه الصلاحية لا تحتوي على أي صلاحيات محددة</p>
-              <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary">
+              <a href="{{ route('roles.edit', $user->id) }}" class="btn btn-primary">
                 <i class="bi bi-plus-circle"></i> إضافة صلاحيات
               </a>
             </div>
@@ -153,7 +153,7 @@
                 <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                   <i class="bi bi-shield-check text-primary" style="font-size: 24px;"></i>
                 </div>
-                <h4 class="mt-2 mb-0 text-primary">{{ $role->permissions->count() }}</h4>
+                <h4 class="mt-2 mb-0 text-primary">{{ $user->permissions->count() }}</h4>
                 <p class="text-muted mb-0">إجمالي الصلاحيات</p>
               </div>
             </div>
@@ -163,7 +163,7 @@
                 <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                   <i class="bi bi-collection text-success" style="font-size: 24px;"></i>
                 </div>
-                <h4 class="mt-2 mb-0 text-success">{{ $role->permissions->groupBy('group')->count() }}</h4>
+                <h4 class="mt-2 mb-0 text-success">{{ $user->permissions->groupBy('group')->count() }}</h4>
                 <p class="text-muted mb-0">عدد المجموعات</p>
               </div>
             </div>
@@ -173,7 +173,7 @@
                 <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                   <i class="bi bi-calendar text-warning" style="font-size: 24px;"></i>
                 </div>
-                <h4 class="mt-2 mb-0 text-warning">{{ $role->created_at->diffInDays() }}</h4>
+                <h4 class="mt-2 mb-0 text-warning">{{ $user->created_at ? $user->created_at->diffInDays() : 0 }}</h4>
                 <p class="text-muted mb-0">أيام منذ الإنشاء</p>
               </div>
             </div>
@@ -183,7 +183,7 @@
                 <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                   <i class="bi bi-clock text-info" style="font-size: 24px;"></i>
                 </div>
-                <h4 class="mt-2 mb-0 text-info">{{ $role->updated_at->diffInDays() }}</h4>
+                <h4 class="mt-2 mb-0 text-info">{{ $user->updated_at ? $user->updated_at->diffInDays() : 0 }}</h4>
                 <p class="text-muted mb-0">أيام منذ آخر تحديث</p>
               </div>
             </div>

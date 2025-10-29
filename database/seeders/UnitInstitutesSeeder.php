@@ -30,7 +30,7 @@ class UnitInstitutesSeeder extends Seeder
                 'vision' => 'أن نكون بيت خبرة في مجال الهندسة والتكنولوجيا، نسعى لتحقيق الريادة في التعليم الهندسي والبحث العلمي من خلال برامج تعليمية متطورة وبيئة تعليمية محفزة للإبداع والابتكار.',
                 'message' => 'نهدف لتخريج مهندسين مؤهلين علمياً وعملياً، قادرين على المساهمة الفعالة في التنمية الصناعية والتكنولوجية. نؤمن بأهمية التعلم المستمر والتطوير المهني المستمر لضمان مواكبة التطورات التكنولوجية السريعة.',
                 'image' => 'default_unit_institute_3.jpg', // Placeholder image
-                'status' => false, // This one will be inactive for demonstration
+                'status' => true, // This one will be inactive for demonstration
             ],
         ];
 

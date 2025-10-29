@@ -45,16 +45,24 @@ class FacultyMembersController extends Controller
 
     public function store(FacultyMembersRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
+        
+        // Store files and get filenames
         $data['resume'] = $this->storeFile($request, 'resume', '', 'cv');
         $data['personal_image'] = $this->storeFile($request, 'personal_image', '', 'personal_image');
         $data['researches'] = $this->storeFile($request, 'researches', '', 'researches');
-        //    dd($data);
+        
+        // Hash password
+        $data['password'] = bcrypt($data['password']);
+        
+        // Set default role (you may need to adjust this based on your requirements)
+        $data['roles_id'] = 1; // Default role ID - adjust as needed
+        
         try {
             FacultyMembers::create($data);
             return redirect()->route('facultyMembers.index')->with('success', 'تم إنشاء عضو هيئة تدريس بنجاح');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'حدث خطأ: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'حدث خطأ: ' . $e->getMessage())->withInput();
         }
     }
 
@@ -72,8 +80,9 @@ class FacultyMembersController extends Controller
         if ($request->hasFile($file)) {
             $filename = Str::uuid() . '.' . $request->file($file)->getClientOriginalExtension();
             $path = $request->file($file)->storeAs($folder, $filename, $disk);
-            return $path;
+            return $filename; // Return only filename, not full path
         }
+        return null;
     }
 
     public function edit($id)
@@ -87,34 +96,42 @@ class FacultyMembersController extends Controller
     {
         $facultyMember = FacultyMembers::findOrFail($id);
 
-        $data = $request->except(['personal_image', 'resume', 'researches', '_token', '_method']);
+        $data = $request->validated();
 
-         if ($request->hasFile('resume')) {
+        // Handle file uploads
+        if ($request->hasFile('resume')) {
             $this->deleteImageDisk($facultyMember->resume, 'cv');   
-            $data['resume'] = $this->storeFile($request, 'resume', 'cv', 'cv');
+            $data['resume'] = $this->storeFile($request, 'resume', '', 'cv');
         } else {
             $data['resume'] = $facultyMember->resume; 
         }
 
         if ($request->hasFile('personal_image')) {
             $this->deleteImageDisk($facultyMember->personal_image, 'personal_image');
-            $data['personal_image'] = $this->storeFile($request, 'personal_image', 'personal_image', 'personal_image');
+            $data['personal_image'] = $this->storeFile($request, 'personal_image', '', 'personal_image');
         } else {
             $data['personal_image'] = $facultyMember->personal_image;
         }
 
         if ($request->hasFile('researches')) {
             $this->deleteImageDisk($facultyMember->researches, 'researches');
-            $data['researches'] = $this->storeFile($request, 'researches', 'researches', 'researches');
+            $data['researches'] = $this->storeFile($request, 'researches', '', 'researches');
         } else {
             $data['researches'] = $facultyMember->researches;
+        }
+
+        // Hash password if provided
+        if (isset($data['password']) && !empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']); // Don't update password if empty
         }
 
         try {
             $facultyMember->update($data);
             return redirect()->route('facultyMembers.index')->with('success', 'تم تعديل عضو هيئة تدريس بنجاح');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'حدث خطأ: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'حدث خطأ: ' . $e->getMessage())->withInput();
         }
     }
 
@@ -143,6 +160,7 @@ class FacultyMembersController extends Controller
         if (!$imagePath)
             return;
 
+        // Check if file exists in the disk
         if (Storage::disk($disk)->exists($imagePath)) {
             Storage::disk($disk)->delete($imagePath);
         }
@@ -150,40 +168,40 @@ class FacultyMembersController extends Controller
 
     public function showResume(string $id)
     {
-        $feculty = FacultyMembers::findOrFail($id);
+        $faculty = FacultyMembers::findOrFail($id);
 
-        $filePath = $feculty->resume;
+        $filePath = $faculty->resume;
 
         if (!$filePath || !Storage::disk('cv')->exists($filePath)) {
             abort(404, 'Resume not found');
         }
 
         $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
-        $fullPath = public_path('image/resume/' . $filePath);
+        $fullPath = Storage::disk('cv')->path($filePath);
 
-        if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
+        if (file_exists($fullPath)) {
             return response()->file($fullPath);
-        } elseif ($extension === 'pdf') {
-            return response()->file($fullPath);
+        } else {
+            abort(404, 'Resume file not found');
         }
     }
     public function showResearches(string $id)
     {
-        $feculty = FacultyMembers::findOrFail($id);
+        $faculty = FacultyMembers::findOrFail($id);
 
-        $filePath = $feculty->researches;
+        $filePath = $faculty->researches;
 
         if (!$filePath || !Storage::disk('researches')->exists($filePath)) {
             abort(404, 'Researches not found');
         }
 
         $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
-        $fullPath = public_path('image/researches/' . $filePath);
+        $fullPath = Storage::disk('researches')->path($filePath);
 
-        if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
+        if (file_exists($fullPath)) {
             return response()->file($fullPath);
-        } elseif ($extension === 'pdf') {
-            return response()->file($fullPath);
+        } else {
+            abort(404, 'Researches file not found');
         }
     }
 

@@ -29,7 +29,7 @@ class MasterisDoctoralThesesRequest extends FormRequest
             'title_thesis' => 'required|string|max:500',
             'description' => 'required|string',
             'type' => 'required|in:master,doctoral,other',
-            'thesis_pdf' => 'nullable|file|mimes:pdf|max:10240', // 10MB max
+            'thesis_pdf' => 'nullable|file|mimes:pdf|max:200000', // 200MB max
         ];
     }
 
@@ -53,7 +53,7 @@ class MasterisDoctoralThesesRequest extends FormRequest
             'type.in' => 'نوع الرسالة/الأطروحة غير صحيح',
             'thesis_pdf.file' => 'ملف الرسالة/الأطروحة يجب أن يكون ملف',
             'thesis_pdf.mimes' => 'ملف الرسالة/الأطروحة يجب أن يكون بصيغة PDF',
-            'thesis_pdf.max' => 'حجم ملف الرسالة/الأطروحة يجب ألا يتجاوز 10 ميجابايت',
+            'thesis_pdf.max' => 'حجم ملف الرسالة/الأطروحة يجب ألا يتجاوز 200 ميجابايت',
         ];
     }
 

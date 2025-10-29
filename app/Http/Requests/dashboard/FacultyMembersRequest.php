@@ -23,36 +23,31 @@ class FacultyMembersRequest extends FormRequest
 
     public function rules(): array  
     {
-      $data =   [
+        $rules = [
             'name' => 'required|string|max:255',
             'type' => ['required', 'string', Rule::in(['دكتور', 'معيد'])],
             'appointment_date' => 'required|date',
             'department_id' => ['required', 'exists:departments,id'],
-            'faculty_code' => ['required', 'string', 'max:255', Rule::unique('faculty_members', 'faculty_code')->ignore($this->route('id'))],
+            'faculty_code' => ['required', 'integer', Rule::unique('faculty_members', 'faculty_code')->ignore($this->route('facultyMember'))],
             'appointment_type' => ['required', 'string', Rule::in(['معين', 'منتدب', 'غير ذلك'])],
-            'username' => ['required', 'string', 'max:255', Rule::unique('faculty_members', 'username')->ignore($this->route('id'))],
-            'email' => ['required', 'email', 'max:255', Rule::unique('faculty_members', 'email')->ignore($this->route('id'))],
+            'username' => ['required', 'string', 'max:255', Rule::unique('faculty_members', 'username')->ignore($this->route('facultyMember'))],
+            'email' => ['required', 'email', 'max:255', Rule::unique('faculty_members', 'email')->ignore($this->route('facultyMember'))],
             'password' => ['required', 'string', 'min:8'],
-            'phone' => ['nullable', 'numeric' ],
+            'phone' => ['nullable', 'string', 'max:20'],
             'facebook' => ['nullable', 'string', 'max:255'],
-            'personal_image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,png,webp', 'max:2048'],
-            'resume' => ['required', 'file', 'mimes:pdf', 'max: 20480'],
-            'researches' => ['nullable', 'file', 'mimes:pdf', 'max: 20480'],
+            'personal_image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
+            'resume' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:20480'],
+            'researches' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:20480'],
         ];
 
-        if($this->isMethod('post') || $this->isMethod('put')){
-            $data['faculty_code'] = ['required', 'string', 'max:255'];
-            $data['username'] = ['required', 'string', 'max:255'];
-            $data['email'] = ['required', 'email', 'max:255'];
-            $data['password'] = ['required', 'string', 'min:8'];
-            $data['personal_image'] = ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,png,webp', 'max:2048'];
-            $data['resume'] = ['required', 'file', 'mimes:pdf,doc,docx', 'max: 20480'];
-            $data['researches'] = ['nullable', 'file', 'mimes:pdf,doc,docx', 'max: 20480'];
-
-            
+        // For update requests, make some fields optional
+        if ($this->isMethod('put') || $this->isMethod('patch')) {
+            $rules['personal_image'] = ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'];
+            $rules['resume'] = ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:20480'];
+            $rules['password'] = ['nullable', 'string', 'min:8'];
         }
 
-        return $data;     
+        return $rules;     
     }
 
 

@@ -14,20 +14,20 @@ class SuperAdminSeeder extends Seeder
      */
     public function run(): void
     {
-        // إنشاء صلاحية المدير العام
+       
         $superAdminRole = Roles::create([
             'role' => 'مدير عام',
             'email' => 'ebrahim@gmail.com',
-            'password' => 'admin123456', // سيتم تشفيرها تلقائياً
+            'password' => 'ebrahim123456',  
         ]);
 
-        // ربط جميع الصلاحيات بصلاحية المدير العام
+    
         $allPermissions = Permission::all();
         $superAdminRole->permissions()->attach($allPermissions->pluck('id'));
 
         $this->command->info('تم إنشاء مدير عام بنجاح!');
-        $this->command->info('البريد الإلكتروني: admin@college.edu');
-        $this->command->info('كلمة المرور: admin123456');
+        $this->command->info('البريد الإلكتروني: ebrahim@gmail.com');
+        $this->command->info('كلمة المرور: ebrahim123456');
         $this->command->info('الصلاحيات: جميع الصلاحيات (' . $allPermissions->count() . ' صلاحية)');
     }
 }

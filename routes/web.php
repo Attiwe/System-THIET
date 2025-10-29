@@ -61,6 +61,7 @@ use App\Http\Controllers\Dashboard\VideosDepartmentController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\RoleAuthController;
+use App\Http\Controllers\Dashboard\ImportedBooksController;
 
 
 
@@ -93,6 +94,10 @@ Route::middleware('auth')->get('/test-permissions', function() {
     ]);
 })->name('test.permissions');
 
+
+Route::middleware('auth')->group(function () {
+   
+ 
 //=======================Route News====================================
 Route::resource('dean_speech', DeanSpeechController::class)->names('dean_speech')->except(['show', 'destroy']);
 
@@ -128,7 +133,6 @@ Route::resource('category_management', CategoryManagementController::class)->nam
 Route::resource('management-boards', ManagementBoardsController::class)->names('management-boards')->except(['show']);
 Route::get('/management-boards/file/{filename}', function ($filename) {
     $filePath = 'public/management-boards/' . $filename;
-    
     if (!Storage::exists($filePath)) {
         abort(404);
     }
@@ -425,11 +429,21 @@ Route::middleware(['auth', 'role.permission:roles.delete'])->group(function () {
     Route::delete('permissions/{permission}', [PermissionController::class, 'destroy'])->name('permissions.destroy');
 });
 
+//==================== Route Imported Books (Excel Upload) ========================
+Route::middleware('auth')->group(function () {
+    Route::get('imported-books', [ImportedBooksController::class, 'index'])->name('imported-books.index');
+    Route::post('imported-books/upload', [ImportedBooksController::class, 'upload'])->name('imported-books.upload');
+});
+
   
+ 
  
 
 
 
 Route::get('/', function () {
   return redirect()->route('login');
+});
+
+
 });

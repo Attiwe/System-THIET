@@ -41,9 +41,9 @@
 @section('content')
   <div class="card card-body">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 class="text-primary mb-0">✏️ تعديل الصلاحية: {{ $role->role }}</h2>
+      <h2 class="text-primary mb-0">✏️ تعديل المستخدم: {{ $user->name }}</h2>
       <div>
-        <a href="{{ route('roles.show', $role->id) }}" class="btn btn-outline-info me-2">
+        <a href="{{ route('roles.show', $user->id) }}" class="btn btn-outline-info me-2">
           <i class="bi bi-eye"></i> عرض التفاصيل
         </a>
         <a href="{{ route('roles.index') }}" class="btn btn-outline-secondary">
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <form action="{{ route('roles.update', $role->id) }}" method="POST" class="needs-validation" novalidate>
+    <form action="{{ route('roles.update', $user->id) }}" method="POST" class="needs-validation" novalidate>
       @csrf
       @method('PUT')
       
@@ -101,8 +101,8 @@
               <div class="mb-3">
                 <label class="form-label">الصلاحيات الحالية</label>
                 <div class="border rounded p-2 bg-light">
-                  @if($role->permissions->count() > 0)
-                    @foreach($role->permissions as $permission)
+                  @if($user->permissions->count() > 0)
+                    @foreach($user->permissions as $permission)
                       <span class="badge bg-success me-1 mb-1">{{ $permission->display_name }}</span>
                     @endforeach
                   @else

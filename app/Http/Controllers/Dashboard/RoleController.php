@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Roles;
+use App\Models\User;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -91,7 +91,7 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(\App\Models\User $user)
+    public function show(User $user)
     {
         $user->load('permissions');
         return view('pages.roles.show', compact('user'));
@@ -100,7 +100,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(\App\Models\User $user)
+    public function edit(User $user)
     {
         $permissions = Permission::orderBy('group')->orderBy('display_name')->get()->groupBy('group');
         $user->load('permissions');
@@ -112,7 +112,7 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, \App\Models\User $user)
+    public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
             'role' => 'required|string|max:255',
@@ -173,7 +173,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(\App\Models\User $user)
+    public function destroy(User $user)
     {
         try {
             // منع حذف المستخدمين المحميين

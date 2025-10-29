@@ -15,13 +15,22 @@ class FacultyMembersResourse extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'department_name' => $this->department->name,
+            'id' => $this->id,
+            'name' => $this->name,
+            'type' => $this->type,
+            'faculty_code' => $this->faculty_code,
+            'email' => $this->email,
+            'username' => $this->username,
+            'phone' => $this->phone,
+            'facebook' => $this->facebook,
             'appointment_type' => $this->appointment_type,
-                    'personal_image' => asset('image/images_doctor/' . $this->personal_image),
-                    'resume' => asset('image/resume/' . $this->resume),
-                    'researches' => asset('image/researches/' . $this->researches),
-                    'type' => $this->type,
-               
+            'appointment_date' => $this->appointment_date,
+            'department_name' => $this->department ? $this->department->name : null,
+            'personal_image' => $this->personal_image ? asset('image/images_doctor/' . $this->personal_image) : null,
+            'resume' => $this->resume ? asset('image/resume/' . $this->resume) : null,
+            'researches' => $this->researches ? asset('image/researches/' . $this->researches) : null,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

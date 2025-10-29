@@ -27,10 +27,14 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             SuperAdminSeeder::class,
             AdminUserSeeder::class,
+            EbrahimUserSeeder::class,
             TestRoleSeeder::class,
             DepartmentSeed::class,
             LevelAccadmicSeed::class,
             DepartmentPlanSeed::class,
+            FacultyMembersSeeder::class,
+            DepartmentHeadSeeder::class,
+            MasterisDoctoralThesesSeeder::class,
         ]);
 
     }

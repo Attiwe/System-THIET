@@ -12,6 +12,14 @@ use App\Http\Controllers\Api\V1\AcademicCouncilController;
 use App\Http\Controllers\Api\V1\DepartmentPlanController;
 use App\Http\Controllers\Api\V1\FacultyMembersController;
 use App\Http\Controllers\Api\V1\VideosDepartmentController;
+use App\Http\Controllers\Api\V1\InstituteRequirementsController;
+use App\Http\Controllers\Api\V1\LabController;
+use App\Http\Controllers\Api\V1\ClassTrainingController;
+use App\Http\Controllers\Api\V1\ScientificTripController;
+use App\Http\Controllers\Api\V1\ResearchProjectController;
+use App\Http\Controllers\Api\V1\StudentProjectController;
+use App\Http\Controllers\Api\V1\MasterisDoctoralThesesController;
+
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -36,10 +44,24 @@ Route::prefix('v1')->group(function () {
   Route::get('academic/councils', [AcademicCouncilController::class, 'index']);
 
   //=====================Route departments ======================================
-  Route::get('departments', [DepartmentController::class, 'index']);
+  // Route::get('departments', [DepartmentController::class, 'index']);
+  Route::controller(DepartmentController::class)->prefix('departments/')->group(function () {
+    Route::get('basic-sciences', 'BasicSciences');
+    Route::get('computer-engineering', 'ComputerEngineering');
+    Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+    Route::get('chemical-engineering', 'ChemicalEngineering');
+  });
+
 
   //=====================Route department heads ======================================
-  Route::get('department-heads', [DepartmentHeadController::class, 'index']);
+  // Route::get('department-heads', [DepartmentHeadController::class, 'index']);
+  Route::controller(DepartmentHeadController::class)->prefix('department-heads')->group(function () {
+    Route::get('basic-sciences', 'BasicSciences');
+    Route::get('computer-engineering', 'ComputerEngineering');
+    Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+    Route::get('chemical-engineering', 'ChemicalEngineering');
+  });
+
 
   //=====================Route department plans controller ======================================
   Route::controller(DepartmentPlanController::class)->group(function () {
@@ -142,17 +164,108 @@ Route::prefix('v1')->group(function () {
 
   });
 
-  //=====================Route Videos Departments ========================================
-  // Route::get('videos-departments', [VideosDepartmentController::class, 'index'])->name('videos-departments.index');
-  // Route::post('videos-departments', [VideosDepartmentController::class, 'store'])->name('videos-departments.store');
-  // Route::get('videos-departments/{id}', [VideosDepartmentController::class, 'show'])->name('videos-departments.show');
-  // Route::put('videos-departments/{id}', [VideosDepartmentController::class, 'update'])->name('videos-departments.update');
-  // Route::delete('videos-departments/{id}', [VideosDepartmentController::class, 'destroy'])->name('videos-departments.destroy');
-  // Route::get('videos-departments/department/{department}', [VideosDepartmentController::class, 'getByDepartment'])->name('videos-departments.by-department');
-  // Route::get('videos-departments/{id}/video', [VideosDepartmentController::class, 'showVideo'])->name('videos-departments.video');
+
+  //=======================Route InstituteRequirement ======================
+  Route::controller(InstituteRequirementsController::class)->prefix('institute-requirements')->group(function(){
+      
+    //===============Route Basic sciences ==============
+     Route::get('basic-sciences', 'BasicSciences');
+
+     //===============Route Computer Engineering Plan ========== 
+     Route::get('computer-engineering', 'ComputerEngineering');
+ 
+     //===============Route Construction and building engineering ==============
+      Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+ 
+     //===============Route Chemical Engineering Plan ==============
+     Route::get('chemical-engineering', 'ChemicalEngineering');
+  }); 
+
+  //=======================Route Labs ======================
+  Route::controller(LabController::class)->prefix('labs')->group(function(){
+    //===============Route Basic sciences ==============
+     Route::get('basic-sciences', 'BasicSciences');
+
+     //===============Route Computer Engineering ========== 
+     Route::get('computer-engineering', 'ComputerEngineering');
+
+     //===============Route Construction and building engineering ==============
+     Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+
+     //===============Route Chemical Engineering ==============
+     Route::get('chemical-engineering', 'ChemicalEngineering');
+  });
+
+  //=======================Route ClassTrainings ======================
+  Route::controller(ClassTrainingController::class)->prefix('class-trainings')->group(function(){
+    //===============Route Basic sciences ==============
+     Route::get('basic-sciences', 'BasicSciences');
+
+     //===============Route Computer Engineering ========== 
+     Route::get('computer-engineering', 'ComputerEngineering');
+
+     //===============Route Construction and building engineering ==============
+     Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+
+     //===============Route Chemical Engineering ==============
+     Route::get('chemical-engineering', 'ChemicalEngineering');
+  });
+
+  //=======================Route ScientificTrips ======================
+  Route::controller(ScientificTripController::class)->prefix('scientific-trips')->group(function(){
+    //===============Route Basic sciences ==============
+     Route::get('basic-sciences', 'BasicSciences');
+
+     //===============Route Computer Engineering ========== 
+     Route::get('computer-engineering', 'ComputerEngineering');
+
+     //===============Route Construction and building engineering ==============
+     Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+
+     //===============Route Chemical Engineering ==============
+     Route::get('chemical-engineering', 'ChemicalEngineering');
+  });
+
+  //=======================Route ResearchProjects ======================
+  Route::controller(ResearchProjectController::class)->prefix('research-projects')->group(function(){
+    //===============Route Basic sciences ==============
+     Route::get('basic-sciences', 'BasicSciences');
+
+     //===============Route Computer Engineering ========== 
+     Route::get('computer-engineering', 'ComputerEngineering');
+
+     //===============Route Construction and building engineering ==============
+     Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+
+     //===============Route Chemical Engineering ==============
+     Route::get('chemical-engineering', 'ChemicalEngineering');
+  });
+
+  //=======================Route StudentProjects ======================
+  Route::controller(StudentProjectController::class)->prefix('student-projects')->group(function(){
+    //===============Route Basic sciences ==============
+     Route::get('basic-sciences', 'BasicSciences');
+
+     //===============Route Computer Engineering ========== 
+     Route::get('computer-engineering', 'ComputerEngineering');
+
+     //===============Route Construction and building engineering ==============
+     Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+
+     //===============Route Chemical Engineering ==============
+     Route::get('chemical-engineering', 'ChemicalEngineering');
+  });
+
+  //=======================Route MasterisDoctoralTheses ======================
+  Route::controller(MasterisDoctoralThesesController::class)->prefix('masteris-doctoral-theses')->group(function(){
+    Route::get('/', 'index');
+    Route::get('basic-sciences', 'BasicSciences');
+    Route::get('construction-and-building-engineering', 'ConstructionAndBuildingEngineering');
+    Route::get('chemical-engineering', 'ChemicalEngineering');
+    Route::get('computer-engineering', 'ComputerEngineering');
+  });
 
 
 
-
-
+//********************************************** The End ************************************************** */  
 });

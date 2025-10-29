@@ -79,7 +79,7 @@
               <td class="fw-bold text-success">
                 <span class="badge bg-success">{{ $user->permissions->count() }}</span>
               </td>
-              <td class="fw-bold text-secondary">{{ $user->created_at->format('d/m/Y') }}</td>
+              <td class="fw-bold text-secondary">{{ $user->created_at ? $user->created_at->format('d/m/Y') : 'غير محدد' }}</td>
               <td>
                 <div class="dropdown">
                   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton{{ $user->id }}" data-bs-toggle="dropdown" aria-expanded="false">

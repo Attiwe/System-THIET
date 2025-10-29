@@ -15,14 +15,14 @@ class AdminUserSeeder extends Seeder
     {
         // إنشاء مستخدم مدير في جدول users
         $adminUser = User::create([
-            'name' => 'مدير النظام',
-            'email' => 'admin@college.edu',
-            'password' => 'admin123456', 
+            'name' => 'عبريم',
+            'email' => 'ebrahim@gmail.com',
+            'password' => 'ebrahim123456', 
             'email_verified_at' => now(),
         ]);
 
         $this->command->info('تم إنشاء مستخدم مدير النظام!');
-        $this->command->info('البريد الإلكتروني: admin@college.edu');
-        $this->command->info('كلمة المرور: admin123456');
+        $this->command->info('البريد الإلكتروني: ebrahim@gmail.com');
+        $this->command->info('كلمة المرور: ebrahim123456');
     }
 }

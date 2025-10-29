@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MasterisDoctoralTheses extends Model
 {
+  use HasFactory;
    protected $table = 'masteris_doctoral_theses';
   protected $fillable = [
         'department_id',

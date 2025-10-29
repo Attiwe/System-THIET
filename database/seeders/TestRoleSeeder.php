@@ -14,52 +14,52 @@ class TestRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // إنشاء صلاحية محدودة للاختبار
-        $limitedRole = Roles::create([
-            'role' => 'مدير محدود',
-            'email' => 'limited@college.edu',
-            'password' => 'limited123456',
-        ]);
+        // // إنشاء صلاحية محدودة للاختبار
+        // $limitedRole = Roles::create([
+        //     'role' => 'مدير محدود',
+        //     'email' => 'limited@college.edu',
+        //     'password' => 'limited123456',
+        // ]);
 
-        // إعطاء صلاحيات محدودة فقط
-        $limitedPermissions = Permission::whereIn('name', [
-            'roles.read',
-            'permissions.read',
-            'users.read',
-            'faculty.read',
-            'departments.read',
-            'articles.read',
-        ])->get();
+        // // إعطاء صلاحيات محدودة فقط
+        // $limitedPermissions = Permission::whereIn('name', [
+        //     'roles.read',
+        //     'permissions.read',
+        //     'users.read',
+        //     'faculty.read',
+        //     'departments.read',
+        //     'articles.read',
+        // ])->get();
 
-        $limitedRole->permissions()->attach($limitedPermissions->pluck('id'));
+        // $limitedRole->permissions()->attach($limitedPermissions->pluck('id'));
 
-        $this->command->info('تم إنشاء صلاحية محدودة بنجاح!');
-        $this->command->info('البريد الإلكتروني: limited@college.edu');
-        $this->command->info('كلمة المرور: limited123456');
-        $this->command->info('الصلاحيات: قراءة الصلاحيات فقط');
+        // $this->command->info('تم إنشاء صلاحية محدودة بنجاح!');
+        // $this->command->info('البريد الإلكتروني: limited@college.edu');
+        // $this->command->info('كلمة المرور: limited123456');
+        // $this->command->info('الصلاحيات: قراءة الصلاحيات فقط');
 
-        // إنشاء صلاحية للطلاب
-        $studentRole = Roles::create([
-            'role' => 'طالب',
-            'email' => 'student@college.edu',
-            'password' => 'student123456',
-        ]);
+        // // إنشاء صلاحية للطلاب
+        // $studentRole = Roles::create([
+        //     'role' => 'طالب',
+        //     'email' => 'student@college.edu',
+        //     'password' => 'student123456',
+        // ]);
 
-        // إعطاء صلاحيات للطلاب
-        $studentPermissions = Permission::whereIn('name', [
-            'students.read',
-            'student_projects.read',
-            'student_projects.create',
-            'student_results.read',
-            'articles.read',
-            'library.read',
-        ])->get();
+        // // إعطاء صلاحيات للطلاب
+        // $studentPermissions = Permission::whereIn('name', [
+        //     'students.read',
+        //     'student_projects.read',
+        //     'student_projects.create',
+        //     'student_results.read',
+        //     'articles.read',
+        //     'library.read',
+        // ])->get();
 
-        $studentRole->permissions()->attach($studentPermissions->pluck('id'));
+        // $studentRole->permissions()->attach($studentPermissions->pluck('id'));
 
-        $this->command->info('تم إنشاء صلاحية الطالب بنجاح!');
-        $this->command->info('البريد الإلكتروني: student@college.edu');
-        $this->command->info('كلمة المرور: student123456');
-        $this->command->info('الصلاحيات: صلاحيات الطالب');
+        // $this->command->info('تم إنشاء صلاحية الطالب بنجاح!');
+        // $this->command->info('البريد الإلكتروني: student@college.edu');
+        // $this->command->info('كلمة المرور: student123456');
+        // $this->command->info('الصلاحيات: صلاحيات الطالب');
     }
 }

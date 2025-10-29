@@ -441,6 +441,7 @@
 					@if(\App\Helpers\PermissionHelper::hasPermission('publishings.read'))
 						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishings.index') }}"> دور النشر </a></li>
 					@endif
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('imported-books.index') }}"> استيراد كتب من Excel </a></li>
 				</ul>
 			</li>
 			@endif
