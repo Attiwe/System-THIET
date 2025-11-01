@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\V1\ScientificTripController;
 use App\Http\Controllers\Api\V1\ResearchProjectController;
 use App\Http\Controllers\Api\V1\StudentProjectController;
 use App\Http\Controllers\Api\V1\MasterisDoctoralThesesController;
+use App\Http\Controllers\Api\V1\PublishingAwardsController;
 
 
 // Route::get('/user', function (Request $request) {
@@ -264,6 +265,11 @@ Route::prefix('v1')->group(function () {
     Route::get('chemical-engineering', 'ChemicalEngineering');
     Route::get('computer-engineering', 'ComputerEngineering');
   });
+
+  //=======================Route PublishingAwards ======================
+  Route::controller(PublishingAwardsController::class)->prefix('publishing-awards')->group(function(){
+    Route::get('/', 'index');
+   });
 
 
 

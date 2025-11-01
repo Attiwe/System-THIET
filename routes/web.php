@@ -55,6 +55,7 @@ use App\Http\Controllers\Dashboard\StudentProjectController;
 use App\Http\Controllers\Dashboard\ClassTrainingController;
 use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\PublishingController;
+use App\Http\Controllers\Dashboard\PublishingAwardsController;
 use App\Http\Controllers\Dashboard\UnitInstitutesController;
 use App\Http\Controllers\Dashboard\AcademicCouncilController;
 use App\Http\Controllers\Dashboard\VideosDepartmentController;
@@ -381,6 +382,9 @@ Route::resource('authors', AuthorController::class)->names('authors');
 
 //==================== Route Publishings ========================
 Route::resource('publishings', PublishingController::class)->names('publishings');
+
+//==================== Route Publishing Awards ========================
+Route::resource('publishing_awards', PublishingAwardsController::class)->names('publishing_awards');
 
 //==================== Route Unit Institutes ========================
 Route::resource('about/institute', UnitInstitutesController::class)->names('unit_institutes');

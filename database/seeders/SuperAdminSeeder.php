@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Roles;
 use App\Models\Permission;
-
+use Illuminate\Support\Facades\DB;
 class SuperAdminSeeder extends Seeder
 {
     /**
@@ -14,7 +14,7 @@ class SuperAdminSeeder extends Seeder
      */
     public function run(): void
     {
-       
+        DB::table('roles')->delete();
         $superAdminRole = Roles::create([
             'role' => 'مدير عام',
             'email' => 'ebrahim@gmail.com',

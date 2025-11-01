@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserSeeder extends Seeder
 {
@@ -13,7 +14,8 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        // إنشاء مستخدم مدير في جدول users
+        DB::table('users')->delete();
+ 
         $adminUser = User::create([
             'name' => 'عبريم',
             'email' => 'ebrahim@gmail.com',

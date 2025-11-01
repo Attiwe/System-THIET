@@ -123,6 +123,10 @@
 						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('scholarships.index') }}">
 								منح دراسيه </a></li>
 					@endif
+					@if(\App\Helpers\PermissionHelper::hasPermission('publishing_awards.read'))
+						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishing_awards.index') }}">
+								جوائز النشر </a></li>
+					@endif
 				</ul>
 			</li>
 			@endif

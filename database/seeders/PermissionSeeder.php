@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class PermissionSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('permissions')->delete();
+
         $permissions = [
             // إدارة المستخدمين
             ['name' => 'users.create', 'display_name' => 'إنشاء المستخدمين', 'description' => 'إضافة مستخدمين جدد', 'group' => 'المستخدمين'],
