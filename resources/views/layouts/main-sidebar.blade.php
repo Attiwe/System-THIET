@@ -81,10 +81,10 @@
 						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('dean_speech.index') }}"> كلمة
 								العميد </a></li>
 					@endif
-					@if(\App\Helpers\PermissionHelper::hasPermission('dean_speech.create'))
+					<!-- @if(\App\Helpers\PermissionHelper::hasPermission('dean_speech.create'))
 						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('dean_speech.create') }}">
 								الاضافه </a></li>
-					@endif
+					@endif -->
 				</ul>
 			</li>
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['news.read', 'slider.read', 'faqs.read', 'scholarships.read']))

@@ -77,3 +77,4 @@ class PublishingAwardsFactory extends Factory
     }
 }
 
+

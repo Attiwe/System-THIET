@@ -101,6 +101,7 @@ Route::middleware('auth')->group(function () {
  
 //=======================Route News====================================
 Route::resource('dean_speech', DeanSpeechController::class)->names('dean_speech')->except(['show', 'destroy']);
+Route::delete('dean_speech/{id}', [DeanSpeechController::class, 'destroy'])->name('dean_speech.destroy');
 
 //=====================Route New Elements================================
 Route::resource('new_elements', NewElementsController::class)->names('new_elements')->except(['show']);

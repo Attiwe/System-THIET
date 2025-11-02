@@ -20,3 +20,4 @@ class PublishingAwardsSeeder extends Seeder
     }
 }
 
+

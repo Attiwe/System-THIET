@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('dean_speeches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('management_id')->constrained('management')->onDelete('cascade')->nullab();
-            $table->string('title');
+            $table->string('management_name');
+            $table->text('title');
+            $table->string('resume')->comment('cv of the dean speech')->nullable();
+            $table->string('image')->comment('image of the dean speech');
             $table->timestamps();
         });
     }

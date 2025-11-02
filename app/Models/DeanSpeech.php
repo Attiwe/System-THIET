@@ -8,15 +8,11 @@ class DeanSpeech extends Model
 {
     protected $table = 'dean_speeches';
     protected $fillable = [
+        'management_name',
         'title',
-        'management_id',
-        
-
+        'resume',
+        'image',
     ];
 
-    public function management()
-    {
-        return $this->belongsTo(Management::class);
-    }
 
 }
