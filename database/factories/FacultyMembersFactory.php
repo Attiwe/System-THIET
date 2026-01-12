@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-// use App\Models\Department;
-// use App\Models\FacultyMembers;
-// use App\Models\Roles;
-// use Illuminate\Database\Eloquent\Factories\Factory;
-// use Illuminate\Support\Facades\Hash;
+use App\Models\Department;
+use App\Models\FacultyMembers;
+use App\Models\Roles;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FacultyMembers>
@@ -18,7 +18,7 @@ class FacultyMembersFactory extends Factory
      *
      * @var class-string<\App\Models\FacultyMembers>
      */
-    // protected $model = FacultyMembers::class;
+    protected $model = FacultyMembers::class;
 
     /**
      * Define the model's default state.
@@ -27,25 +27,25 @@ class FacultyMembersFactory extends Factory
      */
     public function definition(): array
     {
-        // $name = $this->faker->name();
+        $name = $this->faker->name();
 
-        // return [
-        //     'roles_id' => Roles::query()->inRandomOrder()->first()?->id ?? Roles::factory()->create()->id,
-        //     'department_id' => Department::query()->inRandomOrder()->first()?->id ?? Department::factory()->create()->id,
-        //     'name' => $name,
-        //     'type' => $this->faker->randomElement(['دكتور', 'معيد']),
-        //     'faculty_code' => $this->faker->unique()->numberBetween(100000, 999999),
-        //     'email' => $this->faker->unique()->safeEmail(),
-        //     'facebook' => $this->faker->optional()->url(),
-        //     'phone' => $this->faker->optional()->e164PhoneNumber(),
-        //     'username' => $this->faker->unique()->userName(),
-        //     'password' => Hash::make('password'),
-        //     'appointment_type' => $this->faker->randomElement(['معين', 'منتدب', 'غير ذلك']),
-        //     'appointment_date' => $this->faker->date(),
-        //     'personal_image' => 'default.jpg',
-        //     'resume' => 'resume.pdf',
-        //     'researches' => $this->faker->optional()->sentence(),
-        // ];
+        return [
+            'roles_id' => Roles::query()->inRandomOrder()->first()?->id ?? Roles::factory()->create()->id,
+            'department_id' => Department::query()->inRandomOrder()->first()?->id ?? Department::factory()->create()->id,
+            'name' => $name,
+            'type' => $this->faker->randomElement(['دكتور', 'معيد']),
+            'faculty_code' => $this->faker->unique()->numberBetween(100000, 999999),
+            'email' => $this->faker->unique()->safeEmail(),
+            'facebook' => $this->faker->optional()->url(),
+            'phone' => $this->faker->optional()->e164PhoneNumber(),
+            'username' => $this->faker->unique()->userName(),
+            'password' => Hash::make('password'),
+            'appointment_type' => $this->faker->randomElement(['معين', 'منتدب', 'غير ذلك']),
+            'appointment_date' => $this->faker->date(),
+            'personal_image' => 'default.jpg',
+            'resume' => 'resume.pdf',
+            'researches' => $this->faker->optional()->sentence(),
+        ];
     }
 }
 
