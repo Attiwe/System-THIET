@@ -30,8 +30,8 @@ class FacultyMembersFactory extends Factory
         $name = $this->faker->name();
 
         return [
-            'roles_id' => Roles::query()->inRandomOrder()->value('id') ?? Roles::factory(),
-            'department_id' => Department::query()->inRandomOrder()->value('id') ?? Department::factory(),
+            'roles_id' => Roles::query()->inRandomOrder()->first()?->id ?? Roles::factory()->create()->id,
+            'department_id' => Department::query()->inRandomOrder()->first()?->id ?? Department::factory()->create()->id,
             'name' => $name,
             'type' => $this->faker->randomElement(['دكتور', 'معيد']),
             'faculty_code' => $this->faker->unique()->numberBetween(100000, 999999),
