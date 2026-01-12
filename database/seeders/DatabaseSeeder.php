@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             DepartmentSeed::class,
             LevelAccadmicSeed::class,
             DepartmentPlanSeed::class,
-            FacultyMembersSeeder::class,
+            // FacultyMembersSeeder::class,
             DepartmentHeadSeeder::class,
             MasterisDoctoralThesesSeeder::class,
         ]);
