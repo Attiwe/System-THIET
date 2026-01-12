@@ -38,9 +38,9 @@
 			<li class="side-item side-item-category"> الموقع </li>
 			<li class="slide">
 				<a class="side-menu__item" href="{{ route('dashboard') }}"><svg xmlns="http://www.w3.org/2000/svg"
-						class="side-menu__icon" viewBox="0 0 24 24">
+						class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
+						<path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3v10z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl">الصفحه الرئيسيه </span><span
 						class="badge badge-success side-badge"></span></a>
 			</li>
@@ -48,10 +48,9 @@
 				<form action="{{ route('logout') }}" method="POST" class="d-inline w-100">
 					@csrf
 					<button type="submit" class="side-menu__item w-100 text-right border-0 bg-transparent" style="cursor: pointer;">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-							<polyline points="16,17 21,12 16,7"/>
-							<line x1="21" y1="12" x2="9" y2="12"/>
+						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M0 0h24v24H0V0z" fill="none" />
+							<path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
 						</svg>
 						<span class="side-menu__label h6 font-weight-bold text-2xl">تسجيل الخروج</span>
 					</button>
@@ -60,20 +59,18 @@
 			@if(\App\Helpers\PermissionHelper::hasPermission('news.read'))
 			<li class="slide">
 				<a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
-						viewBox="0 0 24 24">
+						viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M4 6h16v2H4zm0 5h16v6H4z" opacity=".3" />
-						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v12h16V6H4zm2 3h12v6H6V9zm2 2v2h8v-2H8z" />
+						<path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H4V5h16v14zM6 10h12v2H6zm0-3h12v2H6zm0 6h12v2H6z"/>
 					</svg><span class="side-menu__label font-weight-bold text-2xl"> اخبار </span><span class="badge  side-badge ">
 					</span></a>
 			</li>
 			@endif
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ route('dean_speech.index')}}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" opacity=".3" />
-						<path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2zM12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+						<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold "> كلمة العميد </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -90,10 +87,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['news.read', 'slider.read', 'faqs.read', 'scholarships.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M4 6h16v2H4zm0 5h16v6H4z" opacity=".3" />
-						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v12h16V6H4zm2 3h12v6H6V9zm2 2v2h8v-2H8z" />
+						<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold ">تفاصيل الأخبار</span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -134,10 +130,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['management.read', 'management.create', 'institutes.read', 'academic_councils.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ route('management.index') }}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" opacity=".3" />
-						<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm6 5H6v-.99c.2-.72 3.3-2.01 6-2.01s5.8 1.29 6 2v1z" />
+						<path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold "> الاداره </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -173,10 +168,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['settings.read', 'units.read', 'organization_structure.read', 'management_boards.read', 'training_courses.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href=" #"><svg xmlns="http://www.w3.org/2000/svg"
-						class="side-menu__icon" viewBox="0 0 24 24">
+						class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" opacity=".3" />
-						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2zm0 3.08L9.58 9.4 7 9.27l2.5 2.44-.59 3.44L12 13.42l3.09 1.73-.59-3.44L17 9.27l-2.58.13L12 5.08z" />
+						<path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41L9.25 5.35c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold "> الاعدادت الادريه </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -224,10 +218,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['articles.read', 'articles.create', 'departments.read', 'student_opinions.read', 'library_opinions.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
-						class="side-menu__icon" viewBox="0 0 24 24">
+						class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0z" fill="none" />
-						<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11h-3v8h-2v-6H9v6H7v-8H4l8-5.16z" opacity=".3" />
-						<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11h-3v8h-2v-6H9v6H7v-8H4l8-5.16z" />
+						<path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
 					</svg><span class="side-menu__label font-weight-bold h6 "> اداره الموقع </span><i
 						class="angle fe fe-chevron-down font-weight-bold h6 "></i></a>
 				<ul class="slide-menu">
@@ -255,10 +248,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['faculty.read', 'office_students.read', 'masteris_doctoral_theses.read', 'featured_work.read', 'activities.read', 'department_heads.read', 'department_plans.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" opacity=".3" />
-						<path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" />
+						<path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold"> الاعدادت العامه </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -296,11 +288,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['academic_years.read', 'category_management.read', 'research_projects.read', 'institute_requirements.read', 'program_requirements.read', 'roles.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
-						class="side-menu__icon" viewBox="0 0 24 24">
+						class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3" />
-						<path
-							d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold "> اعدادت المؤسسة </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -339,10 +329,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['quality_form.read', 'quality_item.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
-						class="side-menu__icon" viewBox="0 0 24 24">
+						class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" opacity=".3" />
-						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2zm0 3.08L9.58 9.4 7 9.27l2.5 2.44-.59 3.44L12 13.42l3.09 1.73-.59-3.44L17 9.27l-2.58.13L12 5.08z" />
+						<path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> اعدادت الجوده </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -360,10 +349,9 @@
 			@if(\App\Helpers\PermissionHelper::hasPermission('important_links.read'))
 			<li class="slide">
 				<a class="side-menu__item" href="{{ route('important_link.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
-						class="side-menu__icon" viewBox="0 0 24 24">
+						class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.42l-.47.48a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24z" opacity=".3" />
-						<path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.42l-.47.48a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24z" />
+						<path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> روابط مهمه </span><span
 						class="badge badge-warning side-badge"> هام </span></a>
 			</li>
@@ -371,10 +359,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['faq_categories.read', 'faq_asked_questions.read', 'labs.read', 'scientific_trips.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v4z" opacity=".3" />
-						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v4z" />
+						<path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
 					</svg><span class="side-menu__label h6 font-weight-bold text-2xl"> الاسئله </span><i
 						class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
@@ -399,10 +386,9 @@
 			@if(\App\Helpers\PermissionHelper::hasAnyPermission(['student_projects.read', 'student_projects.create', 'student_results.read', 'schedules.read', 'study_materials.read', 'military_education.read', 'student_rights.read']))
 			<li class="slide">
 				<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page = '#') }}"><svg
-						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+						xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M0 0h24v24H0V0z" fill="none" />
-						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" opacity=".3" />
-						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+						<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
 					</svg><span class="side-menu__label font-weight-bold h6 text-dark">التعليم الطلاب</span><i class="angle fe fe-chevron-down"></i></a>
 				<ul class="slide-menu">
 					@if(\App\Helpers\PermissionHelper::hasPermission('student_projects.read'))

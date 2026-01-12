@@ -16,14 +16,13 @@ class CheckRolePermission
      */
     public function handle(Request $request, Closure $next, $requiredPermission = null): Response
     {
-        // التحقق من تسجيل الدخول
-        if (!Auth::check()) {
+         if (!Auth::check()) {
             return redirect()->route('login');
         }
 
         $user = Auth::user();
 
-        // التحقق من الصلاحية المطلوبة
+        
         if ($requiredPermission && !$user->hasPermission($requiredPermission)) {
             return redirect()->route('dashboard')
                 ->with('error', 'ليس لديك صلاحية للوصول لهذه الصفحة');

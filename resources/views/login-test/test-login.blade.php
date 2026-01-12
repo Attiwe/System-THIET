@@ -128,12 +128,229 @@
                 opacity: 0.6;
             }
         }
+
+        /* 📱 Responsive Design for Tablets and Phones */
+        
+        /* Tablet (768px - 991px) */
+        @media (max-width: 991px) {
+            .right-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+
+            .logo-wrapper img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .circle-1 {
+                width: 120px;
+                height: 120px;
+            }
+
+            .circle-2 {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Mobile Phones (max-width: 767px) */
+        @media (max-width: 767px) {
+            body {
+                background: linear-gradient(135deg, #00BFFF 40%, #005f99 100%);
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .login-card {
+                border-radius: 0.5rem;
+                margin: 1rem 0;
+            }
+
+            /* Remove hover effect on mobile */
+            .login-card:hover {
+                transform: none;
+                box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            }
+
+            .login-header {
+                padding: 1.5rem 1rem 1rem;
+            }
+
+            .login-header img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .login-header h3 {
+                font-size: 1rem;
+                margin-top: 0.5rem;
+            }
+
+            .login-header + .p-4 h4 {
+                font-size: 1.25rem;
+            }
+
+            .login-header + .p-4 p {
+                font-size: 0.9rem;
+            }
+
+            /* Stack the right section below on mobile */
+            .right-section {
+                padding: 1.5rem;
+                order: -1; /* Move to top on mobile */
+            }
+
+            .right-section h1 {
+                font-size: 1.3rem;
+                margin-top: 0.5rem;
+            }
+
+            .right-section p {
+                font-size: 0.85rem;
+            }
+
+            .logo-wrapper {
+                width: 150px;
+                height: 150px;
+            }
+
+            .logo-wrapper img {
+                width: 65px;
+                height: 65px;
+            }
+
+            .circle-1 {
+                width: 100px;
+                height: 100px;
+            }
+
+            .circle-2 {
+                width: 130px;
+                height: 130px;
+            }
+
+            /* Form adjustments */
+            .p-4 {
+                padding: 1rem !important;
+            }
+
+            .form-label {
+                font-size: 0.9rem;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .btn-login,
+            .btn-primary {
+                padding: 0.65rem;
+                font-size: 1rem;
+            }
+
+            /* Adjust margins for mobile */
+            .mb-3 {
+                margin-bottom: 0.75rem !important;
+            }
+
+            .mt-4 {
+                margin-top: 1rem !important;
+            }
+        }
+
+        /* Small phones (max-width: 375px) */
+        @media (max-width: 375px) {
+            .login-header h3 {
+                font-size: 0.9rem;
+            }
+
+            .right-section h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+
+            .logo-wrapper img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .circle-1 {
+                width: 80px;
+                height: 80px;
+            }
+
+            .circle-2 {
+                width: 105px;
+                height: 105px;
+            }
+        }
+
+        /* Landscape mode on phones */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .container {
+                min-height: 100vh;
+                padding: 0.5rem;
+            }
+
+            .vh-100 {
+                min-height: auto !important;
+            }
+
+            .login-card {
+                margin: 0.5rem 0;
+            }
+
+            .right-section {
+                padding: 1rem;
+            }
+
+            .logo-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-wrapper img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .circle-1 {
+                width: 70px;
+                height: 70px;
+            }
+
+            .circle-2 {
+                width: 90px;
+                height: 90px;
+            }
+
+            .right-section h1 {
+                font-size: 1rem;
+            }
+
+            .login-header,
+            .p-4 {
+                padding: 0.75rem !important;
+            }
+        }
     </style>
 @endsection
 
 @section('content')
     <div class="container d-flex align-items-center justify-content-center vh-100">
-        <div class="row w-100 shadow-lg login-card">
+        <div class="row w-100 shadow-lg login-card flex-column flex-md-row">
 
             <!-- Left Side -->
             <div class="col-md-6 p-4">
@@ -183,7 +400,7 @@
             </div>
 
             <!-- Right Side -->
-            <div class="col-md-6 right-section">
+            <div class="col-md-6 right-section order-first order-md-last">
                 <div class="logo-wrapper">
                     <!-- 🔥 Logo in the middle -->
                     <img src="{{ URL::asset('include/logo/logo.webp') }}" alt="Logo">

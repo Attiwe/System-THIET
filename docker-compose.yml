@@ -70,10 +70,10 @@ services:
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
-            - "9090:80"   # phpMyAdmin هيفتح على http://localhost:9090
+            - "9090:80"   
         environment:
             PMA_HOST: mysql
-            PMA_PORT: 3306   # جوه الدوكر MySQL دايمًا 3306
+            PMA_PORT: 3306   
             PMA_USER: '${DB_USERNAME}'
             PMA_PASSWORD: '${DB_PASSWORD}'
         depends_on:

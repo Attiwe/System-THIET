@@ -17,7 +17,7 @@ class AdminUserSeeder extends Seeder
         DB::table('users')->delete();
  
         $adminUser = User::create([
-            'name' => 'عبريم',
+            'name' => 'ebrahim',
             'email' => 'ebrahim@gmail.com',
             'password' => 'ebrahim123456', 
             'email_verified_at' => now(),
