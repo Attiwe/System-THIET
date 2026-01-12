@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Department;
-use App\Models\FacultyMembers;
-use App\Models\Roles;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
+// use App\Models\Department;
+// use App\Models\FacultyMembers;
+// use App\Models\Roles;
+// use Illuminate\Database\Eloquent\Factories\Factory;
+// use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FacultyMembers>
@@ -18,7 +18,7 @@ class FacultyMembersFactory extends Factory
      *
      * @var class-string<\App\Models\FacultyMembers>
      */
-    protected $model = FacultyMembers::class;
+    // protected $model = FacultyMembers::class;
 
     /**
      * Define the model's default state.
