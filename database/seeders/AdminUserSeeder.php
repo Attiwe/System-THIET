@@ -22,7 +22,7 @@ class AdminUserSeeder extends Seeder
             'password' => 'ebrahim123456', 
             'email_verified_at' => now(),
         ]);
-
+        
         $this->command->info('تم إنشاء مستخدم مدير النظام!');
         $this->command->info('البريد الإلكتروني: ebrahim@gmail.com');
         $this->command->info('كلمة المرور: ebrahim123456');

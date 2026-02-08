@@ -1,0 +1,1321 @@
+openapi: 3.0.3
+info:
+  title: Future Engineer API
+  description: API documentation for Future Engineer Institute
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: http://localhost/api/v1
+    description: Local development server
+  - url: https://your-domain.com/api/v1
+    description: Production server
+
+tags:
+  - name: Sliders
+    description: Slider management endpoints
+  - name: Institute
+    description: Institute information endpoints
+  - name: Organization
+    description: Organization structure endpoints
+  - name: Departments
+    description: Department-related endpoints
+  - name: Faculty
+    description: Faculty members endpoints
+  - name: Labs
+    description: Laboratory endpoints
+  - name: Projects
+    description: Research and student projects endpoints
+  - name: Academic
+    description: Academic-related endpoints
+
+paths:
+  /sliders:
+    get:
+      tags:
+        - Sliders
+      summary: Get all sliders
+      description: Retrieve all active sliders with pagination (4 items per page)
+      operationId: getSliders
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SliderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /about/institute:
+    get:
+      tags:
+        - Institute
+      summary: Get institute information
+      description: Retrieve information about the institute (vision, message, description, image)
+      operationId: getInstituteInfo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstituteResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /organization/structure:
+    get:
+      tags:
+        - Organization
+      summary: Get organization structure
+      description: Retrieve the organizational structure of the institute
+      operationId: getOrganizationStructure
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /institute/board/members:
+    get:
+      tags:
+        - Organization
+      summary: Get institute board members
+      description: Retrieve all institute board members
+      operationId: getInstituteBoardMembers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /academic/councils:
+    get:
+      tags:
+        - Academic
+      summary: Get academic councils
+      description: Retrieve all academic councils
+      operationId: getAcademicCouncils
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /departments/basic-sciences:
+    get:
+      tags:
+        - Departments
+      summary: Get Basic Sciences department
+      description: Retrieve information about the Basic Sciences department
+      operationId: getBasicSciencesDepartment
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /departments/computer-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Computer Engineering department
+      description: Retrieve information about the Computer Engineering department
+      operationId: getComputerEngineeringDepartment
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /departments/construction-and-building-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Construction and Building Engineering department
+      description: Retrieve information about the Construction and Building Engineering department
+      operationId: getConstructionAndBuildingEngineeringDepartment
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /departments/chemical-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Chemical Engineering department
+      description: Retrieve information about the Chemical Engineering department
+      operationId: getChemicalEngineeringDepartment
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-heads/basic-sciences:
+    get:
+      tags:
+        - Departments
+      summary: Get Basic Sciences department head
+      description: Retrieve the head of the Basic Sciences department
+      operationId: getBasicSciencesDepartmentHead
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-heads/computer-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Computer Engineering department head
+      operationId: getComputerEngineeringDepartmentHead
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-heads/construction-and-building-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Construction and Building Engineering department head
+      operationId: getConstructionAndBuildingEngineeringDepartmentHead
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-heads/chemical-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Chemical Engineering department head
+      operationId: getChemicalEngineeringDepartmentHead
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-plans/basic-sciences:
+    get:
+      tags:
+        - Departments
+      summary: Get Basic Sciences department plan
+      description: Retrieve the research plan for Basic Sciences department
+      operationId: getBasicSciencesDepartmentPlan
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentPlanResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-plans/computer-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Computer Engineering department plan
+      operationId: getComputerEngineeringDepartmentPlan
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentPlanResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-plans/construction-and-building-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Construction and Building Engineering department plan
+      operationId: getConstructionAndBuildingEngineeringDepartmentPlan
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentPlanResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-plans/chemical-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Chemical Engineering department plan
+      operationId: getChemicalEngineeringDepartmentPlan
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentPlanResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-regulations/basic-sciences:
+    get:
+      tags:
+        - Departments
+      summary: Get Basic Sciences department regulations
+      description: Retrieve the internal regulations for Basic Sciences department
+      operationId: getBasicSciencesDepartmentRegulations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-regulations/computer-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Computer Engineering department regulations
+      operationId: getComputerEngineeringDepartmentRegulations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-regulations/construction-and-building-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Construction and Building Engineering department regulations
+      operationId: getConstructionAndBuildingEngineeringDepartmentRegulations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-regulations/chemical-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Chemical Engineering department regulations
+      operationId: getChemicalEngineeringDepartmentRegulations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-books/basic-sciences:
+    get:
+      tags:
+        - Departments
+      summary: Get Basic Sciences department books
+      operationId: getBasicSciencesDepartmentBooks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-books/computer-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Computer Engineering department books
+      operationId: getComputerEngineeringDepartmentBooks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-books/construction-and-building-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Construction and Building Engineering department books
+      operationId: getConstructionAndBuildingEngineeringDepartmentBooks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-books/chemical-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Chemical Engineering department books
+      operationId: getChemicalEngineeringDepartmentBooks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-courses/basic-sciences:
+    get:
+      tags:
+        - Departments
+      summary: Get Basic Sciences department courses
+      operationId: getBasicSciencesDepartmentCourses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-courses/computer-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Computer Engineering department courses
+      operationId: getComputerEngineeringDepartmentCourses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-courses/construction-and-building-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Construction and Building Engineering department courses
+      operationId: getConstructionAndBuildingEngineeringDepartmentCourses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-courses/chemical-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Chemical Engineering department courses
+      operationId: getChemicalEngineeringDepartmentCourses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-council/basic-sciences:
+    get:
+      tags:
+        - Departments
+      summary: Get Basic Sciences department council
+      operationId: getBasicSciencesDepartmentCouncil
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-council/computer-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Computer Engineering department council
+      operationId: getComputerEngineeringDepartmentCouncil
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-council/construction-and-building-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Construction and Building Engineering department council
+      operationId: getConstructionAndBuildingEngineeringDepartmentCouncil
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /department-council/chemical-engineering:
+    get:
+      tags:
+        - Departments
+      summary: Get Chemical Engineering department council
+      operationId: getChemicalEngineeringDepartmentCouncil
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /faculty-members/basic-sciences:
+    get:
+      tags:
+        - Faculty
+      summary: Get Basic Sciences faculty members
+      operationId: getBasicSciencesFacultyMembers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /faculty-members/computer-engineering:
+    get:
+      tags:
+        - Faculty
+      summary: Get Computer Engineering faculty members
+      operationId: getComputerEngineeringFacultyMembers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /faculty-members/construction-and-building-engineering:
+    get:
+      tags:
+        - Faculty
+      summary: Get Construction and Building Engineering faculty members
+      operationId: getConstructionAndBuildingEngineeringFacultyMembers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /faculty-members/chemical-engineering:
+    get:
+      tags:
+        - Faculty
+      summary: Get Chemical Engineering faculty members
+      operationId: getChemicalEngineeringFacultyMembers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /institute-requirements/basic-sciences:
+    get:
+      tags:
+        - Institute
+      summary: Get Basic Sciences institute requirements
+      operationId: getBasicSciencesInstituteRequirements
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /institute-requirements/computer-engineering:
+    get:
+      tags:
+        - Institute
+      summary: Get Computer Engineering institute requirements
+      operationId: getComputerEngineeringInstituteRequirements
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /institute-requirements/construction-and-building-engineering:
+    get:
+      tags:
+        - Institute
+      summary: Get Construction and Building Engineering institute requirements
+      operationId: getConstructionAndBuildingEngineeringInstituteRequirements
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /institute-requirements/chemical-engineering:
+    get:
+      tags:
+        - Institute
+      summary: Get Chemical Engineering institute requirements
+      operationId: getChemicalEngineeringInstituteRequirements
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /labs/basic-sciences:
+    get:
+      tags:
+        - Labs
+      summary: Get Basic Sciences labs
+      operationId: getBasicSciencesLabs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /labs/computer-engineering:
+    get:
+      tags:
+        - Labs
+      summary: Get Computer Engineering labs
+      operationId: getComputerEngineeringLabs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /labs/construction-and-building-engineering:
+    get:
+      tags:
+        - Labs
+      summary: Get Construction and Building Engineering labs
+      operationId: getConstructionAndBuildingEngineeringLabs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /labs/chemical-engineering:
+    get:
+      tags:
+        - Labs
+      summary: Get Chemical Engineering labs
+      operationId: getChemicalEngineeringLabs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /class-trainings/basic-sciences:
+    get:
+      tags:
+        - Academic
+      summary: Get Basic Sciences class trainings
+      operationId: getBasicSciencesClassTrainings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /class-trainings/computer-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Computer Engineering class trainings
+      operationId: getComputerEngineeringClassTrainings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /class-trainings/construction-and-building-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Construction and Building Engineering class trainings
+      operationId: getConstructionAndBuildingEngineeringClassTrainings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /class-trainings/chemical-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Chemical Engineering class trainings
+      operationId: getChemicalEngineeringClassTrainings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /scientific-trips/basic-sciences:
+    get:
+      tags:
+        - Academic
+      summary: Get Basic Sciences scientific trips
+      operationId: getBasicSciencesScientificTrips
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /scientific-trips/computer-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Computer Engineering scientific trips
+      operationId: getComputerEngineeringScientificTrips
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /scientific-trips/construction-and-building-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Construction and Building Engineering scientific trips
+      operationId: getConstructionAndBuildingEngineeringScientificTrips
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /scientific-trips/chemical-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Chemical Engineering scientific trips
+      operationId: getChemicalEngineeringScientificTrips
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /research-projects/basic-sciences:
+    get:
+      tags:
+        - Projects
+      summary: Get Basic Sciences research projects
+      operationId: getBasicSciencesResearchProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /research-projects/computer-engineering:
+    get:
+      tags:
+        - Projects
+      summary: Get Computer Engineering research projects
+      operationId: getComputerEngineeringResearchProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /research-projects/construction-and-building-engineering:
+    get:
+      tags:
+        - Projects
+      summary: Get Construction and Building Engineering research projects
+      operationId: getConstructionAndBuildingEngineeringResearchProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /research-projects/chemical-engineering:
+    get:
+      tags:
+        - Projects
+      summary: Get Chemical Engineering research projects
+      operationId: getChemicalEngineeringResearchProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /student-projects/basic-sciences:
+    get:
+      tags:
+        - Projects
+      summary: Get Basic Sciences student projects
+      operationId: getBasicSciencesStudentProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /student-projects/computer-engineering:
+    get:
+      tags:
+        - Projects
+      summary: Get Computer Engineering student projects
+      operationId: getComputerEngineeringStudentProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /student-projects/construction-and-building-engineering:
+    get:
+      tags:
+        - Projects
+      summary: Get Construction and Building Engineering student projects
+      operationId: getConstructionAndBuildingEngineeringStudentProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /student-projects/chemical-engineering:
+    get:
+      tags:
+        - Projects
+      summary: Get Chemical Engineering student projects
+      operationId: getChemicalEngineeringStudentProjects
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /masteris-doctoral-theses:
+    get:
+      tags:
+        - Academic
+      summary: Get all master's and doctoral theses
+      operationId: getAllMasterisDoctoralTheses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /masteris-doctoral-theses/basic-sciences:
+    get:
+      tags:
+        - Academic
+      summary: Get Basic Sciences master's and doctoral theses
+      operationId: getBasicSciencesMasterisDoctoralTheses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /masteris-doctoral-theses/computer-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Computer Engineering master's and doctoral theses
+      operationId: getComputerEngineeringMasterisDoctoralTheses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /masteris-doctoral-theses/construction-and-building-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Construction and Building Engineering master's and doctoral theses
+      operationId: getConstructionAndBuildingEngineeringMasterisDoctoralTheses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /masteris-doctoral-theses/chemical-engineering:
+    get:
+      tags:
+        - Academic
+      summary: Get Chemical Engineering master's and doctoral theses
+      operationId: getChemicalEngineeringMasterisDoctoralTheses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /publishing-awards:
+    get:
+      tags:
+        - Academic
+      summary: Get all publishing awards
+      operationId: getPublishingAwards
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          description: Response data
+        message:
+          type: string
+          example: Success message
+      required:
+        - success
+        - data
+        - message
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Error message
+      required:
+        - success
+        - message
+
+    SliderResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Slider'
+            current_page:
+              type: integer
+              example: 1
+            per_page:
+              type: integer
+              example: 4
+            total:
+              type: integer
+              example: 10
+        message:
+          type: string
+          example: The sliders fetched successfully
+      required:
+        - success
+        - data
+        - message
+
+    Slider:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Slider Title
+        image:
+          type: string
+          format: uri
+          example: http://domain.com/path/to/image.jpg
+        link:
+          type: string
+          format: uri
+          example: http://link.com
+        status:
+          type: string
+          example: active
+
+    InstituteResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            vision:
+              type: string
+              example: Institute vision
+            message:
+              type: string
+              example: Institute message
+            description:
+              type: string
+              example: Institute description
+            image:
+              type: string
+              format: uri
+              example: http://domain.com/path/to/image.jpg
+        message:
+          type: string
+          example: The unit institutes fetched successfully
+      required:
+        - success
+        - data
+        - message
+
+    DepartmentResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Basic Sciences
+            description:
+              type: string
+              example: Department description
+            image:
+              type: string
+              format: uri
+              example: http://domain.com/path/to/image.jpg
+        message:
+          type: string
+          example: The Department fetched successfully
+      required:
+        - success
+        - data
+        - message
+
+    DepartmentPlanResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            department_name:
+              type: string
+              example: Basic Sciences
+            research_plan:
+              type: string
+              format: uri
+              example: http://domain.com/storage/department_plans/file.pdf
+        message:
+          type: string
+          example: The department plan fetched successfully
+      required:
+        - success
+        - data
+        - message
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            message: Bad request
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            message: Resource not found
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            message: Internal server error
+

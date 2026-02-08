@@ -103,53 +103,228 @@
     right: -10px;
   }
 }
-#basicSlider { position: relative; }
+#basicSlider { 
+  position: relative; 
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
 
 #basicSlider .MS-content {
   white-space: nowrap;
   overflow: hidden;
-  margin: 0 2%;
+  margin: 0;
   height: auto;
+  padding: 10px 50px;
+  display: flex;
+  align-items: center;
 }
 
 #basicSlider .MS-content .item {
-	margin:10px;
+  margin: 0 5px;
   display: inline-block;
-  width: 20%;
+  width: calc(20% - 10px);
   position: relative;
   vertical-align: top;
   overflow: hidden;
   height: 100%;
   white-space: normal;
-  line-height: 50px;
+  line-height: normal;
   vertical-align: middle;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
-@media (max-width: 991px) {
 
-#basicSlider .MS-content .item { width: 25%; }
+/* Hover effects only on devices that support hover */
+@media (hover: hover) {
+  #basicSlider .MS-content .item:hover {
+    transform: scale(1.05);
+  }
+  
+  #basicSlider .MS-content .item img:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
 }
+
+#basicSlider .MS-content .item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  max-width: 100%;
+}
+
+/* Touch-friendly tap targets */
 @media (max-width: 767px) {
-
-#basicSlider .MS-content .item { width: 35%; }
+  #basicSlider .MS-content .item {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-y;
+  }
+  
+  #basicSlider .MS-content .item:active {
+    transform: scale(0.98);
+  }
 }
-@media (max-width: 500px) {
 
-#basicSlider .MS-content .item { width: 50%; }
+/* Laptop and Desktop (1200px and above) */
+@media (min-width: 1200px) {
+  #basicSlider .MS-content .item {
+    width: calc(20% - 10px);
+    margin: 0 5px;
+  }
+  
+  #basicSlider .MS-content {
+    padding: 15px 60px;
+  }
+}
+
+/* Tablet Landscape (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  #basicSlider .MS-content .item {
+    width: calc(25% - 10px);
+    margin: 0 5px;
+  }
+  
+  #basicSlider .MS-content {
+    padding: 12px 55px;
+  }
+}
+
+/* Tablet Portrait (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  #basicSlider .MS-content .item {
+    width: calc(33.333% - 10px);
+    margin: 0 5px;
+  }
+  
+  #basicSlider .MS-content {
+    padding: 10px 50px;
+  }
+}
+
+/* Mobile Landscape (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  #basicSlider .MS-content .item {
+    width: calc(50% - 10px);
+    margin: 0 5px;
+  }
+  
+  #basicSlider .MS-content {
+    padding: 8px 45px;
+  }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media (max-width: 575px) {
+  #basicSlider .MS-content .item {
+    width: calc(100% - 10px);
+    margin: 0 5px;
+  }
+  
+  #basicSlider .MS-content {
+    padding: 8px 40px;
+  }
+  
+  #basicSlider .MS-content .item img {
+    border-radius: 6px;
+  }
 }
 
 #basicSlider .MS-content .item a {
-  line-height: 50px;
+  line-height: normal;
   vertical-align: middle;
+  display: block;
+  width: 100%;
 }
 
-#basicSlider .MS-controls button { position: absolute; }
+#basicSlider .MS-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#basicSlider .MS-controls button { 
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: all;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #333;
+  z-index: 11;
+}
+
+/* Hover effects only on devices that support hover */
+@media (hover: hover) {
+  #basicSlider .MS-controls button:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transform: scale(1.1);
+  }
+}
+
+#basicSlider .MS-controls button:active {
+  transform: scale(0.95);
+}
+
+/* Touch-friendly button styling */
+#basicSlider .MS-controls button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
 
 #basicSlider .MS-controls .MS-left {
-  top: 35px;
-  left: 10px;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #basicSlider .MS-controls .MS-right {
-  top: 35px;
-  right: 10px;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Mobile controls styling */
+@media (max-width: 767px) {
+  #basicSlider .MS-controls button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  #basicSlider .MS-controls .MS-left {
+    left: 2px;
+  }
+  
+  #basicSlider .MS-controls .MS-right {
+    right: 2px;
+  }
+}
+
+/* Small mobile controls */
+@media (max-width: 575px) {
+  #basicSlider .MS-controls button {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  #basicSlider .MS-content {
+    padding: 8px 35px;
+  }
 }

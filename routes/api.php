@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\V1\ResearchProjectController;
 use App\Http\Controllers\Api\V1\StudentProjectController;
 use App\Http\Controllers\Api\V1\MasterisDoctoralThesesController;
 use App\Http\Controllers\Api\V1\PublishingAwardsController;
+use App\Http\Controllers\Api\V1\LibraryBooksController;
 
 
 // Route::get('/user', function (Request $request) {
@@ -269,6 +270,12 @@ Route::prefix('v1')->group(function () {
   //=======================Route PublishingAwards ======================
   Route::controller(PublishingAwardsController::class)->prefix('publishing-awards')->group(function(){
     Route::get('/', 'index');
+   });
+
+  //=======================Route Library Books ======================
+  Route::controller(LibraryBooksController::class)->prefix('library-books')->group(function(){
+    Route::get('/', 'index');
+    Route::get('/{id}', 'show');
    });
 
 

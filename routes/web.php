@@ -63,6 +63,7 @@ use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\RoleAuthController;
 use App\Http\Controllers\Dashboard\ImportedBooksController;
+use App\Http\Controllers\Dashboard\ExcelController;
 
 
 
@@ -435,15 +436,28 @@ Route::middleware(['auth', 'role.permission:roles.delete'])->group(function () {
 });
 
 //==================== Route Imported Books (Excel Upload) ========================
-Route::middleware('auth')->group(function () {
-    Route::get('imported-books', [ImportedBooksController::class, 'index'])->name('imported-books.index');
-    Route::post('imported-books/upload', [ImportedBooksController::class, 'upload'])->name('imported-books.upload');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('imported-books', [ImportedBooksController::class, 'index'])->name('imported-books.index');
+//     Route::post('imported-books/upload', [ImportedBooksController::class, 'upload'])->name('imported-books.upload');
+// });
 
   
  
- 
 
+//==================== Route Books (Excel Library) ========================
+Route::get('/dashboard/upload', function(){
+    return view('dashboard.upload');
+})->name('excel.upload.form');
+
+Route::post('/dashboard/preview', [ExcelController::class, 'previewExcel'])->name('excel.preview');
+Route::post('/dashboard/import', [ExcelController::class, 'importExcel'])->name('excel.import');
+Route::get('/dashboard/data', [ExcelController::class, 'index'])->name('excel.data');
+Route::get('/dashboard/data/{id}/edit', [ExcelController::class, 'edit'])->name('excel.edit');
+Route::put('/dashboard/data/{id}', [ExcelController::class, 'update'])->name('excel.update');
+Route::delete('/dashboard/data/{id}', [ExcelController::class, 'destroy'])->name('excel.destroy');
+
+
+ 
 
 
 Route::get('/', function () {
@@ -452,3 +466,5 @@ Route::get('/', function () {
 
 
 });
+
+ 

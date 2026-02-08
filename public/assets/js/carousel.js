@@ -188,7 +188,20 @@
 		// ______________Multislider
 	$('#basicSlider').multislider({
 		continuous: true,
-		duration: 2000
+		duration: 2000,
+		hoverPause: true,
+		pauseAbove: 9999,
+		pauseBelow: 0
+	});
+	
+	// Handle window resize for better responsiveness
+	$(window).on('resize', function() {
+		if ($('#basicSlider').length) {
+			$('#basicSlider').multislider('pause');
+			setTimeout(function() {
+				$('#basicSlider').multislider('play');
+			}, 100);
+		}
 	});
 	
 })(jQuery);

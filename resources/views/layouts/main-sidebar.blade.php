@@ -431,7 +431,15 @@
 					@if(\App\Helpers\PermissionHelper::hasPermission('publishings.read'))
 						<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('publishings.index') }}"> دور النشر </a></li>
 					@endif
-					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('imported-books.index') }}"> استيراد كتب من Excel </a></li>
+
+					@if(\App\Helpers\PermissionHelper::hasPermission('excel.upload.form'))
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('excel.upload.form') }}"> استيراد كتب من Excel </a></li>
+					@endif
+					 
+ 					@if(\App\Helpers\PermissionHelper::hasPermission('excel.data'))
+					<li><a class="slide-item font-weight-bold text-2xl text-dark" href="{{ route('excel.data') }}"> البيانات </a></li>
+					@endif
+
 				</ul>
 			</li>
 			@endif
