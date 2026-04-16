@@ -397,8 +397,8 @@ Route::get('/academic/councils/pdf/{id}', [AcademicCouncilController::class, 'sh
 Route::get('/academic/councils/download/{id}', [AcademicCouncilController::class, 'downloadPdf'])->name('academic.councils.download');
 
 //==================== Route Videos Departments ========================
-Route::resource('videos_departments', VideosDepartmentController::class)->names('videos_departments');
 Route::get('/videos_departments/video/{id}', [VideosDepartmentController::class, 'showVideo'])->name('videos_departments.showVideo');
+Route::resource('videos_departments', VideosDepartmentController::class)->names('videos_departments');
 
 //==================== Route Roles Management ========================
 // Temporary routes without middleware for testing

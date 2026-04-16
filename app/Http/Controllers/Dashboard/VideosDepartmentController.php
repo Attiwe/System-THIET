@@ -43,14 +43,14 @@ class VideosDepartmentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'department_id' => 'required|exists:departments,id',
-            'video' => 'required|file|mimes:mp4,avi,mov,wmv,flv,webm|max:122501', // 119.63MB max
+            'video' => 'required|file|mimes:mp4,avi,mov,wmv,flv,webm|max:524288', // 512MB max
         ], [
             'department_id.required' => 'Please select a department',
             'department_id.exists' => 'Selected department does not exist',
             'video.required' => 'Please upload a video file',
             'video.file' => 'The uploaded file must be a valid file',
             'video.mimes' => 'Video must be one of: mp4, avi, mov, wmv, flv, webm',
-            'video.max' => 'Video file size must not exceed 119.63MB',
+            'video.max' => 'Video file size must not exceed 512MB',
         ]);
 
         if ($validator->fails()) {
@@ -60,6 +60,10 @@ class VideosDepartmentController extends Controller
         }
 
         try {
+            // Increase limits for large video uploads
+            ini_set('max_execution_time', 300);
+            ini_set('memory_limit', '512M');
+
             // Handle video file upload
             if ($request->hasFile('video')) {
                 $videoFile = $request->file('video');
@@ -115,13 +119,13 @@ class VideosDepartmentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'department_id' => 'required|exists:departments,id',
-            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv,flv,webm|max:122501', // 119.63MB max
+            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv,flv,webm|max:524288', // 512MB max
         ], [
             'department_id.required' => 'Please select a department',
             'department_id.exists' => 'Selected department does not exist',
             'video.file' => 'The uploaded file must be a valid file',
             'video.mimes' => 'Video must be one of: mp4, avi, mov, wmv, flv, webm',
-            'video.max' => 'Video file size must not exceed 119.63MB',
+            'video.max' => 'Video file size must not exceed 512MB',
         ]);
 
         if ($validator->fails()) {
@@ -187,12 +191,32 @@ class VideosDepartmentController extends Controller
     /**
      * Display the video file
      */
-    public function showVideo(VideosDepartment $videosDepartment)
+    public function showVideo($id)
     {
-        if (!$videosDepartment->video || !Storage::exists('public/' . $videosDepartment->video)) {
-            abort(404);
+        $videosDepartment = VideosDepartment::findOrFail($id);
+
+        if (!$videosDepartment->video) {
+            abort(404, 'No video found');
         }
 
-        return Storage::response('public/' . $videosDepartment->video);
+        $storagePath = 'public/' . $videosDepartment->video;
+
+        if (!Storage::exists($storagePath)) {
+            abort(404, 'Video file not found on disk');
+        }
+
+        $fullPath = Storage::path($storagePath);
+        $mimeType = 'video/mp4';
+
+        if (file_exists($fullPath)) {
+            $detected = mime_content_type($fullPath);
+            if ($detected) $mimeType = $detected;
+        }
+
+        return response()->file($fullPath, [
+            'Content-Type'              => $mimeType,
+            'Content-Disposition'       => 'inline',
+            'Accept-Ranges'             => 'bytes',
+        ]);
     }
 }

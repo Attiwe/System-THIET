@@ -2,416 +2,449 @@
 @section('title', 'تسجيل دخول')
 
 @section('css')
-    <style>
-        body {
-            background: linear-gradient(135deg, #00BFFF 40%, #005f99 100%);
-            font-family: "Cairo", sans-serif;
-        }
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
 
-        .login-card {
-            border: none;
-            border-radius: 1rem;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            background: #fff;
-            transition: all 0.3s ease-in-out;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* 🔥 Hover effect */
-        .login-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-        }
+    html, body, body.main-body, body.main-body.bg-primary-transparent {
+        background: #135cb6 !important;
+        background-color: #135cb6 !important;
+        font-family: 'Cairo', sans-serif;
+        min-height: 100vh;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
-        .login-header {
-            text-align: center;
-            padding: 2rem 1rem 1rem;
-            background: #f8f9fa;
-        }
+    body.main-body > *:not(#global-loader):not(script) {
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
 
-        .login-header img {
-            width: 60px;
-            height: 60px;
-        }
+    /* ---- Card Wrapper ---- */
+    .login-card {
+        display: flex;
+        width: 100%;
+        max-width: 860px;
+        min-height: 500px;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        position: relative;
+    }
 
-        .login-header h3 {
-            margin-top: 0.5rem;
-            color: #00BFFF;
-            font-weight: bold;
-        }
+    /* ============================
+       LEFT PANEL — Blue / Welcome
+       ============================ */
+    .left-panel {
+        flex: 0 0 42%;
+        background: linear-gradient(160deg, #135cb6 0%, #0d47a1 50%, #0a3a8a 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 30px;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+    }
 
-        .form-control:focus {
-            border-color: #00BFFF;
-            box-shadow: 0 0 6px rgba(0, 191, 255, 0.3);
-        }
+    /* Decorative blobs */
+    .left-panel::before {
+        content: '';
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        background: rgba(255,255,255,0.07);
+        border-radius: 50%;
+        bottom: -80px;
+        left: -80px;
+    }
 
-        .btn-login {
-            background: #00BFFF;
-            border: none;
-            font-weight: 600;
-            padding: 0.6rem;
-            transition: all 0.3s ease-in-out;
-        }
+    .left-panel::after {
+        content: '';
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 50%;
+        top: -50px;
+        right: -50px;
+    }
 
-        .btn-login:hover {
-            background: #0099cc;
-            transform: translateY(-2px);
-        }
+    /* Small floating circles */
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.08);
+    }
+    .blob-1 { width: 120px; height: 120px; top: 60px; left: -30px; }
+    .blob-2 { width: 90px;  height: 90px;  bottom: 100px; right: -20px; }
+    .blob-3 { width: 55px;  height: 55px;  top: 190px; right: 30px; background: rgba(255,255,255,0.12); }
 
-        .right-section {
-            background: linear-gradient(135deg, #005f99 30%, #00BFFF 100%);
-            color: #fff;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-        }
+    /* Logo */
+    .left-panel .logo-box {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 22px;
+    }
 
-        .right-section h1 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-top: 1rem;
-        }
+    .left-panel .logo-box img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 3px solid rgba(255,255,255,0.35);
+        box-shadow: 0 0 0 8px rgba(255,255,255,0.08), 0 8px 25px rgba(0,0,0,0.3);
+        object-fit: cover;
+    }
 
-        /* 🔥 Logo inside circular animation */
-        .logo-wrapper {
-            position: relative;
-            width: 220px;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    /* Pulse ring */
+    .pulse-ring {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 108px; height: 108px;
+        border-radius: 50%;
+        border: 2px solid rgba(255,255,255,0.25);
+        animation: pulse 2.5s ease-in-out infinite;
+    }
+    .pulse-ring-2 {
+        width: 130px; height: 130px;
+        animation-delay: 1.2s;
+    }
 
-        .logo-wrapper img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            z-index: 2;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-        }
+    @keyframes pulse {
+        0%   { transform: translate(-50%,-50%) scale(0.92); opacity: 0.7; }
+        50%  { transform: translate(-50%,-50%) scale(1.06); opacity: 1; }
+        100% { transform: translate(-50%,-50%) scale(0.92); opacity: 0.7; }
+    }
 
-        .logo-circle {
-            position: absolute;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            animation: pulse 3s infinite ease-in-out;
-        }
+    .left-panel h2 {
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 6px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
 
-        .circle-1 {
-            width: 150px;
-            height: 150px;
-        }
+    .left-panel p {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.6;
+        position: relative;
+        z-index: 2;
+        max-width: 200px;
+    }
 
-        .circle-2 {
-            width: 190px;
-            height: 190px;
-            animation-delay: 1s;
-        }
+    /* ============================
+       RIGHT PANEL — White / Form
+       ============================ */
+    .right-panel {
+        flex: 1;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 48px 44px;
+    }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                opacity: 0.6;
-            }
+    .right-panel h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #1a1a2e;
+        margin-bottom: 4px;
+    }
 
-            50% {
-                transform: scale(1.05);
-                opacity: 1;
-            }
+    .right-panel .sub {
+        font-size: 0.82rem;
+        color: #9aa0b8;
+        margin-bottom: 28px;
+    }
 
-            100% {
-                transform: scale(0.95);
-                opacity: 0.6;
-            }
-        }
+    /* Inputs */
+    .field-group {
+        margin-bottom: 16px;
+    }
 
-        /* 📱 Responsive Design for Tablets and Phones */
-        
-        /* Tablet (768px - 991px) */
-        @media (max-width: 991px) {
-            .right-section h1 {
-                font-size: 1.5rem;
-            }
+    .field-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: #6b7280;
+        margin-bottom: 6px;
+        letter-spacing: 0.4px;
+    }
 
-            .logo-wrapper {
-                width: 180px;
-                height: 180px;
-            }
+    .input-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
 
-            .logo-wrapper img {
-                width: 80px;
-                height: 80px;
-            }
+    .input-wrap i {
+        position: absolute;
+        right: 14px;
+        color: #b0b8d8;
+        font-size: 15px;
+        pointer-events: none;
+    }
 
-            .circle-1 {
-                width: 120px;
-                height: 120px;
-            }
+    .input-wrap input {
+        width: 100%;
+        padding: 11px 40px 11px 14px;
+        border: 1.5px solid #e0e4f0;
+        border-radius: 10px;
+        font-size: 13px;
+        font-family: 'Cairo', sans-serif;
+        color: #2d3555;
+        background: #f8f9ff;
+        transition: all 0.25s;
+        outline: none;
+        direction: rtl;
+    }
 
-            .circle-2 {
-                width: 150px;
-                height: 150px;
-            }
-        }
+    .input-wrap input:focus {
+        border-color: #1565c0;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(21,101,192,0.1);
+    }
 
-        /* Mobile Phones (max-width: 767px) */
-        @media (max-width: 767px) {
-            body {
-                background: linear-gradient(135deg, #00BFFF 40%, #005f99 100%);
-            }
+    .input-wrap input.is-invalid {
+        border-color: #e53e3e;
+    }
 
-            .container {
-                padding: 1rem;
-            }
+    .invalid-feedback {
+        font-size: 11px;
+        color: #e53e3e;
+        margin-top: 4px;
+        display: block;
+    }
 
-            .login-card {
-                border-radius: 0.5rem;
-                margin: 1rem 0;
-            }
+    /* Toggle password btn */
+    .toggle-pass {
+        position: absolute;
+        left: 12px;
+        background: none;
+        border: none;
+        color: #9aa0b8;
+        cursor: pointer;
+        font-size: 13px;
+        padding: 2px 4px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        transition: color 0.2s;
+    }
 
-            /* Remove hover effect on mobile */
-            .login-card:hover {
-                transform: none;
-                box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-            }
+    .toggle-pass:hover { color: #1565c0; }
 
-            .login-header {
-                padding: 1.5rem 1rem 1rem;
-            }
+    /* Remember + Forgot */
+    .meta-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
 
-            .login-header img {
-                width: 50px;
-                height: 50px;
-            }
+    .meta-row label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #6b7280;
+        cursor: pointer;
+        font-weight: 600;
+    }
 
-            .login-header h3 {
-                font-size: 1rem;
-                margin-top: 0.5rem;
-            }
+    .meta-row a {
+        color: #1565c0;
+        text-decoration: none;
+        font-weight: 700;
+    }
 
-            .login-header + .p-4 h4 {
-                font-size: 1.25rem;
-            }
+    .meta-row a:hover { text-decoration: underline; }
 
-            .login-header + .p-4 p {
-                font-size: 0.9rem;
-            }
+    /* Buttons */
+    .btn-signin {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #1565c0, #0d47a1);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        font-family: 'Cairo', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(21,101,192,0.35);
+    }
 
-            /* Stack the right section below on mobile */
-            .right-section {
-                padding: 1.5rem;
-                order: -1; /* Move to top on mobile */
-            }
+    .btn-signin:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(21,101,192,0.4);
+    }
 
-            .right-section h1 {
-                font-size: 1.3rem;
-                margin-top: 0.5rem;
-            }
+    .divider {
+        text-align: center;
+        color: #c5cce8;
+        font-size: 12px;
+        margin: 14px 0;
+        position: relative;
+    }
 
-            .right-section p {
-                font-size: 0.85rem;
-            }
+    .divider::before, .divider::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 42%;
+        height: 1px;
+        background: #e8eaf0;
+    }
+    .divider::before { right: 0; }
+    .divider::after  { left: 0; }
 
-            .logo-wrapper {
-                width: 150px;
-                height: 150px;
-            }
+    /* Alerts */
+    .alert-box {
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .alert-success { background: #f0fff4; color: #276749; border: 1px solid #9ae6b4; }
+    .alert-error   { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; }
 
-            .logo-wrapper img {
-                width: 65px;
-                height: 65px;
-            }
-
-            .circle-1 {
-                width: 100px;
-                height: 100px;
-            }
-
-            .circle-2 {
-                width: 130px;
-                height: 130px;
-            }
-
-            /* Form adjustments */
-            .p-4 {
-                padding: 1rem !important;
-            }
-
-            .form-label {
-                font-size: 0.9rem;
-            }
-
-            .form-control {
-                font-size: 0.9rem;
-                padding: 0.5rem;
-            }
-
-            .btn-login,
-            .btn-primary {
-                padding: 0.65rem;
-                font-size: 1rem;
-            }
-
-            /* Adjust margins for mobile */
-            .mb-3 {
-                margin-bottom: 0.75rem !important;
-            }
-
-            .mt-4 {
-                margin-top: 1rem !important;
-            }
-        }
-
-        /* Small phones (max-width: 375px) */
-        @media (max-width: 375px) {
-            .login-header h3 {
-                font-size: 0.9rem;
-            }
-
-            .right-section h1 {
-                font-size: 1.1rem;
-            }
-
-            .logo-wrapper {
-                width: 120px;
-                height: 120px;
-            }
-
-            .logo-wrapper img {
-                width: 55px;
-                height: 55px;
-            }
-
-            .circle-1 {
-                width: 80px;
-                height: 80px;
-            }
-
-            .circle-2 {
-                width: 105px;
-                height: 105px;
-            }
-        }
-
-        /* Landscape mode on phones */
-        @media (max-width: 767px) and (orientation: landscape) {
-            .container {
-                min-height: 100vh;
-                padding: 0.5rem;
-            }
-
-            .vh-100 {
-                min-height: auto !important;
-            }
-
-            .login-card {
-                margin: 0.5rem 0;
-            }
-
-            .right-section {
-                padding: 1rem;
-            }
-
-            .logo-wrapper {
-                width: 100px;
-                height: 100px;
-            }
-
-            .logo-wrapper img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .circle-1 {
-                width: 70px;
-                height: 70px;
-            }
-
-            .circle-2 {
-                width: 90px;
-                height: 90px;
-            }
-
-            .right-section h1 {
-                font-size: 1rem;
-            }
-
-            .login-header,
-            .p-4 {
-                padding: 0.75rem !important;
-            }
-        }
-    </style>
+    /* ---- Responsive ---- */
+    @media (max-width: 700px) {
+        .login-card { flex-direction: column; max-width: 420px; }
+        .left-panel { flex: none; padding: 32px 24px; }
+        .left-panel h2 { font-size: 1.3rem; }
+        .right-panel { padding: 32px 24px; }
+    }
+</style>
 @endsection
 
 @section('content')
-    <div class="container d-flex align-items-center justify-content-center vh-100">
-        <div class="row w-100 shadow-lg login-card flex-column flex-md-row">
+<div style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; background:#135cb6;">
 
-            <!-- Left Side -->
-            <div class="col-md-6 p-4">
-                <div class="login-header">
-                    <img src="{{ URL::asset('include/logo/logo.webp') }}" alt="Logo">
-                    <h3>المعهد العالى للهندسة والتكنولوجيا بطنطا</h3>
-                </div>
+    <div class="login-card">
 
-                <div class="p-4">
-                    <h4 class="text-center mb-3">مرحبا بك</h4>
-                    <p class="text-center text-muted">يرجى تسجيل الدخول للمتابعة</p>
+        {{-- ===== LEFT — Blue Panel ===== --}}
+        <div class="left-panel">
+            {{-- Blobs --}}
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
 
-                    <form method="POST" action="{{ route('login.attempt') }}">
-                        @csrf
-                        <!-- Email -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">البريد الإلكتروني</label>
-                            <input type="email" id="email" name="email"
-                                class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
-                                required autofocus placeholder="ادخل البريد الإلكتروني">
-                            @error('email')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!-- Password -->
-                        <div class="mb-3">
-                            <label for="password" class="form-label">كلمة المرور</label>
-                            <input type="password" id="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror" required
-                                placeholder="ادخل كلمة المرور">
-                            @error('password')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!-- Remember Me -->
-                        <div class="form-check mb-3 custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="custom-control-label" for="remember">تذكرني</label>
-                        </div>
-
-                        <!-- Button -->
-                        <button type="submit" class="btn btn-primary btn-block mt-4">تسجيل الدخول</button>
-                    </form>
-                </div>
+            {{-- Logo with pulse --}}
+            <div class="logo-box">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring pulse-ring-2"></div>
+                <img src="{{ URL::asset('include/logo/logo.webp') }}" alt="Logo">
             </div>
 
-            <!-- Right Side -->
-            <div class="col-md-6 right-section order-first order-md-last">
-                <div class="logo-wrapper">
-                    <!-- 🔥 Logo in the middle -->
-                    <img src="{{ URL::asset('include/logo/logo.webp') }}" alt="Logo">
-
-                    <!-- Circles animation -->
-                    <div class="logo-circle circle-1"></div>
-                    <div class="logo-circle circle-2"></div>
-                </div>
-                <h1>بوابة تسجيل الدخول</h1>
-                <p class="text-light">المعهد العالى للهندسة والتكنولوجيا بطنطا</p>
-            </div>
+            <h2>WELCOME</h2>
+            <p>المعهد العالى للهندسة والتكنولوجيا بطنطا</p>
         </div>
+
+        {{-- ===== RIGHT — Form Panel ===== --}}
+        <div class="right-panel" dir="rtl">
+            <h3>تسجيل الدخول</h3>
+            <p class="sub">أدخل بياناتك للوصول إلى لوحة التحكم</p>
+
+            {{-- Alerts --}}
+            @if(session('success'))
+                <div class="alert-box alert-success">
+                    <i class="bi bi-check-circle-fill"></i> {{ session('success') }}
+                </div>
+            @endif
+            @if(session('error'))
+                <div class="alert-box alert-error">
+                    <i class="bi bi-exclamation-triangle-fill"></i> {{ session('error') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert-box alert-error">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('login.attempt') }}">
+                @csrf
+
+                {{-- Email --}}
+                <div class="field-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <div class="input-wrap">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" id="email" name="email"
+                               value="{{ old('email') }}"
+                               placeholder="example@college.edu"
+                               class="{{ $errors->has('email') ? 'is-invalid' : '' }}"
+                               required autofocus>
+                    </div>
+                    @error('email')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                {{-- Password --}}
+                <div class="field-group">
+                    <label for="password">كلمة المرور</label>
+                    <div class="input-wrap">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" id="password" name="password"
+                               placeholder="••••••••"
+                               class="{{ $errors->has('password') ? 'is-invalid' : '' }}"
+                               required>
+                        <button type="button" class="toggle-pass" id="togglePass">إظهار</button>
+                    </div>
+                    @error('password')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                {{-- Remember + Forgot --}}
+                <div class="meta-row">
+                    <label>
+                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                        تذكرني
+                    </label>
+                </div>
+
+                {{-- Submit --}}
+                <button type="submit" class="btn-signin">تسجيل الدخول</button>
+            </form>
+        </div>
+
     </div>
+</div>
+@endsection
+
+@section('js')
+<script>
+    const toggleBtn = document.getElementById('togglePass');
+    const passInput = document.getElementById('password');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                this.textContent = 'إخفاء';
+            } else {
+                passInput.type = 'password';
+                this.textContent = 'إظهار';
+            }
+        });
+    }
+</script>
 @endsection

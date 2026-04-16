@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('title')
-  تعديل خبر
+  تعديل مدير
 @endsection
-
 @section('css')
   <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
   <link href="{{URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet">
@@ -11,7 +9,6 @@
   <link href="{{URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
   <link href="{{URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
   <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
-
   <!-- file input -->
   <link rel="stylesheet" href="{{ asset('vendor/file-input/css/fileinput.min.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css"
@@ -19,79 +16,143 @@
 @endsection
 
 @section('page-header')
+  <!-- breadcrumb -->
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
-      <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">📰 تعديل خبر</h2>
+      <div>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">تعديل مدير</h2>
+      </div>
     </div>
   </div>
 
-  @include('include.error')
+  <!-- content -->
 
   <div class="row">
     <div class="col-xl-12">
       <div class="card shadow-sm">
         <div class="card-body">
-
+          <div class="main-content-label mb-3 font-weight-bold h3">تعديل مدير </div>
+          <br>
           @include('include.validation')
-
-          <form action="{{ route('detailsNews.update', $detailsNews->id) }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('management.update', $management->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <input type="hidden" name="id" value="{{ $detailsNews->id }}">
 
-            <div class="form-group">
-              <label for="title" class="font-weight-bold lead "> عنوان الخبر </label>
-              <input type="text" class="form-control" id="title" name="title"
-                value="{{ old('title') ?? $detailsNews->title }}" placeholder="أدخل عنوان الخبر">
+          <div class="groud row">
+              <div class="form-group col-md-6 ">
+                <label for="name" class="font-weight-bold lead "> اسم المدير </label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $management->name) }}" placeholder="أدخل اسم المدير">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="position" class="font-weight-bold lead "> الوظيفة </label>
+                <input type="text" class="form-control" id="position" name="position" value="{{ old('position', $management->position) }}"
+                  placeholder="أدخل الوظيفة">
+              </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="resume" class="font-weight-bold lead col-md-3">السيرة الذاتية (PDF)</label>
+            <div class="col-md-9">
+              <input type="file" class="form-control-file" id="resume" name="resume" accept="application/pdf">
+              @if($management->resume)
+                 <small><a href="{{ route('resume.show', $management->id) }}" target="_blank">عرض السيرة الحالية</a></small>
+              @endif
             </div>
+          </div>
+
 
             <div class="form-group">
-              <label for="image_new1" class="font-weight-bold lead">   الصورة </label>
-              <input type="file" class="form-control-file" id="image_new1" name="image" accept="image/*">
+              <label for="image" class="font-weight-bold lead"> الصورة </label>
+              <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
             </div>
 
             <div class="form-group">
               <label for="description" class="font-weight-bold lead">الوصف</label>
               <textarea class="form-control" id="description" name="description" rows="4"
-                placeholder="أدخل وصف الخبر">{{ old('description', $detailsNews->description) }}</textarea>
+                placeholder="أدخل وصف المدير">{{ old('description', $management->description) }}</textarea>
             </div>
 
+           <div class="groud row ">
+              <div class="form-group col-md-6">
+                <label for="facebook" class="font-weight-bold lead "> فيسبوك </label>
+                <input type="link" class="form-control" id="facebook" name="facebook" value="{{ old('facebook', $management->facebook) }}"
+                  placeholder="أدخل رابط فيسبوك">
+              </div>
 
+              <div class="form-group col-md-6">
+                <label for="twitter" class="font-weight-bold lead "> تويتر </label>
+                <input type="link" class="form-control" id="twitter" name="twitter" value="{{ old('twitter', $management->twitter) }}"
+                  placeholder="أدخل رابط تويتر">
+              </div>
+
+           </div>
+
+            <div class="groud row">
+              <div class="form-group col-md-6">
+                <label for="instagram" class="font-weight-bold lead "> انستاجرام </label>
+                <input type="link" class="form-control" id="instagram" name="instagram" value="{{ old('instagram', $management->instagram) }}"
+                  placeholder="أدخل رابط انستاجرام">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="linkedin" class="font-weight-bold lead "> لينكدان </label>
+                <input type="link" class="form-control" id="linkedin" name="linkedin" value="{{ old('linkedin', $management->linkedin) }}"
+                  placeholder="أدخل رابط لينكدان">
+              </div>
+            </div>
             <div class="d-flex justify-content-center mt-3">
-              <button type="submit" class="btn btn-primary mb-3 lead">✔ نشر الخبر</button>
+              <button type="submit" class="btn btn-primary mb-3 lead">✔  تعديل المدير  </button>
               <br>
             </div>
           </form>
-
         </div>
       </div>
     </div>
   </div>
+
 @endsection
 
 @section('js')
   <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.js')}}"></script>
   <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/jszip.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/pdfmake.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/vfs_fonts.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+  <script src="{{URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
   <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js')}}"></script>
   <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
-
+  <!--Internal Datatable js -->
+  <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
   <!-- file input -->
   <script src="{{ asset('vendor/file-input/js/fileinput.min.js') }}"></script>
   <script src="{{ asset('vendor/file-input/themes/fa/theme.min.js') }}"></script>
+
+  <!-- file input -->
   <script>
-    $("#image_new1").fileinput({
+    $("#image").fileinput({
       theme: "fa",
       showUpload: false,
-      showRemove: true,
+      showRemove: false,
       initialPreview: [
-        @if($detailsNews->image)
-          "{{ asset('image/detail-news/' . $detailsNews->image) }}"
+        @if($management->image)
+          "{{ asset('image/detail-news/' . $management->image) }}"
         @endif
-              ],
+      ],
       initialPreviewAsData: true,
       initialPreviewFileType: 'image',
       overwriteInitial: true,
     });
+   
   </script>
 
 @endsection

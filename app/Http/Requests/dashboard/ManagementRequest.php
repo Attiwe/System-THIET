@@ -21,7 +21,7 @@ class ManagementRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $data = [
              'name' => 'required|string|max:255',
              'position' => 'required|string|max:255',
              'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -32,6 +32,11 @@ class ManagementRequest extends FormRequest
              'instagram' => 'nullable|url',
              'linkedin' => 'nullable|url',
         ];
+        if($this->isMethod('PUT')){
+            $data['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+            $data['resume'] = 'nullable|file|mimes:pdf|max:2048';
+        }
+        return $data;
     }
 
     public function messages(): array

@@ -19,7 +19,7 @@ class ManagementController extends Controller
      */
     public function index()
     {
-        $management = Management::get();
+        $management = Management::latest()->get();
         return view('pages.mangment.index', compact('management'));
 
     }
@@ -65,11 +65,9 @@ class ManagementController extends Controller
         }
 
         $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
-        $fullPath = public_path('image/resume/' . $filePath);
+        $fullPath = Storage::disk('cv')->path($filePath);
 
-        if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
-            return response()->file($fullPath);
-        } elseif ($extension === 'pdf') {
+        if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'pdf'])) {
             return response()->file($fullPath);
         }
     }
@@ -77,15 +75,38 @@ class ManagementController extends Controller
     
     public function edit(string $id)
     {
-        //
+        $management = Management::findOrFail($id);
+        return view('pages.mangment.edit', compact('management'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ManagementRequest $request, string $id)
     {
-        //
+        $management = Management::findOrFail($id);
+        $data = $request->except(['image', 'resume', '_token', '_method']);
+
+        if ($request->hasFile('image')) {
+            if ($management->image && Storage::disk('detail_news')->exists($management->image)) {
+                Storage::disk('detail_news')->delete($management->image);
+            }
+            $data['image'] = $this->storeUploadedFile($request->file('image'), '/details/news', 'detail_news');
+        }
+
+        if ($request->hasFile('resume')) {
+            if ($management->resume && Storage::disk('cv')->exists($management->resume)) {
+                Storage::disk('cv')->delete($management->resume);
+            }
+            $data['resume'] = $this->storeUploadedFile($request->file('resume'), '/resume', 'cv');
+        }
+
+        try {
+            $management->update($data);
+            return redirect()->route('management.index')->with('success', 'تم التعديل بنجاح');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'حدث خطأ: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -93,7 +114,19 @@ class ManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $management = Management::findOrFail($id);
+        try {
+            if ($management->image && Storage::disk('detail_news')->exists($management->image)) {
+                Storage::disk('detail_news')->delete($management->image);
+            }
+            if ($management->resume && Storage::disk('cv')->exists($management->resume)) {
+                Storage::disk('cv')->delete($management->resume);
+            }
+            $management->delete();
+            return redirect()->route('management.index')->with('success', 'تم الحذف بنجاح');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'حدث خطأ: ' . $e->getMessage());
+        }
     }
 
     private function storeUploadedFile($file, $folder, $disk)

@@ -15,6 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role.permission' => \App\Http\Middleware\CheckRolePermission::class,
         ]);
+
+        // Replace default ValidatePostSize with custom one that allows large video uploads
+        $middleware->replace(
+            \Illuminate\Http\Middleware\ValidatePostSize::class,
+            \App\Http\Middleware\ValidatePostSize::class,
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

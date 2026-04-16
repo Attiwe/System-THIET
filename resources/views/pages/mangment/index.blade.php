@@ -17,35 +17,37 @@
   <div class="breadcrumb-header justify-content-between">
     <div class="left-content">
       <div>
-        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
-        <p class="mg-b-0">Sales monitoring dashboard template.</p>
+        <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">الادارة </h2>
+        <p class="mg-b-0">عرض الادارة </p>
       </div>
     </div>
     <div class="main-dashboard-header-right">
       <div>
-        <label class="tx-13">Customer Ratings</label>
+        <label class="tx-13">عرض الادارة </label>
         <div class="main-star">
           <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i
             class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i>
-          <span>(14,873)</span>
+          <span></span>
         </div>
       </div>
-      <div>
-        <label class="tx-13">Online Sales</label>
-        <h5>563,275</h5>
-      </div>
-      <div>
-        <label class="tx-13">Offline Sales</label>
-        <h5>783,675</h5>
-      </div>
+   
+      
     </div>
   </div>
   <!-- success -->
   @include('include.success')
   <!-- contant -->
   <div class="row row-sm">
-    <div class="col-xl-12">
-      <div class="card mg-b-20">
+    <div class="col-md-12 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">جدول الادارة</h3>
+          <div class="card-options">
+            <a href="{{ route('management.create') }}" class="btn btn-primary btn-sm" >
+              <i class="fe fe-plus"></i> إضافة
+            </a>
+          </div>
+        </div>
         <div class="card-body">
           <div class="table-responsive">
             <table id="example1" class="table table-bordered table-striped text-center align-middle" dir="rtl">
@@ -94,11 +96,11 @@
                       @endif
                     </td>
                     <td>
-                      <a href="{{ route('detailsNews.edit', $item->id) }}" class="btn btn-sm btn-primary">
+                      <a href="{{ route('management.edit', $item->id) }}" class="btn btn-sm btn-primary">
                         تعديل
                       </a>
 
-                      <form action="{{ route('detailsNews.destroy', $item->id) }}" method="POST" class="d-inline">
+                      <form action="{{ route('management.destroy', $item->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-danger delete_confirm   ">

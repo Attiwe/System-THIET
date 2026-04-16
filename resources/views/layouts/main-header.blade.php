@@ -1,6 +1,6 @@
 <!-- main-header opened -->
  
-			<div class="main-header sticky side-header nav nav-item bg-dark ">
+			<div class="main-header sticky side-header nav nav-item bg-white ">
 				<div class="container-fluid  ">
 					<div class="main-header-left    ">
 						<div class="responsive-logo">
